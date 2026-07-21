@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L4｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1a1a1a; --sub:#6b7280; --line:#e5e7eb; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  /* ── 條文速查 ── */
+  .law-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .law-item { background: white; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.07); border-top: 4px solid var(--ink); }
+  .law-item .num { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 5px; }
+  .law-item .desc { font-size: 13px; color: #374151; }
+
+  /* ── 結構樹 ── */
+  .tree { background: white; border-radius: 12px; padding: 12px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.07); font-size: 14px; }
+  .tree ul { list-style: none; padding-left: 24px; margin-top: 4px; }
+  .tree > ul { padding-left: 0; }
+  .tree li { padding: 2px 0; }
+  .tree li::before { content: '├── '; color: #9ca3af; }
+  .tree li:last-child::before { content: '└── '; color: #9ca3af; }
+
+  /* ── 能力/類型三分法卡 ── */
+  .ability-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .ability-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; display: flex; justify-content: space-between; align-items: center; background: var(--ink); }
+  .ability-body { background: white; padding: 9px 13px; font-size: 14px; }
+  .ability-body li { padding: 3px 0; list-style: none; padding-left: 16px; position: relative; }
+  .ability-body li::before { content: '・'; position: absolute; left: 0; color: #9ca3af; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L4｜債之效力・保全・移轉與消滅</h1>
+    <div class="subtitle">契約成立與規制 → 契約解除終止 → 債務不履行三類型 → 債之保全 → 受領遲延 / 連帶之債 → 債之移轉與消滅</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§153、§225～§344</strong>核心條文</div>
+    <div class="badge"><strong>L4</strong>債編總則（續）</div>
+    <div class="badge"><strong>⭐⭐⭐</strong>債務不履行三類型最高頻</div>
+  </div>
+</div>
+
+<div class="highlight-box" style="margin-bottom:15px;">
+  <strong>📌 素材來源提醒：</strong>2026-07-16 已取得本堂逐字稿，已用於補充「契約解除與終止」「債務不履行三大類型」「債之保全」三節的細節與例子。但老師這堂課實際講述範圍僅止於此三塊——逐字稿並未涵蓋「契約成立與內容規制」「受領遲延與連帶之債」「債之移轉與消滅」，這三節內容仍只依重點整理講義＋課堂講義呈現，深度會比其他節略淺。
+</div>
+
+<!-- ═══ 一、契約成立與內容規制 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>契約成立與內容規制</h2>
+  </div>
+  <div class="grid-3" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">方式 <span class="law-tag">§73</span></div>
+      <div class="highlight-box"><strong>不要式</strong>：原則都不要式 <span class="law-tag">§345,406,421,482,490,528</span></div>
+      <div class="highlight-box warning">
+        <strong>要式</strong>：<br>
+        約定要式 <span class="law-tag">§166</span>／法定要式 <span class="law-tag">§422,730,756-1</span><br>
+        <span class="law-tag">§166-1</span> 不動產：債權行為原則要式（例外 <span class="law-tag">§166-1 II</span>）／物權行為要式須<strong>公證</strong> <span class="law-tag">§166-1 I</span>，並準用 <span class="law-tag">§758</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">成立</div>
+      <table>
+        <tbody>
+          <tr><td>拘束力</td><td><span class="law-tag">§154 I</span> 要約引誘</td></tr>
+          <tr><td>失效</td><td><span class="law-tag">§155-158</span></td></tr>
+          <tr><td>新要約</td><td><span class="law-tag">§160</span></td></tr>
+          <tr><td>締約過失</td><td><span class="law-tag">§245-1</span> 法定債之責任</td></tr>
+          <tr><td>懸賞廣告</td><td><span class="law-tag">§164,165</span> 相對人不特定</td></tr>
+        </tbody>
+      </table>
+      <div class="note">要約引誘＝使他人與自己簽約（尚未表示願受拘束，等對方要約後自己再決定是否承諾）</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">確保與抗辯權 <span class="stars">★</span></div>
+      <div class="highlight-box">定金（要物）：證約 <span class="law-tag">§248</span>／違約 <span class="law-tag">§249</span>　違約金 <span class="law-tag">§250-252</span></div>
+      <div class="highlight-box danger">同時履行抗辯 <span class="law-tag">§264</span>／不安抗辯 <span class="law-tag">§265</span></div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:11px;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">涉他契約</div>
+      <table>
+        <tbody>
+          <tr><td>第三人負擔</td><td><span class="law-tag">§268</span></td></tr>
+          <tr><td>第三人利益</td><td><span class="law-tag">§269,270</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">定型化契約與有名／無名契約</div>
+      <div class="highlight-box">定型化契約 <span class="law-tag">§247-1</span></div>
+      <div class="highlight-box">有名／無名契約 <span class="law-tag">§153</span>（債總 vs 債各 <span class="law-tag">§345~756-9</span> 有名契約）<br><span class="note">實務常見爭議：押租金、借名登記</span></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、契約解除與終止 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>契約解除與終止</h2>
+  </div>
+  <div class="highlight-box">契約消滅的三種情況：① 期間屆至（通常情況）② 解除權（形成權，向前溯及消滅）③ 終止權（形成權，僅向後失效）</div>
+  <table>
+    <thead><tr><th style="width:16%;"></th><th>契約解除權</th><th>契約終止權</th></tr></thead>
+    <tbody>
+      <tr><td><strong>性質</strong></td><td>形成權</td><td>形成權</td></tr>
+      <tr><td><strong>契約效力</strong></td><td>溯及自始無效</td><td>向未來失效（不溯及既往）</td></tr>
+      <tr><td><strong>法律結果</strong></td><td>回復原狀、不影響損害賠償請求權</td><td>僅向將來發生效力、不生回復原狀問題（繼續性契約特有效果），不影響損害賠償請求權</td></tr>
+    </tbody>
+  </table>
+  <div class="note">白話比一比：一般買賣契約多用「解除」（整份契約當作沒發生過）；租賃、僱傭這類會持續履行一段時間的「繼續性契約」則多用「終止」（只往後不算，已經履行的部分不會回復原狀）。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、債務不履行三大類型 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>債務不履行三大類型 <span class="stars">★★★</span></h2>
+  </div>
+
+  <!-- 3-1 給付不能 -->
+  <div style="margin-bottom:8px;">
+    <div class="sub-title">3-1｜給付不能 <span class="law-tag">§225,226</span><span class="examhit">105測18（§225/§266颱風吹垮房屋）</span></div>
+    <div class="grid-2" style="align-items:start;">
+      <div class="card">
+        <div class="card-title" style="font-size:15px;">不可歸責於債務人 <span class="law-tag">§225</span></div>
+        <div class="highlight-box">法律效果：債務人<strong>免給付義務</strong>（無給付可能性）</div>
+        <div class="highlight-box warning">特殊規定：債務人對第三人有損害賠償請求權者，債權人得請求<strong>讓與</strong>（代償請求權，條文用「得」，債權人可自行決定要不要請求）</div>
+        <div class="example-box">
+          <div class="example-label">白話舉例</div>
+          <div style="font-size:13.5px;">甲乙成立 A 屋買賣，交屋前 A 屋遭第三人丙縱火燒毀（不可歸責於乙）。乙對丙因此取得侵權損害賠償請求權；甲已付價金者，得請求乙將此請求權讓與給自己，直接向丙求償，等於用「損害賠償請求權」代替「A 屋交付」。</div>
+        </div>
+        <table style="margin-top:8px;">
+          <tbody>
+            <tr><td>自始客觀不能</td><td>大家都做不到</td></tr>
+            <tr><td>自始主觀不能</td><td>僅當事人做不到</td></tr>
+            <tr><td>嗣後不能</td><td>訂約後才發生，且不可歸責於債務人</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:8px;"><strong>金錢之債不會給付不能</strong>：實務及學說一致見解，只要債務人財產仍有可供執行的可能，金錢給付永遠不會構成給付不能</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="font-size:15px;">可歸責於債務人 <span class="law-tag">§226</span></div>
+        <div class="highlight-box danger">法律效果：債權人<strong>得請求損害賠償</strong></div>
+        <div class="highlight-box">特殊規定：一部給付不能，若其他部分之給付於債權人無利益，債權人得拒絕該部分給付，並得請求<strong>全部不履行</strong>之損害賠償</div>
+        <div class="example-box">
+          <div class="example-label">白話舉例（一部不能）</div>
+          <div style="font-size:13.5px;">A 屋連同車庫（從物）一起賣給甲，A 屋燒毀但車庫獨立完好、仍可交付。然而甲買房是為了住主建物，光拿車庫沒有意義 → 甲得拒絕受領車庫，逕依全部不履行請求損害賠償，不用被迫只接受車庫。</div>
+        </div>
+        <div class="highlight-box">其他權利：債權人得解除契約 <span class="law-tag">§256</span>；當事人一方因可歸責於他方之事由，致不能給付者，得請求對待給付 <span class="law-tag">§267</span>（風險負擔）</div>
+        <div class="example-box">
+          <div class="example-label">白話舉例（§267 風險負擔）</div>
+          <div style="font-size:13.5px;">若 A 屋是因為<strong>買方甲</strong>自己不慎（如亂丟打火機）而燒毀，導致賣方乙給付不能，這是「可歸責於他方（甲）之事由」致乙不能給付 → 乙仍可依 §267 請求甲支付價金，不因給付不能而免責，避免乙因買方過失反而求償無門。</div>
+        </div>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:6px;"><strong>§266 雙務契約風險負擔</strong>（不可歸責於雙方）：因不可歸責於雙方當事人之事由，致一方給付全部不能者，<strong>他方免為對待給付之義務</strong>。<br><span class="note" style="margin-top:2px;display:block;">白話舉例：透天厝簽約賣給乙、交屋前遇強颱吹垮（雙方都沒過失）→ 賣方甲免交屋義務，買方乙也免支付價金義務，跟 §267（可歸責於他方）不同，§266 是雙方都沒過失時的風險分配規則。</span></div>
+    <div class="note" style="margin-top:6px;">單務之債（如贈與 §406）僅債務人單方負給付義務；雙務之債（如買賣 §345、租賃 §421）雙方互負對待給付義務，故有 §266/§267 對待給付、§184 求償等問題。</div>
+  </div>
+
+  <!-- 3-2 給付遲延 -->
+  <div style="margin-bottom:8px;">
+    <div class="sub-title">3-2｜給付遲延</div>
+    <div class="card">
+      <div class="highlight-box">要件：有<strong>確定給付期限</strong>，且須<strong>仍有給付可能</strong>（若已不能給付，就回歸給付不能）</div>
+      <div class="grid-2" style="margin-top:8px;">
+        <div>
+          <div class="card-title" style="font-size:14px;">歸責 <span class="law-tag">§230</span></div>
+          <div class="highlight-box">不可歸責：債務人不負遲延責任</div>
+          <div class="highlight-box danger">可歸責：債務人負遲延責任<br>原則：仍須給付＋債權人得請求賠償因遲延所生損害<br>例外：遲延後給付對債權人無利益，債權人得拒絕給付並請求損害賠償</div>
+        </div>
+        <div>
+          <div class="card-title" style="font-size:14px;">清償期與契約解除權 <span class="examhit">108測15</span></div>
+          <table>
+            <tbody>
+              <tr><td>有確定期限</td><td><span class="law-tag">§229 I</span>，解除 <span class="law-tag">§255,260</span></td></tr>
+              <tr><td>無確定期限</td><td><span class="law-tag">§229 II,III</span>，解除 <span class="law-tag">§254,260</span></td></tr>
+            </tbody>
+          </table>
+          <div class="note">有期限＋非於一定時期給付不能達契約目的者，不經催告即可直接解除（§255）；無確定期限則須經催告仍未履行，才可解除（§254）</div>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:8px;">
+        <div class="example-box">
+          <div class="example-label">例：不可歸責</div>
+          <div style="font-size:13.5px;">疫情期間海外訂單因塞港延誤交貨，非債務人所能控制 → 不負遲延責任</div>
+        </div>
+        <div class="example-box">
+          <div class="example-label">例：可歸責，仍有給付利益</div>
+          <div style="font-size:13.5px;">店家海外訂購收銀機，賣家忘記出貨導致延誤開幕、損失一個月營業利益 → 賣家仍須交貨＋賠償遲延所生損害</div>
+        </div>
+        <div class="example-box">
+          <div class="example-label">例：可歸責，給付已無利益 §255</div>
+          <div style="font-size:13.5px;">訂製婚紗遲至婚禮結束後才送達，穿婚紗已無意義 → 新娘得拒絕受領＋請求已付費用返還（恢復原狀）＋損害賠償</div>
+        </div>
+      </div>
+      <div class="card-title" style="font-size:14px;margin-top:8px;">效果</div>
+      <table>
+        <tbody>
+          <tr><td>損害賠償</td><td><span class="law-tag">§231 I</span> 遲延損害／<span class="law-tag">§232</span> 替補賠償／<span class="law-tag">§233</span> 利息（約定 <span class="law-tag">§204,205,206,207</span>；法定 <span class="law-tag">§203</span>）</td></tr>
+          <tr><td>保管責任</td><td>遲延<strong>前</strong>：抽象輕過失 <span class="law-tag">§220 I</span>／遲延<strong>後</strong>：無過失亦須負責 <span class="law-tag">§231 II</span>（責任加重）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3-3 不完全給付 -->
+  <div>
+    <div class="sub-title">3-3｜不完全給付 <span class="examhit">113申論一（§227/§227-1，房屋漏水修繕費＋精神慰撫金）</span></div>
+    <div class="card">
+      <div class="highlight-box danger">要件：<strong>可歸責於債務人</strong> ＋ <strong>有給付</strong> ＋ <strong>給付不合於債之本旨</strong></div>
+      <div class="grid-2" style="margin-top:8px;">
+        <div class="highlight-box">瑕疵給付：給付本身有瑕疵，依「給付不能」或「給付遲延」之規定行使權利</div>
+        <div class="highlight-box warning">加害給付：給付不僅有瑕疵，更造成債權人<strong>其他損害</strong>，債權人得依 <span class="law-tag">§227 II</span> 另外請求損害賠償；若因此侵害債權人<strong>人格權</strong>，得依 <span class="law-tag">§227-1</span> 準用 §192~§195、§197 規定<strong>請求精神慰撫金</strong></div>
+      </div>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">白話舉例（113申論一）</div>
+        <div style="font-size:13.5px;">房屋買賣，賣方保證交屋時無漏水，交屋後買方才發現廚房排水管年久堵塞導致漏水 → 給付不合於債之本旨（瑕疵給付），買方得請求修繕費；若因漏水另受有精神上痛苦，得依 §227-1 一併請求精神慰撫金。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三類型總表 -->
+  <div class="card-title" style="font-size:16px;margin:10px 0 6px;">三類型速記表</div>
+  <table>
+    <thead><tr><th>類型</th><th>可歸責</th><th>不可歸責</th></tr></thead>
+    <tbody>
+      <tr><td><strong>給付不能</strong></td><td>債權人得請求損害賠償</td><td>債務人免給付義務</td></tr>
+      <tr><td><strong>給付遲延</strong></td><td>債務人仍負給付義務＋損害賠償</td><td>債務人免負遲延責任</td></tr>
+      <tr><td><strong>不完全給付</strong></td><td colspan="2">可歸責＋有給付＋不合於債之本旨 → 瑕疵給付（準用不能／遲延規定）或加害給付（另得請求損賠）</td></tr>
+    </tbody>
+  </table>
+
+  <!-- IRAC 綜合案例 -->
+  <div class="card-title" style="font-size:18px;margin:14px 0 9px;">綜合實例題解析（一路貫穿三大類型）</div>
+
+  <div class="story-box">甲向乙購買一棟 A 屋，並簽訂 A 屋買賣契約 <span class="law-tag">§345</span>，約定<strong>一個月後交屋</strong>。然而，一個月過去後，乙都未將 A 屋交付，導致甲因此必須繼續付房租、繼續住在原本的租屋處。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜試問甲得對乙主張何權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>買賣契約已有確定給付期限（1個月）＋乙仍有給付可能 → 屬<strong>給付遲延</strong>，且乙無不可歸責事由 → 可歸責於乙</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>甲得依 §229 I 請求乙仍須交付 A 屋，並依 §231 I 請求賠償因遲延所生損害（即甲多付的房租）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">萬萬沒想到，在甲對乙請求交付 A 屋後，A 屋即遭乙剛分手的情人丙縱火燒毀，致房屋完全毀損。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜試問甲與乙間之權利義務關係？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>房屋已滅失，客觀上無給付可能性；丙縱火係丙個人行為，與乙無關 → <strong>不可歸責於債務人之給付不能</strong></div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>乙依 §225 <strong>免給付義務</strong></div></div>
+    </div>
+  </div>
+
+  <div class="story-box">誰也沒料到，實際上丙之所以會縱火燒毀 A 屋，是受到乙的洗腦、催眠——因乙發現甲是丙的劈腿對象，為了報復甲，乙不斷在丙面前詆毀甲，使丙對甲越來越不信任、產生極度厭惡感，最後乙並透露甲向其購買了 A 屋，進而教唆丙去燒毀 A 屋。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q3｜試問於此情形下，甲乙間之權利義務關係是否有所不同？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>丙縱火其實是受乙教唆，燒毀 A 屋可歸責於乙 → <strong>可歸責於債務人之給付不能</strong></div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>甲得依 §226 對乙<strong>請求損害賠償</strong></div></div>
+    </div>
+  </div>
+
+  <div class="story-box">沒了房子的甲只好轉而向仲介丁購入 B 屋，未料 B 屋其實又是乙的房產，但仲介並未將實情告知甲，甲也未留意到此事。入住後，甲才發現 B 屋的<strong>承重牆都被敲毀</strong>，此時甲翻開合約要找尋原屋主的聯絡方式時，才赫然發現出賣人是乙。正當甲氣到頭昏腦脹時，突然一陣天搖地動，地震來了，B 屋部分結構坍塌，甲因而被砸傷。</div>
+  <div class="irac-card">
+    <div class="irac-header">Q4｜請問甲得對乙主張何等權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">承重牆</div><div>可歸責於乙＋有給付＋給付不合於債之本旨（承重牆被敲毀不符合正常交屋狀態）→ <strong>不完全給付／瑕疵給付</strong>，甲得請求完全給付（修補）</div></div>
+      <div class="irac-row"><div class="irac-label">地震坍塌</div><div>地震屬天災，就結構坍塌本身為不可歸責之給付不能；但甲受傷係肇因於乙交付時承重牆早已被敲毀、未達安全標準 → 就人身受傷部分屬<strong>加害給付</strong>（§227 II），乙仍須就甲受傷之損害負賠償責任</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>甲得對乙主張：瑕疵給付之修補請求權＋因加害給付所受人身損害之損害賠償請求權</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、債之保全 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>債之保全</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">代位請求權 <span class="law-tag">§242,243</span><span class="examhit">107申論一</span></div>
+      <div class="highlight-box">債權人為保全其債權，得以自己名義行使債務人對第三債務人之權利（代位債務人向第三人請求）</div>
+      <div class="card-title" style="font-size:14px;margin-top:6px;">要件</div>
+      <div style="font-size:14px;">① 債權債務關係存在　② 債務人怠於行使權利　③ 有保全債權之必要　④ 須債務人已負遲延責任 <span class="law-tag">§243</span></div>
+      <div class="card-title" style="font-size:14px;margin-top:6px;">行使方式</div>
+      <div style="font-size:14px;">債權人得向第三債務人請求；第三債務人亦得向債務人為給付</div>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">白話舉例</div>
+        <div style="font-size:14px;">甲貸款 30 萬元給乙，約定 1 年後清償（甲是乙的債權人）。同時乙也把錢／A 車出借給丙，丙是乙的借用人（乙是丙的債權人）。乙怠於向丙催討，甲為了保全自己對乙的 30 萬債權，得依 §242、§243 代位行使乙對丙的請求權，直接向丙請求返還。</div>
+      </div>
+      <div class="example-box" style="margin-top:6px;">
+        <div class="example-label">白話舉例（107申論一・買賣鏈）</div>
+        <div style="font-size:13.5px;">土地買賣鏈：甲賣給乙、乙再轉賣給丙。乙怠於向甲請求移轉登記，導致丙也拿不到過戶，丙得依 §242、§243 代位乙向甲請求移轉登記（§348 為出賣人移轉義務之依據）。</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">債權人之撤銷訴權 <span class="law-tag">§244,245</span><span class="examhit">110測13</span></div>
+      <div class="highlight-box">債務人所為的行為若有害於債權人之債權，債權人得聲請法院撤銷</div>
+      <table style="margin-top:8px;">
+        <thead><tr><th>類型</th><th>撤銷要件</th></tr></thead>
+        <tbody>
+          <tr><td>債務人之<strong>無償行為</strong></td><td>只要有害及債權，債權人即得聲請法院撤銷</td></tr>
+          <tr><td>債務人之<strong>有償行為</strong></td><td>須同時符合：① 債務人行為時明知有害於債權人之權利　② 受益人於受益時也知其情事（雙重惡意）</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">白話舉例</div>
+        <div style="font-size:13.5px;">甲借給乙 30 萬，乙宣告破產卻名下還有一輛 A 車。① 若乙把 A 車<strong>無償贈與</strong>丙，甲只要證明有害債權即可聲請法院撤銷，A 車撤銷後歸還乙名下再由甲強制執行；② 若乙把 A 車<strong>以 50 萬賣給</strong>丙，甲須進一步證明乙丙雙方在買賣當下都明知這麼做會害到甲的 30 萬債權（雙重惡意），才能撤銷這個買賣。</div>
+      </div>
+      <div class="note">無償行為（如贈與）門檻低，只看客觀有害即可撤銷；有償行為（如買賣）門檻高，須債務人與受益人雙方都是惡意，較保護交易安全。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、受領遲延與連帶之債 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>受領遲延與連帶之債</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">受領遲延 <span class="law-tag">§234</span></div>
+      <div class="highlight-box">指<strong>債權人</strong>遲延受領——債權人對於已提出之給付，有受領給付之義務</div>
+      <div class="card-title" style="font-size:14px;margin-top:6px;">效果</div>
+      <table>
+        <tbody>
+          <tr><td>減責</td><td><span class="law-tag">§237</span> 債務人保管注意義務降低</td></tr>
+          <tr><td>求償</td><td><span class="law-tag">§240</span> 得請求提出及保管給付物之必要費用</td></tr>
+          <tr><td>拋棄</td><td><span class="law-tag">§241</span> 不動產得拋棄占有</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">連帶之債</div>
+      <div class="highlight-box">連帶債權 <span class="law-tag">§283</span>：發生（§283）／效力（§284、§291，另比較 §280 依比例分擔）</div>
+      <div class="highlight-box">連帶債務 <span class="law-tag">§272</span></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、債之移轉與消滅 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>債之移轉與消滅</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">債之移轉</div>
+      <div class="highlight-box">債權讓與 <span class="law-tag">§294</span>：自由讓與，性質為<strong>處分行為／準物權行為</strong></div>
+      <table style="margin-top:6px;">
+        <tbody>
+          <tr><td>從屬權利隨同移轉</td><td><span class="law-tag">§295</span></td></tr>
+          <tr><td>證明文件交付</td><td><span class="law-tag">§296</span></td></tr>
+          <tr><td>對債務人生效／表見讓與</td><td><span class="law-tag">§297,298</span><span class="examhit">113測4</span></td></tr>
+          <tr><td>債務人得主張之抗辯／抵銷</td><td><span class="law-tag">§299</span></td></tr>
+        </tbody>
+      </table>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">白話舉例（113測4・§297）</div>
+        <div style="font-size:13.5px;">甲將 100 萬債權讓與丙，但沒有通知債務人乙。乙不知情，仍照原本習慣向甲清償 → 乙的債務因清償而消滅，未經通知不得對抗（不利於）不知情的債務人。</div>
+      </div>
+      <div class="highlight-box" style="margin-top:8px;">債務承擔（債權承擔）：方式 <span class="law-tag">§300,301,302</span>／效力 <span class="law-tag">§303</span>（債務人得以其對於原債權人之抗辯，對新債權人主張之）</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">債之消滅</div>
+      <table>
+        <thead><tr><th>事由</th><th>條文</th></tr></thead>
+        <tbody>
+          <tr><td>清償</td><td><span class="law-tag">§309~325</span></td></tr>
+          <tr><td>提存</td><td><span class="law-tag">§326~333</span><span class="examhit">110測12</span></td></tr>
+          <tr><td>抵銷</td><td><span class="law-tag">§334~342</span><span class="examhit">110測12</span></td></tr>
+          <tr><td>免除</td><td><span class="law-tag">§343</span></td></tr>
+          <tr><td>混同</td><td><span class="law-tag">§344</span><span class="examhit">110測12</span></td></tr>
+        </tbody>
+      </table>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">白話舉例（110測12）</div>
+        <div style="font-size:13.5px;">連帶債務辨析題：連帶債務人中一人因清償、代物清償、提存、抵銷或混同而使債權獲得滿足時，其他連帶債務人在該範圍內同免責任（考的是這幾種消滅事由對「全體」連帶債務人的效力，不是只免除自己那一人）。</div>
+      </div>
+      <div class="note">清償（§309~325）、債務承擔（§300~303）、免除（§343）近10年查無獨立命題紀錄，不掛 .examhit；2026-07-16 已取得本堂逐字稿，但老師這堂課實際只講了「契約解除終止／債務不履行／債之保全」三個主題，並未涵蓋債之移轉與消滅，逐字稿查無相關內容補充，深度仍待其他堂次或補充教材確認例子。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：這堂的核心是「債務不履行三大類型」怎麼分辨——先看是否還「有給付可能」（沒有 → 給付不能；有但過期 → 給付遲延；有給付但不合本旨 → 不完全給付），再看「可否歸責於債務人」決定法律效果。用甲乙丙丁 A屋／B屋的案例走一遍，會比死背條號更好記。
+</div>
+
+</body>
+</html>

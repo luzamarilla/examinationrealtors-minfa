@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L1+L2｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1a1a1a; --sub:#6b7280; --line:#e5e7eb; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  /* ── 條文速查 ── */
+  .law-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .law-item { background: white; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.07); border-top: 4px solid var(--ink); }
+  .law-item .num { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 5px; }
+  .law-item .desc { font-size: 13px; color: #374151; }
+
+  /* ── 結構樹 ── */
+  .tree { background: white; border-radius: 12px; padding: 12px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.07); font-size: 14px; }
+  .tree ul { list-style: none; padding-left: 24px; margin-top: 4px; }
+  .tree > ul { padding-left: 0; }
+  .tree li { padding: 2px 0; }
+  .tree li::before { content: '├── '; color: #9ca3af; }
+  .tree li:last-child::before { content: '└── '; color: #9ca3af; }
+
+  /* ── 能力/類型三分法卡 ── */
+  .ability-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .ability-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; display: flex; justify-content: space-between; align-items: center; background: var(--ink); }
+  .ability-body { background: white; padding: 9px 13px; font-size: 14px; }
+  .ability-body li { padding: 3px 0; list-style: none; padding-left: 16px; position: relative; }
+  .ability-body li::before { content: '・'; position: absolute; left: 0; color: #9ca3af; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:6px;">114年 不動產經紀人考試｜民法總則</div>
+    <h1>L1+L2｜重點整理</h1>
+    <div class="subtitle">法律行為 → 意思表示 → 瑕疵 → 撤銷 → 消滅時效 → 除斥期間 → 三大釋字</div>
+  </div>
+  <div style="display:flex;gap:16px;">
+    <div class="badge"><strong>§71～§767</strong>核心條文</div>
+    <div class="badge"><strong>L1 + L2</strong>合併筆記</div>
+    <div class="badge"><strong>⭐⭐⭐⭐⭐</strong>高頻考點</div>
+  </div>
+</div>
+
+
+<!-- ═══ 一、民法基本概念 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>民法基本概念</h2>
+  </div>
+
+  <div class="grid-2" style="align-items:start;">
+    <div>
+      <div class="tree">
+        <strong style="font-size:16px;color:var(--ink);">民法</strong>
+        <span style="font-size:12px;color:#9ca3af;margin-left:8px;">私人權利義務 §1～§1225</span>
+        <ul>
+          <li><strong>總則編</strong></li>
+          <li><strong>財產</strong>
+            <ul>
+              <li>債編（人 ←債→ 人，<span class="badge-tag">相對性</span>）</li>
+              <li>物權編（人 → 支配 → 物，<span class="badge-tag">絕對性</span>）</li>
+            </ul>
+          </li>
+          <li><strong>身分</strong>
+            <ul>
+              <li>親屬編</li>
+              <li>繼承編</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2" style="align-items:start;">
+      <div class="card" style="border-top:4px solid var(--ink);">
+        <div class="card-title"><div class="dot" style="background:var(--ink);"></div>相對權</div>
+        <div style="font-size:14px;">僅得對「<strong>特定人</strong>」主張</div>
+        <div class="note">例：債權（請求對方給付）</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--ink);">
+        <div class="card-title"><div class="dot" style="background:var(--ink);"></div>絕對權</div>
+        <div style="font-size:14px;">對「<strong>任何人</strong>」均得主張</div>
+        <div class="note">例：物權、人格權</div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--ink);grid-column:span 2;">
+        <div class="card-title"><div class="dot" style="background:var(--ink);"></div>法律條文結構 <span class="stars">★★★★★</span></div>
+        <div class="flow">
+          <div class="flow-item" style="background:#6b7280;">構成要件</div>
+          <div class="flow-arrow">＋</div>
+          <div class="flow-item" style="background:#6b7280;">法律效果</div>
+          <div class="flow-arrow">=</div>
+          <div class="flow-item">法律條文</div>
+        </div>
+        <div class="example-box" style="margin-top:12px;">
+          <div class="example-label">例 §184 I 前段</div>
+          <div style="font-size:13px;">「因<strong style="color:var(--ink);">故意或過失，不法侵害他人之權利</strong>者，<strong style="color:var(--ink);">負損害賠償責任</strong>」</div>
+          <div style="font-size:13px;margin-top:6px;">
+            <span style="color:var(--ink);">▲ 構成要件</span>：故意或過失、不法侵害他人之權利<br>
+            <span style="color:var(--ink);">▲ 法律效果</span>：負損害賠償責任
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、法律條文組成 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>法律條文組成導論</h2>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <div class="highlight-box">
+      <strong>法律位階：</strong>憲法 → 法律 → 命令（效力由高到低，下位規範不得牴觸上位）
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="font-size:16px;color:var(--ink);">請求權 vs 形成權 ｜ 消滅時效 vs 除斥期間 <span class="stars">★★★★</span></div>
+    <table>
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th style="background:var(--ink);">請求權 ＋ 消滅時效</th>
+          <th style="background:var(--ink);">形成權 ＋ 除斥期間</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>白話</td>
+          <td>拜託對方／跟對方要</td>
+          <td>一方說了就算</td>
+        </tr>
+        <tr>
+          <td>對應時效</td>
+          <td><span class="badge-tag">消滅時效（15年）</span></td>
+          <td><span class="badge-tag">除斥期間（短）</span></td>
+        </tr>
+        <tr>
+          <td>例子</td>
+          <td>請求損害賠償<br>給付貸款<br>返還占有</td>
+          <td>解除契約、撤銷<br>終止、解約</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:10px;">💡 屆期效果、需要主張、三大釋字等完整比較見下方 Section 11–12（L2 主題），此處不重複</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、物 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>物的基本概念</h2>
+  </div>
+  <div class="grid-3">
+    <div class="card" style="border-top:4px solid var(--ink);">
+      <div class="card-title"><div class="dot" style="background:var(--ink);"></div>主物與從物</div>
+      <div style="font-size:14px;">
+        <div style="margin-bottom:10px;"><span class="law-tag">§68 II</span> <strong>主物</strong>的處分，效力及於<strong>從物</strong></div>
+        <div><span class="law-tag">§68 I</span> <strong>從物</strong>要件：</div>
+        <ul style="list-style:disc;padding-left:20px;font-size:13px;margin-top:6px;">
+          <li>非主物之成分</li>
+          <li>常助主物之效用</li>
+          <li>需與主物同屬一人</li>
+          <li>交易上無特別習慣</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ink);">
+      <div class="card-title"><div class="dot" style="background:var(--ink);"></div>孳息</div>
+      <div style="font-size:14px;">
+        <div style="margin-bottom:10px;"><span class="law-tag">§70 I</span> <strong>天然孳息</strong><br>
+          <span class="note">與原物分離後取得，如果實</span>
+        </div>
+        <div><span class="law-tag">§70 II</span> <strong>法定孳息</strong><br>
+          <span class="note">按日數比例取得，如利息、租金</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ink);">
+      <div class="card-title"><div class="dot" style="background:var(--ink);"></div>利率上限規定</div>
+      <div style="font-size:14px;">
+        <div style="padding:8px 0;border-bottom:1px solid #f1f5f9;">
+          未約定 → 週年利率 <strong style="color:var(--ink);font-size:18px;">5%</strong>
+        </div>
+        <div style="padding:8px 0;border-bottom:1px solid #f1f5f9;">
+          超過週年 <strong style="color:var(--ink);">12%</strong><br>
+          <span class="note">一年後債務人可隨時還本（須提前1個月告知）</span>
+        </div>
+        <div style="padding:8px 0;">
+          超過週年 <strong style="color:var(--ink);">16%</strong><br>
+          超過部分 <span class="badge-tag">無效</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、法律行為 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>法律行為</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:10px;align-items:start;">
+    <!-- 定義 + 類型 -->
+    <div>
+      <div class="card" style="margin-bottom:10px;">
+        <div class="card-title" style="font-size:16px;color:var(--ink);">定義</div>
+        <div class="highlight-box">
+          以「<strong>意思表示</strong>」為要素，發生<strong>私法上權利義務得、喪、變更</strong>效果的行為
+        </div>
+        <div style="margin-top:14px;font-size:14px;">
+          <div style="margin-bottom:8px;"><strong>兩大類型：</strong></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#f8fafc;border-radius:8px;padding:10px;">
+              <div style="font-weight:900;color:var(--ink);margin-bottom:4px;">債權行為</div>
+              <div style="font-size:13px;">讓雙方產生請求履行的權利義務<br>例：簽訂買賣契約、租賃契約</div>
+            </div>
+            <div style="background:#f8fafc;border-radius:8px;padding:10px;">
+              <div style="font-weight:900;color:var(--ink);margin-bottom:4px;">物權行為</div>
+              <div style="font-size:13px;">直接讓物權發生變動<br>例：移轉所有權、設定抵押權</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 效力四種 -->
+      <div class="card">
+        <div class="card-title" style="font-size:16px;color:var(--ink);">效力四種狀態</div>
+        <div class="grid-2" style="gap:10px;">
+          <div style="background:#f8fafc;border-radius:8px;padding:12px;border-left:4px solid var(--ink);">
+            <span class="badge-tag">有效</span>
+            <div style="font-size:13px;margin-top:6px;">正常發生效力</div>
+          </div>
+          <div style="background:#f8fafc;border-radius:8px;padding:12px;border-left:4px solid var(--ink);">
+            <span class="badge-tag">得撤銷</span>
+            <div style="font-size:13px;margin-top:6px;">撤銷前有效；撤銷後<strong>自始無效</strong></div>
+          </div>
+          <div style="background:#f8fafc;border-radius:8px;padding:12px;border-left:4px solid var(--ink);">
+            <span class="badge-tag">效力未定</span>
+            <div style="font-size:13px;margin-top:6px;">等待法定代理人承認</div>
+          </div>
+          <div style="background:#f8fafc;border-radius:8px;padding:12px;border-left:4px solid var(--ink);">
+            <span class="badge-tag">無效</span>
+            <div style="font-size:13px;margin-top:6px;">自始、當然、確定不生效力</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 要件 -->
+    <div class="card">
+      <div class="card-title" style="font-size:16px;color:var(--ink);">法律行為要件</div>
+      <table>
+        <thead><tr><th>要件類型</th><th>項目</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr>
+            <td rowspan="3" style="font-weight:900;color:var(--ink);vertical-align:top;padding-top:14px;">成立要件</td>
+            <td>人</td><td>法人或自然人</td>
+          </tr>
+          <tr><td>標的</td><td>法律行為的對象</td></tr>
+          <tr><td>意思表示</td><td>表達內心意思的行為</td></tr>
+          <tr>
+            <td rowspan="3" style="font-weight:900;color:var(--ink);vertical-align:top;padding-top:14px;">生效要件</td>
+            <td>人</td><td>須有<strong>行為能力</strong></td>
+          </tr>
+          <tr><td>標的</td><td><strong>合</strong>法、<strong>可</strong>能、<strong>確</strong>定、<strong>妥</strong>當</td></tr>
+          <tr><td>意思表示</td><td><strong>健全</strong>（不健全 → 見意思表示瑕疵）</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:16px;">
+        <div style="font-weight:900;color:var(--ink);margin-bottom:10px;">效力相關條文</div>
+        <table>
+          <thead><tr><th>條文</th><th>情形</th><th>效果</th></tr></thead>
+          <tbody>
+            <tr><td><span class="law-tag">§71</span></td><td>違反強行法</td><td><span class="badge-tag">無效</span></td></tr>
+            <tr><td><span class="law-tag">§72</span></td><td>違背公序良俗</td><td><span class="badge-tag">無效</span></td></tr>
+            <tr><td><span class="law-tag">§73</span></td><td>不依法定方式</td><td><span class="badge-tag">無效</span></td></tr>
+            <tr><td><span class="law-tag">§74</span></td><td>暴利行為</td><td><span class="badge-tag">得撤銷/減輕給付</span></td></tr>
+            <tr><td><span class="law-tag">§75</span></td><td>無意識或精神錯亂</td><td><span class="badge-tag">無效</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 行為能力三分法 -->
+  <div class="card-title" style="font-size:18px;color:var(--ink);margin-bottom:14px;">
+    行為能力三分法 <span class="stars">★★★★★</span><span class="examhit">§77-85 105・106・107・108・109測（106年整題申論：契約效力＋物之瑕疵擔保）</span>
+  </div>
+  <div class="grid-3">
+    <div class="ability-card">
+      <div class="ability-header" style="background:var(--ink);">
+        <span>① 完全行為能力</span>
+        <span style="font-size:13px;opacity:.85;">18 歲以上</span>
+      </div>
+      <div class="ability-body">
+        <div style="margin-bottom:10px;font-size:14px;"><strong>原則：</strong>所為法律行為<span class="badge-tag">有效</span></div>
+        <div style="font-size:14px;"><strong>例外：</strong><span class="law-tag">§75</span> 無意識或精神錯亂時</div>
+        <div style="margin-top:6px;"><span class="badge-tag">無效</span></div>
+      </div>
+    </div>
+
+    <div class="ability-card">
+      <div class="ability-header" style="background:var(--ink);">
+        <span>② 限制行為能力</span>
+        <span style="font-size:13px;opacity:.85;">7歲以上未滿18歲</span>
+      </div>
+      <div class="ability-body">
+        <div style="font-size:14px;margin-bottom:8px;">
+          <strong>原則：</strong>須經<strong>法定代理人</strong> <span class="law-tag">§77</span> 事前允許 或 <span class="law-tag">§79</span> 事後承認
+        </div>
+        <div style="font-size:13px;"><strong>例外（直接有效）：</strong></div>
+        <ul class="ability-body" style="padding:0;margin-top:4px;">
+          <li>純獲法律上利益、日常生活必需</li>
+          <li>用詐術使人信其為完全行為能力</li>
+          <li>法定代理人允許處分之財產</li>
+          <li>法定代理人允許獨立營業</li>
+        </ul>
+        <div style="margin-top:10px;padding:8px;background:#f8fafc;border-radius:6px;font-size:13px;">
+          ⚠️ 未經允許之<strong>單獨行為</strong> → <span class="badge-tag">無效</span>（不能事後承認）
+        </div>
+      </div>
+    </div>
+
+    <div class="ability-card">
+      <div class="ability-header" style="background:var(--ink);">
+        <span>③ 無行為能力</span>
+        <span style="font-size:13px;opacity:.85;">未滿 7 歲</span>
+      </div>
+      <div class="ability-body">
+        <div style="font-size:14px;margin-bottom:10px;">
+          所為法律行為 <span class="badge-tag">一律無效</span>
+        </div>
+        <div style="font-size:14px;padding:10px;background:#f8fafc;border-radius:8px;">
+          須由<strong>法定代理人</strong>代為、代受意思表示
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 負擔 vs 處分 -->
+  <div style="margin-top:20px;" class="grid-2">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;color:var(--ink);">行為種類比較</div>
+      <table>
+        <thead><tr><th></th><th style="background:var(--ink);">負擔行為</th><th style="background:var(--ink);">處分行為</th></tr></thead>
+        <tbody>
+          <tr><td>意義</td><td>產生債，約定給付義務</td><td>直接使權利變動</td></tr>
+          <tr><td>例子</td><td>買賣契約、租賃契約</td><td>移轉所有權、設定抵押</td></tr>
+          <tr><td>因果關係</td><td>要因行為<br><span class="note">（需有原因）</span></td><td>不要因行為<br><span class="note">（無需原因，抽象行為／物權行為獨立性原則）</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;color:var(--ink);">三種「能力」比較</div>
+      <table>
+        <thead><tr><th>能力</th><th>意義</th></tr></thead>
+        <tbody>
+          <tr><td><strong>權利能力</strong></td><td>享受權利、負擔義務的能力</td></tr>
+          <tr><td><strong>行為能力</strong></td><td>能讓法律行為發生效果的能力</td></tr>
+          <tr><td><strong>識別能力</strong></td><td>能辨識自己行為產生何種法律效果</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、意思表示 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>意思表示</h2>
+  </div>
+
+  <div class="grid-2" style="align-items:start;">
+    <div>
+      <div class="card" style="margin-bottom:10px;">
+        <div class="card-title" style="font-size:16px;color:var(--ink);">定義</div>
+        <div class="highlight-box">
+          行為人將<strong>心中想要發生某法律效果的意思</strong>，表示於<strong>外部</strong>的行為
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="font-size:16px;color:var(--ink);">四大構成要素</div>
+        <table>
+          <thead><tr><th>要素</th><th>白話解釋</th></tr></thead>
+          <tbody>
+            <tr><td><strong>表示行為</strong></td><td>對外做出客觀行為（點頭、簽名）</td></tr>
+            <tr><td><strong>行為意思</strong></td><td>自覺做出這個動作（非強迫或無意識）</td></tr>
+            <tr><td><strong>表示意思</strong></td><td>知道這個動作有法律意義（非開玩笑）</td></tr>
+            <tr><td><strong>效果意思</strong></td><td>內心真的想達成那個法律效果</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="font-size:16px;color:var(--ink);">意思表示生效時點</div>
+      <table>
+        <thead><tr><th>情形</th><th>條文</th><th>生效時點</th></tr></thead>
+        <tbody>
+          <tr><td>對話</td><td><span class="law-tag">§94</span></td><td>說出口即生效</td></tr>
+          <tr><td>非對話（書信等）</td><td><span class="law-tag">§95</span></td><td><strong>到達</strong>相對人時生效</td></tr>
+          <tr><td>相對人為無/限制行為能力人</td><td><span class="law-tag">§96</span></td><td>需通知法定代理人</td></tr>
+          <tr><td>公示送達</td><td><span class="law-tag">§97</span></td><td>公告一定期間後生效</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:16px;">
+        <div style="font-weight:900;color:var(--ink);margin-bottom:10px;">健全 vs 不健全</div>
+        <div class="grid-2" style="gap:10px;">
+          <div style="background:#f8fafc;border-radius:8px;padding:12px;text-align:center;">
+            <div style="color:var(--ink);font-weight:900;font-size:16px;">健全</div>
+            <div style="font-size:13px;margin-top:4px;">意思表示有效，法律行為正常生效</div>
+          </div>
+          <div style="background:#f8fafc;border-radius:8px;padding:12px;text-align:center;">
+            <div style="color:var(--ink);font-weight:900;font-size:16px;">不健全</div>
+            <div style="font-size:13px;margin-top:4px;">意思表示瑕疵或不一致<br>→ 見下方六種情形</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、意思表示瑕疵 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>意思表示瑕疵 <span class="stars">★★★★★</span></h2>
+  </div>
+
+  <!-- 6-1 真意保留 -->
+  <div style="margin-bottom:10px;">
+    <div style="font-size:16px;font-weight:900;color:#6b7280;margin-bottom:12px;">6-1｜真意保留 <span class="law-tag">§86</span></div>
+    <div class="card">
+      <div class="grid-2" style="align-items:start;gap:24px;">
+        <div>
+          <div class="highlight-box warning">
+            表意人<strong>自己</strong>知道沒有真意，卻還是做出意思表示（<strong>單方</strong>虛偽）
+          </div>
+          <table style="margin-top:12px;">
+            <thead><tr><th>情形</th><th>效果</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>相對人<strong>不知情</strong>（信以為真）</td>
+                <td><span class="badge-tag">有效</span>（不能事後反悔）</td>
+              </tr>
+              <tr>
+                <td>相對人<strong>明知</strong>表意人無真意</td>
+                <td><span class="badge-tag">無效</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="example-box">
+            <div class="example-label">白話例子</div>
+            <div style="font-size:14px;">
+              A 開玩笑說要送 B 名貴手錶，<strong>B 信以為真</strong><br>
+              → A <strong>不得</strong>以開玩笑拒絕履行 <span class="badge-tag">有效</span><br><br>
+              但若 <strong>B 明知</strong> A 在開玩笑<br>
+              → B 不能要求 A 履行 <span class="badge-tag">無效</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6-2 通謀虛偽 -->
+  <div style="margin-bottom:10px;">
+    <div style="font-size:16px;font-weight:900;color:var(--ink);margin-bottom:12px;">6-2｜通謀虛偽意思表示 <span class="law-tag" style="background:var(--ink);">§87</span> <span class="stars">★★★★★</span></div>
+    <div class="card" style="border-top:4px solid var(--ink);">
+      <div class="grid-2" style="align-items:start;gap:24px;">
+        <div>
+          <div class="highlight-box danger">
+            <strong>雙方</strong>都知道沒有真意，卻故意做出虛假的意思表示
+          </div>
+          <table style="margin-top:12px;">
+            <thead><tr><th>項目</th><th>說明</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>要件①</td>
+                <td>雙方均<strong>明知</strong>無真意</td>
+              </tr>
+              <tr>
+                <td>要件②</td>
+                <td>雙方仍<strong>故意</strong>為之（缺一不可）</td>
+              </tr>
+              <tr>
+                <td>效果</td>
+                <td><span class="badge-tag">無效</span></td>
+              </tr>
+              <tr>
+                <td>限制</td>
+                <td>不得對抗<strong>善意第三人</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box danger" style="margin-top:12px;">
+            ⚠️ 只有<strong>一方</strong>欠缺真意 → <strong>不構成</strong>通謀虛偽，不適用§87
+          </div>
+        </div>
+        <div>
+          <div class="example-box">
+            <div class="example-label">例1｜脫產行為</div>
+            <div style="font-size:14px;">A 為脫產與 B 假裝買賣 → 雙方均明知無真意 → <span class="badge-tag">無效</span><br>
+            但若 B 已轉賣給不知情的 C → 不得以無效對抗 C</div>
+          </div>
+          <div class="example-box" style="margin-top:10px;">
+            <div class="example-label">例2｜隱藏行為</div>
+            <div style="font-size:14px;">A 對小三說是「買賣」，實質是「贈與」<br>
+            → 買賣契約 <span class="badge-tag">無效</span>，贈與契約 <span class="badge-tag">有效</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6-3 錯誤意思表示 -->
+  <div style="margin-bottom:10px;">
+    <div style="font-size:16px;font-weight:900;color:var(--ink);margin-bottom:12px;">6-3｜錯誤意思表示 <span class="law-tag" style="background:var(--ink);">§88</span> <span class="stars">★★★★</span></div>
+    <div class="card" style="border-top:4px solid var(--ink);">
+      <div class="grid-3" style="gap:16px;">
+        <div style="background:#f8fafc;border-radius:10px;padding:16px;border-bottom:4px solid var(--ink);">
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:8px;">① 表示行為錯誤</div>
+          <div style="font-size:13px;color:#374151;margin-bottom:8px;">心裡想對了，但<strong>說錯或寫錯</strong></div>
+          <div class="example-box" style="background:#f8fafc;">
+            <div class="example-label">例子</div>
+            <div style="font-size:13px;">心想賣 5000 元，寫單據時<strong>寫成 500 元</strong></div>
+          </div>
+          <div style="margin-top:10px;text-align:center;"><span class="badge-tag">得撤銷</span></div>
+        </div>
+        <div style="background:#f8fafc;border-radius:10px;padding:16px;border-bottom:4px solid var(--ink);">
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:8px;">② 意思表示內容錯誤</div>
+          <div style="font-size:13px;color:#374151;margin-bottom:8px;">對要表示的<strong>內容有誤認</strong></div>
+          <div class="example-box" style="background:#f8fafc;">
+            <div class="example-label">例子</div>
+            <div style="font-size:13px;"><strong>誤認 B 課程</strong>為 A 課程而購買</div>
+          </div>
+          <div style="margin-top:10px;text-align:center;"><span class="badge-tag">得撤銷</span></div>
+        </div>
+        <div style="background:#f1f5f9;border-radius:10px;padding:16px;border-bottom:4px solid #6b7280;">
+          <div style="font-weight:900;color:#6b7280;font-size:15px;margin-bottom:8px;">③ 動機錯誤</div>
+          <div style="font-size:13px;color:#374151;margin-bottom:8px;">表示內容沒錯，但<strong>背後動機</strong>出錯</div>
+          <div class="example-box">
+            <div class="example-label">例子</div>
+            <div style="font-size:13px;">以為有某老師開課才買，<strong>結果沒有</strong></div>
+          </div>
+          <div style="margin-top:10px;text-align:center;"><span class="badge-tag">不得撤銷</span></div>
+        </div>
+      </div>
+      <div class="highlight-box warning" style="margin-top:14px;">
+        ⚠️ 動機錯誤不得撤銷原因：動機是內心事，相對人無從得知，若允許撤銷將損害交易安全<br>
+        ⚠️ 得撤銷的前提：錯誤<strong>非由表意人自己的過失</strong>所造成
+      </div>
+    </div>
+  </div>
+
+  <!-- 6-4 受詐欺或脅迫 -->
+  <div style="margin-bottom:10px;">
+    <div style="font-size:16px;font-weight:900;color:var(--ink);margin-bottom:12px;">6-4｜受詐欺或脅迫之意思表示 <span class="law-tag" style="background:var(--ink);">§92</span> <span class="stars">★★★★★</span></div>
+    <div class="card" style="border-top:4px solid var(--ink);">
+      <div class="grid-2" style="gap:20px;">
+        <!-- 受詐欺 -->
+        <div>
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:10px;">類型一｜受詐欺</div>
+          <div style="font-size:14px;margin-bottom:12px;padding:10px;background:#f8fafc;border-radius:8px;">
+            <strong>二重因果關係</strong>（缺一不可）<br>
+            <div class="flow" style="margin-top:8px;flex-wrap:nowrap;">
+              <div class="flow-item" style="background:var(--ink);font-size:13px;">詐欺行為</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item" style="background:var(--ink);font-size:13px;">陷於錯誤</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item" style="background:var(--ink);font-size:13px;">為意思表示</div>
+            </div>
+            <div style="margin-top:8px;font-size:13px;">＋ 相對人有<strong>詐欺故意</strong></div>
+          </div>
+          <div class="highlight-box" style="font-size:13px;margin-bottom:10px;">
+            <strong>第三人詐欺</strong>：詐欺是<strong>第三人</strong>做的<br>
+            → 相對人「<strong>明知或可得而知</strong>」才得撤銷
+          </div>
+          <div style="text-align:right;"><span class="badge-tag">得撤銷</span></div>
+        </div>
+        <!-- 受脅迫 -->
+        <div>
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:10px;">類型二｜受脅迫</div>
+          <div style="font-size:14px;margin-bottom:12px;padding:10px;background:#f8fafc;border-radius:8px;">
+            <strong>二重因果關係</strong>（缺一不可）<br>
+            <div class="flow" style="margin-top:8px;">
+              <div class="flow-item" style="background:var(--ink);font-size:13px;">脅迫行為</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item" style="background:var(--ink);font-size:13px;">心生恐懼</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item" style="background:var(--ink);font-size:13px;">為意思表示</div>
+            </div>
+            <div style="margin-top:8px;font-size:13px;">
+              ＋ 相對人有<strong>故意</strong><br>
+              ＋ 脅迫行為<strong>不法</strong>（手段或目的不法）
+            </div>
+          </div>
+          <div class="highlight-box" style="font-size:13px;margin-bottom:10px;">
+            受脅迫與受詐欺不同：<br>
+            脅迫<strong>無</strong>「第三人」的特殊限制，<strong>一律得撤銷</strong>
+          </div>
+          <div style="text-align:right;"><span class="badge-tag">得撤銷</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 瑕疵總表 -->
+  <div style="font-size:16px;font-weight:900;color:var(--ink);margin-bottom:12px;">瑕疵總表快查 <span class="stars">★★★★★</span></div>
+  <table>
+    <thead>
+      <tr>
+        <th>類型</th>
+        <th>條文</th>
+        <th>白話</th>
+        <th>效果</th>
+        <th>特殊限制</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>真意保留</strong></td>
+        <td><span class="law-tag">§86</span></td>
+        <td>自己單方知道沒真意</td>
+        <td><span class="badge-tag">有效</span>（相對人明知→<span class="badge-tag">無效</span>）</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>通謀虛偽</strong></td>
+        <td><span class="law-tag">§87</span></td>
+        <td>雙方都在演戲</td>
+        <td><span class="badge-tag">無效</span></td>
+        <td>不得對抗善意第三人</td>
+      </tr>
+      <tr>
+        <td><strong>錯誤（表示行為/內容）</strong></td>
+        <td><span class="law-tag">§88</span></td>
+        <td>說錯或認知錯誤</td>
+        <td><span class="badge-tag">得撤銷</span></td>
+        <td>非表意人自己過失</td>
+      </tr>
+      <tr>
+        <td><strong>動機錯誤</strong></td>
+        <td><span class="law-tag">§88</span></td>
+        <td>背後理由出錯</td>
+        <td><span class="badge-tag">不得撤銷</span></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>受詐欺</strong></td>
+        <td><span class="law-tag">§92</span></td>
+        <td>被騙而做出意思表示</td>
+        <td><span class="badge-tag">得撤銷</span></td>
+        <td>第三人詐欺→相對人須明知</td>
+      </tr>
+      <tr>
+        <td><strong>受脅迫</strong></td>
+        <td><span class="law-tag">§92</span></td>
+        <td>被恐嚇而做出意思表示</td>
+        <td><span class="badge-tag">得撤銷</span></td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<!-- ═══ 七、法律行為附款 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>法律行為附款</h2>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;color:var(--ink);">條件（未來<strong>不確定</strong>的事）</div>
+      <div class="grid-2" style="gap:12px;margin-top:8px;">
+        <div style="background:#f8fafc;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:6px;">停止條件</div>
+          <div class="flow" style="justify-content:center;">
+            <div style="font-size:13px;background:var(--ink);color:white;padding:6px 12px;border-radius:6px;">條件成就</div>
+            <div class="flow-arrow">→</div>
+          </div>
+          <div style="margin-top:6px;font-size:13px;"><span class="badge-tag">開始生效</span></div>
+        </div>
+        <div style="background:#f8fafc;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:6px;">解除條件</div>
+          <div class="flow" style="justify-content:center;">
+            <div style="font-size:13px;background:var(--ink);color:white;padding:6px 12px;border-radius:6px;">條件成就</div>
+            <div class="flow-arrow">→</div>
+          </div>
+          <div style="margin-top:6px;font-size:13px;"><span class="badge-tag">失去效力</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;color:var(--ink);">期限（未來<strong>可確定</strong>的事）</div>
+      <div class="grid-2" style="gap:12px;margin-top:8px;">
+        <div style="background:#f8fafc;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:6px;">始期</div>
+          <div class="flow" style="justify-content:center;">
+            <div style="font-size:13px;background:var(--ink);color:white;padding:6px 12px;border-radius:6px;">期限到</div>
+            <div class="flow-arrow">→</div>
+          </div>
+          <div style="margin-top:6px;font-size:13px;"><span class="badge-tag">開始生效</span></div>
+        </div>
+        <div style="background:#f8fafc;border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-weight:900;color:var(--ink);font-size:15px;margin-bottom:6px;">終期</div>
+          <div class="flow" style="justify-content:center;">
+            <div style="font-size:13px;background:var(--ink);color:white;padding:6px 12px;border-radius:6px;">期限到</div>
+            <div class="flow-arrow">→</div>
+          </div>
+          <div style="margin-top:6px;font-size:13px;"><span class="badge-tag">失去效力</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、撤銷效果 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>意思表示之撤銷</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div style="margin-bottom:16px;font-size:14px;">
+        <div style="margin-bottom:8px;"><strong>方式：</strong>以意思表示為之（形成權）→ 到達相對人即生效</div>
+        <div><strong>效果：</strong><span class="law-tag">§114</span> 法律行為 <strong style="color:var(--ink);">自始無效</strong>（溯及既往，視為從未發生）</div>
+      </div>
+      <table>
+        <thead><tr><th></th><th style="background:var(--ink);">無效</th><th style="background:var(--ink);">得撤銷</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>何時沒效</td>
+            <td>自始、當然、確定<br>（不需任何人主張）</td>
+            <td>撤銷<strong>前</strong>有效<br>撤銷<strong>後</strong>自始無效</td>
+          </tr>
+          <tr>
+            <td>需要主張？</td>
+            <td>不需要，當然無效</td>
+            <td>需表意人<strong>主動撤銷</strong></td>
+          </tr>
+          <tr>
+            <td>例子</td>
+            <td>§87 通謀虛偽</td>
+            <td>§88 錯誤、§92 詐欺脅迫</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight-box danger" style="font-size:15px;padding:13px 18px;">
+      <strong style="font-size:17px;display:block;margin-bottom:6px;">⚠️ 考試重要觀念</strong>
+      「得撤銷」≠ 撤銷前就沒效<br><br>
+      撤銷前 → <span class="badge-tag">有效</span><br>
+      撤銷後 → <span class="badge-tag">自始無效</span>（溯及既往）<br><br>
+      撤銷權屬於<strong>形成權</strong>，有<span class="law-tag">§93</span> 除斥期間限制
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、實例題 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>實例題解析（IRAC）</h2>
+  </div>
+  <div class="grid-3">
+    <!-- 甲乙 -->
+    <div class="irac-card">
+      <div class="irac-header" style="background:var(--ink);">甲乙｜受詐欺購買假療效產品</div>
+      <div class="irac-body">
+        <div class="irac-row">
+          <div class="irac-label">Issue</div>
+          <div>乙受甲虛偽宣傳購買，其意思表示效力為何？</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Rule</div>
+          <div><span class="law-tag">§92</span> 受詐欺之意思表示</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Apply</div>
+          <div>甲故意施詐術（謊稱療效）→ 乙陷於錯誤 → 乙匯款100萬（二重因果成立）</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">結論</div>
+          <div>乙<strong>得撤銷</strong>，撤銷後契約<span class="badge-tag">自始無效</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 甲丙 -->
+    <div class="irac-card">
+      <div class="irac-header" style="background:var(--ink);">甲丙｜口誤說錯型號</div>
+      <div class="irac-body">
+        <div class="irac-row">
+          <div class="irac-label">Issue</div>
+          <div>丙內心欲購 B 型號卻口誤為 A，得否撤銷？</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Rule</div>
+          <div><span class="law-tag">§88 I</span> 表示行為錯誤</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Apply</div>
+          <div>丙內心認知正確（買B），口頭說成A（表示行為錯誤）</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">結論</div>
+          <div>丙<span class="badge-tag">得撤銷</span>其意思表示</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 甲丁 -->
+    <div class="irac-card">
+      <div class="irac-header" style="background:var(--ink);">甲丁｜假裝買賣脫產</div>
+      <div class="irac-body">
+        <div class="irac-row">
+          <div class="irac-label">Issue</div>
+          <div>甲丁雙方無買賣真意而辦理過戶，效力為何？</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Rule</div>
+          <div><span class="law-tag">§87</span> 通謀虛偽意思表示</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Apply</div>
+          <div>甲丁雙方均明知無買賣與移轉真意，卻故意達成協議（雙方明知＋故意＝通謀）</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">結論</div>
+          <div>買賣與移轉行為均<span class="badge-tag">無效</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、條文速查 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>條文速查</h2>
+  </div>
+  <div class="law-grid">
+    <div class="law-item"><div class="num">§68</div><div class="desc">主物與從物</div></div>
+    <div class="law-item"><div class="num">§70</div><div class="desc">天然＋法定孳息</div></div>
+    <div class="law-item"><div class="num">§71</div><div class="desc">違反強行法 → 無效</div></div>
+    <div class="law-item"><div class="num">§72</div><div class="desc">違背公序良俗 → 無效</div></div>
+    <div class="law-item"><div class="num">§73</div><div class="desc">不依法定方式 → 無效</div></div>
+    <div class="law-item"><div class="num">§74</div><div class="desc">暴利行為 → 得撤銷/減輕</div></div>
+    <div class="law-item"><div class="num">§75</div><div class="desc">無意識精神錯亂 → 無效</div></div>
+    <div class="law-item"><div class="num">§77</div><div class="desc">限制行為能力人<br>事前允許</div></div>
+    <div class="law-item"><div class="num">§79</div><div class="desc">限制行為能力人<br>事後承認</div></div>
+    <div class="law-item"><div class="num">§86</div><div class="desc">真意保留<br>（有效，除非對方明知）</div></div>
+    <div class="law-item"><div class="num">§87</div><div class="desc">通謀虛偽意思表示 → 無效</div></div>
+    <div class="law-item"><div class="num">§88</div><div class="desc">錯誤意思表示<br>（得撤銷/動機例外）</div></div>
+    <div class="law-item"><div class="num">§92</div><div class="desc">受詐欺或脅迫 → 得撤銷</div></div>
+    <div class="law-item"><div class="num">§93</div><div class="desc">詐欺脅迫除斥期間</div></div>
+    <div class="law-item"><div class="num">§114</div><div class="desc">撤銷後 → 自始無效</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- ═══ L2 開始 ═══ -->
+<!-- ══════════════════════════════════════════ -->
+
+<div style="background:linear-gradient(135deg,#1a1a1a,#4a4a4a);color:white;border-radius:16px;padding:24px 48px;margin:40px 0 32px;">
+  <div style="font-size:13px;opacity:.7;margin-bottom:4px;">第二堂｜民法總則</div>
+  <div style="font-size:26px;font-weight:900;letter-spacing:2px;">L2｜消滅時效與除斥期間</div>
+  <div style="font-size:14px;opacity:.85;margin-top:6px;">請求權 vs 形成權 → 消滅時效 → 除斥期間 → 三大釋字 → 實例解析</div>
+</div>
+
+<!-- ═══ 十一、消滅時效 vs 除斥期間（完整版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num" style="background:var(--ink);">11</div>
+    <h2 style="color:var(--ink);border-bottom-color:var(--ink);">消滅時效 vs 除斥期間（完整版）<span class="stars" style="margin-left:8px;">★★★★★</span><span class="examhit">105・106・107・109測（110-114無資料）</span></h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:10px;">
+    <div class="highlight-box">
+      <strong>請求權</strong>：請求債務人為一定行為或不行為之權利<br>
+      <span class="note" style="margin-top:4px;display:block;">行使後，權利義務關係<strong>不會馬上</strong>發生變動（需對方配合履行）</span>
+    </div>
+    <div class="highlight-box">
+      <strong>形成權</strong>：權利人以單方之意思表示，即可使權利義務關係發生變動<br>
+      <span class="note" style="margin-top:4px;display:block;">行使後，權利義務關係<strong>馬上</strong>發生變動（例：解除、終止、撤銷）</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:10px;">
+    <table>
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th style="background:var(--ink);">消滅時效（相對減損）</th>
+          <th style="background:var(--ink);">除斥期間（絕對消滅）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>意義</strong></td>
+          <td>因一定期間<strong>不行使權利</strong>，致請求權消滅（或障礙）的法律事實</td>
+          <td>權利<strong>預定行使</strong>之期間；形成權的存活期限</td>
+        </tr>
+        <tr>
+          <td><strong>適用客體</strong></td>
+          <td><span class="badge-tag">請求權</span>（§125 等）</td>
+          <td><span class="badge-tag">形成權</span>（撤銷、解除、終止）</td>
+        </tr>
+        <tr>
+          <td><strong>法律效果</strong></td>
+          <td>
+            債權<strong>不消滅</strong>（變為自然債務）<br>
+            債務人取得「拒絕履行」<strong>抗辯權</strong>（對方可以賴帳）
+          </td>
+          <td>
+            權利<strong>絕對消滅</strong>（完全蒸發）<br>
+            無抗辯問題，直接不存在
+          </td>
+        </tr>
+        <tr>
+          <td><strong>時效後<br>自願履行</strong></td>
+          <td><span class="badge-tag">合法</span>，不得事後要求返還<br><span class="note">（債權仍在，屬合法履行）</span></td>
+          <td>權利已不存在，<strong>無履行問題</strong></td>
+        </tr>
+        <tr>
+          <td><strong>能否中斷</strong></td>
+          <td><span class="badge-tag">可以</span>中斷、不完成、重新起算</td>
+          <td><span class="badge-tag">不可</span>中斷；固定周期，時間到就消滅</td>
+        </tr>
+        <tr>
+          <td><strong>法院角色</strong></td>
+          <td>當事人<strong>不主張</strong>，法院<strong>不得裁判</strong></td>
+          <td>法院<strong>依職權主動調查</strong>是否屆滿</td>
+        </tr>
+        <tr>
+          <td><strong>期間</strong></td>
+          <td>普通時效 <strong style="color:var(--ink);font-size:17px;">15 年</strong>（§125）<br><span class="note">另有2年、5年短期時效</span></td>
+          <td>視各條文規定（通常較短）<br><span class="note">§93 詐欺脅迫：1年/10年</span></td>
+        </tr>
+        <tr>
+          <td><strong>快速判斷</strong></td>
+          <td>看到「<strong>要求</strong>」對方行動<br>（還款、賠償、交貨）→ 消滅時效，注意中斷</td>
+          <td>看到「<strong>變更</strong>」法律關係<br>（撤銷、解除契約）→ 除斥期間，動作要快</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-2">
+    <div class="highlight-box" style="border-left-color:var(--ink);background:#f8fafc;font-size:14px;">
+      <strong style="color:var(--ink);">⭐ 消滅時效重要觀念</strong><br><br>
+      時效完成後，債務人<strong>若主張抗辯</strong>→ 法院判甲敗訴<br>
+      但若債務人<strong>不知時效、自願付錢</strong>→ 該付款合法，<span class="badge-tag">不得要求返還</span><br>
+      <span class="note">（因為債權未消滅，收錢有法律上正當理由）</span>
+    </div>
+    <div class="highlight-box warning" style="font-size:14px;">
+      <strong>⭐ 除斥期間重要觀念</strong><br><br>
+      形成權的殺傷力極大（單方意思表示即改變法律關係）<br>
+      → 法律設定短期除斥期間，讓不安定狀態早日確定<br>
+      → 一旦期間屆滿，<span class="badge-tag">權利直接蒸發</span>，對方也無需主張
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十二、三大釋字解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num" style="background:var(--ink);">12</div>
+    <h2 style="color:var(--ink);border-bottom-color:var(--ink);">三大釋字解析（§767 物上請求權）<span class="stars" style="margin-left:8px;">★★★★★</span><span class="examhit">釋字107號＋已登記不動產回復請求權，同批考點</span></h2>
+  </div>
+
+  <div class="highlight-box" style="border-left-color:var(--ink);background:#f8fafc;margin-bottom:10px;">
+    <strong>核心邏輯：</strong>已登記不動產因「公示登記原則」，登記即讓權利狀態明確化，所以其物上請求權受特別保護，原則上<strong>無消滅時效之適用</strong>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th style="background:var(--ink);">釋字第 107 號</th>
+          <th style="background:var(--ink);">釋字第 164 號</th>
+          <th style="background:var(--ink);">釋字第 771 號</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>解釋條文</strong></td>
+          <td>民法 §767</td>
+          <td>民法 §767</td>
+          <td>民法 §767</td>
+        </tr>
+        <tr>
+          <td><strong>相關權利</strong></td>
+          <td>物上<strong>返還</strong>請求權</td>
+          <td>所有權<strong>妨害除去</strong>請求權</td>
+          <td>物上返還請求權<br><span class="note">（繼承人身分）</span></td>
+        </tr>
+        <tr>
+          <td><strong>已登記不動產</strong></td>
+          <td><span class="badge-tag">無時效</span><br><span class="note">公示原則保護</span></td>
+          <td><span class="badge-tag">無時效</span><br><span class="note">同107號邏輯</span></td>
+          <td>
+            <span class="badge-tag">有時效 15年</span><br>
+            <span class="note">除非已登記在繼承人名下</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>未登記不動產</strong></td>
+          <td><span class="badge-tag">有時效 15年</span></td>
+          <td><span class="badge-tag">有時效 15年</span></td>
+          <td><span class="badge-tag">有時效 15年</span></td>
+        </tr>
+        <tr>
+          <td><strong>關鍵說明</strong></td>
+          <td style="font-size:13px;">登記制度有公信力，已登記的所有權不應因時間波動</td>
+          <td style="font-size:13px;">只要登記名義沒變，權利百分之百完整，不受15年限制</td>
+          <td style="font-size:13px;">
+            <strong>繼承回復請求權</strong>（2年/10年）屆滿後<br>
+            可改依§767，但若本於繼承身分（A尚未登記在自己名下）<br>
+            → 仍有 15年時效<br>
+            若 A <strong>已登記在繼承人名下</strong> → 適用107/164，無時效
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight-box danger" style="margin-top:16px;font-size:14px;">
+    <strong>⚠️ 釋字771 考試陷阱</strong><br>
+    同一個 §767，「繼承人身分」vs「登記所有人身分」→ 結論完全不同！<br>
+    A 未登記在甲名下 → 甲是繼承人身分 → 有時效（15年）<br>
+    A 已登記在甲名下 → 甲是所有人身分 → 無時效（107/164保護）
+  </div>
+
+  <div class="note" style="margin-top:10px;">
+    ※ 別搞混：以上 15 年是物上返還請求權的<strong>消滅時效</strong>（§125，你的請求權會不會過期）。
+    另有 §769、§770 的<strong>取得時效</strong>——別人以所有之意思、和平公然占有你「未登記」的不動產，
+    20 年（惡意/有過失）或 10 年（善意且無過失）後可請求登記為所有人，方向剛好相反（占有人取得所有權，不是你的請求權消滅）。
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十三、L2 實例題 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num" style="background:var(--ink);">13</div>
+    <h2 style="color:var(--ink);border-bottom-color:var(--ink);">L2 實例題解析（IRAC）</h2>
+  </div>
+
+  <div class="grid-3">
+    <!-- 例1 買賣時效 -->
+    <div class="irac-card">
+      <div class="irac-header" style="background:var(--ink);">甲乙｜買賣價金請求權與時效抗辯</div>
+      <div class="irac-body">
+        <div class="irac-row">
+          <div class="irac-label">Issue</div>
+          <div>15年後甲請求乙付50萬，乙可否拒絕？乙若付了能否要回？</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Rule</div>
+          <div><span class="law-tag">§125</span> 消滅時效15年；時效後抗辯權</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Apply</div>
+          <div>
+            甲之價金請求權15年未行使→時效完成→乙取得抗辯權<br>
+            乙若自願付款→債權仍在→合法履行
+          </div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">結論</div>
+          <div>
+            乙主張抗辯→<span class="badge-tag">甲敗訴</span><br>
+            乙自願付款後→<span class="badge-tag">不得要求返還</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 例2 解除權除斥 -->
+    <div class="irac-card">
+      <div class="irac-header" style="background:var(--ink);">乙｜發現瑕疵欲解除契約</div>
+      <div class="irac-body">
+        <div class="irac-row">
+          <div class="irac-label">Issue</div>
+          <div>乙取得A車後發現重大瑕疵，解除權受何種期間限制？</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Rule</div>
+          <div>解除權 = <span class="badge-tag">形成權</span>→ 適用除斥期間，非消滅時效</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Apply</div>
+          <div>解除權單方表示即改變法律關係，殺傷力極大→法律設短期除斥期間；屆滿即絕對消滅</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">結論</div>
+          <div>解除權受<span class="badge-tag">除斥期間</span>限制，不適用消滅時效；期間屆滿→解除權直接消滅</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 例3 釋字771 -->
+    <div class="irac-card">
+      <div class="irac-header" style="background:var(--ink);">甲丁｜繼承人 vs 無權占有人（20年）</div>
+      <div class="irac-body">
+        <div class="irac-row">
+          <div class="irac-label">Issue</div>
+          <div>甲為丙之繼承人，丁占有A不動產20年，甲可否請求返還？</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Rule</div>
+          <div><span class="law-tag">§767</span> 物上返還請求權；釋字107、771號</div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">Apply</div>
+          <div style="font-size:13px;">
+            <strong>情境A（A登記在丙名下）：</strong><br>
+            繼承回復請求權已逾（2/10年），改依§767<br>
+            但甲以繼承身分行使→釋字771→有15年時效<br>
+            20年 ＞ 15年 → 丁得主張時效抗辯<br><br>
+            <strong>情境B（A已登記在甲名下）：</strong><br>
+            甲為登記所有權人→釋字107→無時效限制
+          </div>
+        </div>
+        <div class="irac-row">
+          <div class="irac-label">結論</div>
+          <div style="font-size:13px;">
+            情境A → <span class="badge-tag">甲無法請求</span>（逾時效）<br>
+            情境B → <span class="badge-tag">甲仍可請求</span>（無時效限制）
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十四、L2 條文速查 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num" style="background:var(--ink);">14</div>
+    <h2 style="color:var(--ink);border-bottom-color:var(--ink);">L2 條文速查</h2>
+  </div>
+  <div class="law-grid">
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">§125</div><div class="desc">普通消滅時效 → 15年</div></div>
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">§126</div><div class="desc">短期時效 → 5年<br>（定期給付）</div></div>
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">§127</div><div class="desc">短期時效 → 2年<br>（各種職業請求）</div></div>
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">§767</div><div class="desc">物上請求權<br>（返還/妨害除去/妨害預防）</div></div>
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">釋字107</div><div class="desc">已登記不動產<br>物上返還 → 無時效</div></div>
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">釋字164</div><div class="desc">已登記不動產<br>妨害除去 → 無時效</div></div>
+    <div class="law-item" style="border-top-color:var(--ink);"><div class="num" style="color:var(--ink);">釋字771</div><div class="desc">繼承人行使§767<br>→ 有時效（15年）</div></div>
+  </div>
+</div>
+
+<div style="text-align:center;color:#9ca3af;font-size:12px;margin-top:16px;padding-bottom:10px;">
+  民法 L1+L2｜114年不動產經紀人考試 · 2026-07-05
+</div>
+
+</body>
+</html>

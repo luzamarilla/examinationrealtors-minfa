@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L3｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1a1a1a; --sub:#6b7280; --line:#e5e7eb; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  /* ── 條文速查 ── */
+  .law-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .law-item { background: white; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.07); border-top: 4px solid var(--ink); }
+  .law-item .num { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 5px; }
+  .law-item .desc { font-size: 13px; color: #374151; }
+
+  /* ── 結構樹 ── */
+  .tree { background: white; border-radius: 12px; padding: 12px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.07); font-size: 14px; }
+  .tree ul { list-style: none; padding-left: 24px; margin-top: 4px; }
+  .tree > ul { padding-left: 0; }
+  .tree li { padding: 2px 0; }
+  .tree li::before { content: '├── '; color: #9ca3af; }
+  .tree li:last-child::before { content: '└── '; color: #9ca3af; }
+
+  /* ── 能力/類型三分法卡 ── */
+  .ability-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .ability-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; display: flex; justify-content: space-between; align-items: center; background: var(--ink); }
+  .ability-body { background: white; padding: 9px 13px; font-size: 14px; }
+  .ability-body li { padding: 3px 0; list-style: none; padding-left: 16px; position: relative; }
+  .ability-body li::before { content: '・'; position: absolute; left: 0; color: #9ca3af; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L3｜債編總則・債之發生</h1>
+    <div class="subtitle">契約 → 代理 → 無權處分 / 時效制度 / 權利行使 → 無因管理 → 不當得利 → 侵權行為</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§153、§103～§216</strong>核心條文</div>
+    <div class="badge"><strong>L3</strong>債編總則</div>
+    <div class="badge"><strong>⭐⭐⭐⭐⭐</strong>侵權行為最高頻</div>
+  </div>
+</div>
+
+<div class="highlight-box" style="margin-bottom:15px;">
+  <strong>📌 素材來源提醒：</strong>本堂「代理制度」「無權處分」「時效制度／權利行使」「無因管理」四節有重點整理講義可對照骨架；「契約」「不當得利」「侵權行為」三節目前以課堂講義＋逐字稿為主整理，尚未有講義骨架比對，日後補件可再校對。
+</div>
+
+<!-- ═══ 一、契約成立 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>債之發生｜契約成立 <span class="stars">★★★★</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">成立關鍵 <span class="law-tag">§153</span><span class="examhit">106・107・113測</span></div>
+      <div class="highlight-box">
+        當事人意思表示<strong>一致</strong> → 契約成立<br>
+        <span class="note" style="margin-top:0;">有效或無效是另外判斷的問題（有無違反強制、禁止規定，或違反公序良俗）</span>
+      </div>
+      <table style="margin-top:9px;">
+        <thead><tr><th>項目</th><th>意義</th><th>影響</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>必要之點</strong></td>
+            <td>影響法律行為本質的內容<br><span class="note">例：買賣契約的「標的物」「價金」</span></td>
+            <td>雙方意思表示須<strong>合致</strong>，契約才成立</td>
+          </tr>
+          <tr>
+            <td><strong>非必要之點</strong></td>
+            <td>不影響本質的內容<br><span class="note">例：付款幣別、匯款帳戶、給付時間</span></td>
+            <td>未表示反對 → <strong>推定</strong>雙方就此也達成合意</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="example-box">
+      <div class="example-label">白話舉例</div>
+      <div style="font-size:14px;">
+        甲乙簽訂 A 車買賣契約，約定甲賣 A 車、乙付 50 萬元價金，但雙方沒約定價金怎麼給付（非必要之點）。
+      </div>
+      <div class="flow" style="margin-top:9px;">
+        <div class="flow-item">標的物＋價金合致</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">契約有效成立</div>
+      </div>
+      <div class="highlight-box danger" style="margin-top:9px;">
+        ⚠️ 若<strong>必要之點</strong>有歧異 → 契約<strong>不成立</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、代理制度 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>代理制度</h2>
+  </div>
+
+  <!-- 2-1 有權代理 -->
+  <div style="margin-bottom:8px;">
+    <div class="sub-title">2-1｜有權代理 <span class="law-tag">§103</span><span class="examhit">107測（要約人死亡）</span></div>
+    <div class="grid-2" style="align-items:start;">
+      <div class="card">
+        <div class="highlight-box">
+          本人以意思表示，授予他人以「<strong>自己名義</strong>」為法律行為之權限，法律行為效力<strong>直接歸於本人</strong>
+        </div>
+        <table style="margin-top:9px;">
+          <thead><tr><th>代理人資格 <span class="law-tag">§104</span><span class="examhit">112測</span></th><th>可否</th></tr></thead>
+          <tbody>
+            <tr><td>完全行為能力</td><td><span class="badge-tag">可</span></td></tr>
+            <tr><td>限制行為能力</td><td><span class="badge-tag">可</span></td></tr>
+            <tr><td>無行為能力</td><td><span class="badge-tag">不可</span></td></tr>
+          </tbody>
+        </table>
+        <div class="note">代理權為「資格」，而非權利、義務——授予代理權，無須經代理人同意。代理人要件：僅需具有限制行為能力＋具有意思能力</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="font-size:15px;">授權方式 <span class="law-tag">§167、§531</span></div>
+        <div class="highlight-box">原則：非要式，口頭亦可</div>
+        <div class="highlight-box warning">例外：該法律行為本身須以書面為之者（如移轉不動產所有權），代理權授與也應以<strong>文字</strong>為之</div>
+        <div class="card-title" style="font-size:15px;margin-top:11px;">代理瑕疵 <span class="law-tag">§105</span></div>
+        <div class="highlight-box">原則：以<strong>代理人</strong>的意思為判斷依據</div>
+        <div class="highlight-box warning">例外：代理人的意思係依<strong>本人</strong>指示者，以本人為判斷依據</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:11px;">
+      <div class="card-title" style="font-size:15px;">代理結束</div>
+      <table>
+        <thead><tr><th>情形</th><th>條文</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td>限制</td><td><span class="law-tag">§107</span></td><td>代理權之限制或撤回，<strong>不得對抗善意第三人</strong></td></tr>
+          <tr><td>撤回</td><td><span class="law-tag">§108 II</span></td><td>得於法律關係存續中撤回，除非依其性質不得撤回</td></tr>
+          <tr><td>消滅</td><td><span class="law-tag">§108 I</span></td><td>依其所被授與之法律關係定之</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2-2 表見代理 -->
+  <div style="margin-bottom:8px;">
+    <div class="sub-title">2-2｜表見代理 <span class="law-tag">§169</span> <span class="stars">★★★★</span></div>
+    <div class="card" style="border-top:3px solid var(--line-strong);">
+      <div class="highlight-box">
+        <strong>不是</strong>合法代理，但有授權外觀，本人仍須負責
+      </div>
+      <div class="grid-2" style="margin-top:9px;">
+        <div style="background:#f8fafc;border-radius:10px;padding:11px;">
+          <div style="font-weight:900;margin-bottom:5px;">類型一｜表示授權</div>
+          <div style="font-size:14px;">本人自己有行為表示以代理權授與他人（實際上並未真的授權），使第三人相信對方有代理權<br><span class="note">例：把車子、行照、印章都交給他人保管，讓外觀看起來對方有處分權</span></div>
+        </div>
+        <div style="background:#f8fafc;border-radius:10px;padding:11px;">
+          <div style="font-weight:900;margin-bottom:5px;">類型二｜容忍授權</div>
+          <div style="font-size:14px;">本人知道有人自稱是自己的代理人，卻沒有及時表示反對</div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:9px;">
+        <strong>法律效果：</strong>本人對第三人應負「授權人責任」，不能以不知情或未授權為由不負責
+      </div>
+      <div class="card-title" style="font-size:14px;margin-top:8px;">表見代理成立三要件</div>
+      <div class="grid-3">
+        <div class="highlight-box" style="text-align:center;">① 表見代理人需有取得代理權之外觀</div>
+        <div class="highlight-box" style="text-align:center;">② 第三人須善意無過失</div>
+        <div class="highlight-box" style="text-align:center;">③ 本人有可歸責之事由</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2-3 無權代理 -->
+  <div style="margin-bottom:8px;">
+    <div class="sub-title">2-3｜無權代理 <span class="stars">★★★★</span><span class="examhit">113測 §110/§170</span></div>
+    <div class="card" style="border-top:3px solid var(--line-strong);">
+      <div class="grid-2">
+        <div>
+          <div class="card-title" style="font-size:14px;">類型</div>
+          <div class="highlight-box danger">① 完全無代理權，卻以他人代理人名義為之</div>
+          <div class="highlight-box danger">② 逾越授權範圍（逾越的部分同樣構成無權代理）</div>
+        </div>
+        <div>
+          <div class="card-title" style="font-size:14px;">法律效果</div>
+          <table>
+            <tbody>
+              <tr><td><span class="law-tag">§110</span></td><td>無權代理人對善意相對人負<strong>損害賠償責任</strong></td></tr>
+              <tr><td><span class="law-tag">§170</span></td><td>非經本人承認不生效力（<span class="badge-tag">效力未定</span>）</td></tr>
+            </tbody>
+          </table>
+          <div class="note">本人承認前，相對人得撤回其意思表示；相對人得定相當期限催告本人答覆是否承認（§170 II）</div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:6px;">狹義無權代理：民法第 170 條</div>
+    </div>
+  </div>
+
+  <!-- 2-4 自己代理或雙方代理 -->
+  <div>
+    <div class="sub-title">2-4｜自己代理或雙方代理 <span class="law-tag">§106</span></div>
+    <div class="card" style="border-top:3px solid var(--line-strong);">
+      <div class="flow">
+        <div class="flow-item">原則：禁止</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">例外：得本人同意則允許</div>
+      </div>
+      <div class="example-box" style="margin-top:9px;">
+        <div class="example-label">白話舉例</div>
+        <div style="font-size:14px;">
+          若 A 代理 B 購買房子，A 原則上不可以 B 之意思表示跟自己交易（<strong>自己代理</strong>）。<br>
+          若 A 代理 B 購買房子，又代理 C 販賣房子，則 A 原則上不可以擅自將 C 的房子販賣給 B（<strong>雙方代理</strong>）。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、無權處分與善意取得 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>無權處分與善意取得 <span class="examhit">近10年常考 106・107・108・112・113</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">無權處分 <span class="law-tag">§118 I</span></div>
+      <div class="highlight-box">定義：無處分權之人所為之處分</div>
+      <div class="highlight-box">效力：<span class="badge-tag">效力未定</span> → 須經有權利人承認始生效力（§115、§116）；若無權利之人後來取得權利，則處分自始有效</div>
+      <div class="tree" style="margin-top:11px;">
+        <strong style="font-size:14px;">圖解</strong>
+        <ul>
+          <li>甲（所有人）── §345 買賣契約（債權行為）── 乙（非權利人）
+            <ul>
+              <li>乙以自己名義簽約：<span class="badge-tag">有效</span></li>
+              <li>乙以甲名義簽約：無權代理 §170 <span class="badge-tag">效力未定</span></li>
+            </ul>
+          </li>
+          <li>乙 ── 移轉登記（物權）A 屋 ── 丙 → §118 I 無權處分<span class="badge-tag">效力未定</span></li>
+        </ul>
+      </div>
+      <div class="highlight-box warning" style="margin-top:9px;">◆ 處分契約之債權行為，非以有處分權為必要</div>
+      <div class="note" style="margin-top:6px;">考古題常見案型：共有人未經他共有人同意出賣共有物（106・107測）、<strong>借名登記</strong>受託人擅自出賣登記名下不動產（108申論）、違章建物買賣僅取得事實上處分權（112測）、動產善意取得（113測）——都是§118＋§801／§948 的組合考法</div>
+    </div>
+    <div>
+      <div class="example-box">
+        <div class="example-label">例子</div>
+        <div style="font-size:14px;">甲出國期間，乙擅自持甲所有之 A 屋出售予丙，並簽訂房屋買賣契約<br><br>
+          → 若乙以自己名義簽約，<strong>債權行為（買賣契約）有效</strong>，但<strong>移轉物權行為（無權處分）效力未定</strong>，須經甲承認<br><br>
+          → 若乙以甲的名義簽約，則屬<strong>無權代理</strong>，效力未定
+        </div>
+      </div>
+      <div class="card" style="margin-top:9px;">
+        <div class="card-title" style="font-size:15px;">概念比一比｜消滅時效</div>
+        <div class="highlight-box">原則上適用民法第 125 條 <strong>15 年</strong>的規定</div>
+        <div class="highlight-box warning">但釋字 107、164：<strong>已登記之不動產</strong>，其物上請求權，<strong>不適用</strong>消滅時效之規定</div>
+        <div class="note">消滅時效效力：債務人可行使拒絕給付之抗辯權，但請求權並未消滅</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、時效制度與權利行使 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>時效制度與權利行使 <span class="examhit">近10年常考 105・106・107・113</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">時效制度</div>
+      <div class="highlight-box">消滅時效 <span class="law-tag">§125</span> 請求權因「行使／不行使／難行使」而受影響</div>
+      <div class="note">考古題重點：抵押債權已罹時效，繼承人可否請求塗銷抵押權登記（105申論，§125、§144、§145、§880）；消滅時效與除斥期間之區別、<strong>已登記不動產物上請求權不適用消滅時效</strong>（107申論，呼應釋字107號）</div>
+      <table style="margin-top:8px;">
+        <thead><tr><th>階段</th><th>條文</th></tr></thead>
+        <tbody>
+          <tr><td>時效中斷</td><td><span class="law-tag">§129</span></td></tr>
+          <tr><td>時效完成</td><td><span class="law-tag">§144</span></td></tr>
+          <tr><td>時效不完成</td><td><span class="law-tag">§139～§143</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">權利行使 <span class="law-tag">§148</span></div>
+      <div class="highlight-box">I　權利之行使，不得違反公共利益，或以損害他人為主要目的（不得違反公序良俗）</div>
+      <div class="highlight-box">II　行使權利、履行義務，應依<strong>誠實及信用方法</strong></div>
+      <div class="card-title" style="font-size:14px;margin-top:8px;">阻卻不法性之事由</div>
+      <div class="grid-3">
+        <div class="highlight-box" style="text-align:center;"><span class="law-tag">§149</span> 正當防衛</div>
+        <div class="highlight-box" style="text-align:center;"><span class="law-tag">§150</span> 緊急避難</div>
+        <div class="highlight-box" style="text-align:center;"><span class="law-tag">§151</span> 自助行為</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、無因管理 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>無因管理</h2>
+  </div>
+  <div class="note" style="margin:-3px 0 8px;">近10年考古題查證：本節（§172~178 適法／不適法區分）未查得獨立命題紀錄，相對冷門，複習優先度可排後面</div>
+
+  <div class="card" style="margin-bottom:9px;">
+    <div class="card-title" style="font-size:16px;">定義 <span class="law-tag">§172、§176 I</span></div>
+    <div class="highlight-box">未受委任、無義務，而為他人管理事務</div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;">
+    <div class="ability-card">
+      <div class="ability-header">
+        <span>適法無因管理</span><span style="font-size:13px;opacity:.85;">真正適法</span>
+      </div>
+      <div class="ability-body">
+        <div style="margin-bottom:6px;"><strong>要件・客觀：</strong>管理事務利於本人，並不違反本人明示或可得推知之意思</div>
+        <div style="margin-bottom:6px;"><strong>要件・主觀：</strong>為本人利益（管理人 ⇄ 本人）</div>
+        <div style="margin-bottom:6px;"><strong>權利 <span class="law-tag">§176 I</span>：</strong>管理人得請求本人償還所支出之必要費用、有益費用、清償債務、賠償損害</div>
+        <div style="margin-bottom:6px;"><strong>義務 <span class="law-tag">§172、§173</span>：</strong>管理／通知</div>
+        <div style="padding:7px;background:#f8fafc;border-radius:6px;font-size:13px;">
+          <strong>報酬問題：</strong>原則上不能請求報酬，但部分學者及實務見解認為，若管理事務屬於管理人的<strong>專業領域範疇</strong>（例如放假中的醫生在路上救人），管理人可以請求報酬
+        </div>
+      </div>
+    </div>
+    <div class="ability-card">
+      <div class="ability-header">
+        <span>不適法無因管理</span><span style="font-size:13px;opacity:.85;">本人不承認</span>
+      </div>
+      <div class="ability-body">
+        <div style="margin-bottom:6px;"><strong>要件・客觀 <span class="law-tag">§174 I</span>：</strong>違反本人意思，或不利於本人</div>
+        <div style="margin-bottom:6px;"><strong>要件・主觀：</strong>管理本人之事務</div>
+        <div style="margin-bottom:6px;"><strong>本人願享利益：</strong>依 <span class="law-tag">§177 I、§176 I</span>，法律效果同適法無因管理</div>
+        <div style="margin-bottom:6px;"><strong>本人不願享利益：</strong>原則依不當得利／侵權行為為主，例外 §174 II、§176 II</div>
+        <div style="padding:7px;background:#f8fafc;border-radius:6px;font-size:13px;">
+          <strong>責任：</strong>原則 §174 I 管理人負<strong>無過失責任</strong>（縱使無故意過失也要負賠償責任）；例外 §174 II、§175
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:9px;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">（真正）無因管理 <span class="law-tag">§178</span></div>
+      <div style="font-size:14px;">本人承認 → 適用<strong>委任契約</strong>之規定</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">為自己管理（不法管理）<span class="law-tag">§177 II</span></div>
+      <div style="font-size:14px;">明知係他人之事務，仍為自己之利益管理 → 本人得請求管理人以「處理他人事務」所得之利益歸於本人</div>
+    </div>
+  </div>
+
+  <div class="card-title" style="font-size:18px;margin:12px 0 9px;">例題 IRAC</div>
+  <div class="grid-2">
+    <div class="irac-card">
+      <div class="irac-header">Q1｜C 該向誰請求 20 萬？</div>
+      <div class="irac-body">
+        <div style="font-size:13px;color:var(--sub);margin-bottom:6px;">A 是 B 的鄰居，B 在颱風來臨時出國，A 看見 B 的窗戶被風吹破，因此擅自花了 20 萬請 C 來修繕 B 的窗戶。</div>
+        <div class="irac-row"><div class="irac-label">結論</div><div><strong>向 A</strong>——C 是 A 找來的承攬人，契約相對人是 A，C 只能向 A 請求報酬</div></div>
+      </div>
+    </div>
+    <div class="irac-card">
+      <div class="irac-header">Q2｜A 依無因管理向 B 請求 20 萬有無依據？</div>
+      <div class="irac-body">
+        <div class="irac-row"><div class="irac-label">分岔</div><div>要看 B 是否有意修繕窗戶</div></div>
+        <div class="irac-row"><div class="irac-label">適法</div><div>B 有意修繕 → A 依 §172、§176 向 B 請求 20 萬元</div></div>
+        <div class="irac-row"><div class="irac-label">不適法</div><div>B 無意修繕 → 看 B 是否願享受利益：<br>願享受 → A 依 §177 請求 20 萬元<br>不願享受 → A 得請求侵權行為損害賠償（受有 20 萬損害）；B 因免支出 20 萬而受利益，A 亦得請求返還不當得利</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、不當得利 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>不當得利</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">要件 <span class="law-tag">§179</span><span class="examhit">107測・112申論</span></div>
+      <div class="highlight-box"><strong>無法律上原因</strong> ＋ <strong>受有利益</strong> ＋ <strong>致他人受有損害</strong>（受利益與受損害之間須有因果關係）</div>
+      <div class="note">112申論考點與經紀業務直接相關：買賣契約解除後，<strong>仲介媒介服務報酬是否應返還</strong>，適合當本科申論題練習</div>
+      <div class="grid-2" style="margin-top:9px;gap:8px;">
+        <div style="background:#f8fafc;border-radius:8px;padding:10px;">
+          <div style="font-weight:900;margin-bottom:3px;">給付型不當得利</div>
+          <div style="font-size:13px;">因受害人之給付所生<br><span class="note">例：買車約定50萬卻不小心匯款60萬，多出的10萬即屬無法律上原因</span></div>
+        </div>
+        <div style="background:#f8fafc;border-radius:8px;padding:10px;">
+          <div style="font-weight:900;margin-bottom:3px;">非給付型不當得利</div>
+          <div style="font-size:13px;">非因受害人之給付所生<br><span class="note">例：因侵權行為所生之給付利益</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">法律效果與返還範圍</div>
+      <div class="highlight-box">應返還其利益，返還所受利益與本於該利益更有所取得之利益</div>
+      <table style="margin-top:8px;">
+        <thead><tr><th>受領人</th><th>返還範圍</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>善意</strong><br><span class="note">不知無法律上原因</span></td>
+            <td>所受利益已不存在 → <span class="badge-tag">免負返還/償還責任</span></td>
+          </tr>
+          <tr>
+            <td><strong>惡意</strong><br><span class="note">知道／後來知道無法律上原因</span></td>
+            <td>返還受領時（或知悉時）所得之利益及利息，若有損害並應賠償</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、侵權行為 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>侵權行為 <span class="stars">★★★★★</span> <span class="note" style="font-style:normal;color:var(--accent);font-weight:900;">最高頻考點</span></h2>
+  </div>
+
+  <div class="card" style="margin-bottom:9px;">
+    <div class="card-title" style="font-size:16px;">一般侵權行為 <span class="law-tag">§184</span><span class="examhit">近10年常考 106・107・112</span></div>
+    <div class="highlight-box">
+      共同要件：加害行為／侵害他人權利或權益／損害結果發生／行為具有不法性／因果關係／行為時有識別（意識）能力／具有主觀故意或過失
+    </div>
+    <table style="margin-top:8px;">
+      <thead><tr><th>條文</th><th>要件</th><th>侵害客體</th></tr></thead>
+      <tbody>
+        <tr><td><span class="law-tag">§184 I 前段</span></td><td>因故意或過失，不法侵害他人之權利者，負損害賠償責任</td><td>「權利」（既有法體系所承認之絕對權，排除純粹經濟上損失）</td></tr>
+        <tr><td><span class="law-tag">§184 I 後段</span></td><td>故意以背於善良風俗之方法，加損害於他人者亦同（須主觀故意＋方法背於善良風俗）</td><td>「權益」（含純粹經濟上損失）</td></tr>
+        <tr><td><span class="law-tag">§184 II</span></td><td>違反保護他人之法律，致生損害於他人者，負損害賠償責任（故意或過失＋違反保護他人之法律）</td><td>「權益」</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-title" style="font-size:18px;margin-bottom:9px;">特殊侵權行為</div>
+  <div class="grid-3" style="margin-bottom:11px;">
+    <div class="card" style="border-top:3px solid var(--line-strong);">
+      <div class="card-title" style="font-size:15px;">共同侵權行為 <span class="law-tag">§185</span></div>
+      <div style="font-size:13px;">要件：數人共同侵害他人權利／不知何人為行為人／造意人或幫助人視為共同行為人／各行為人之行為皆為損害發生之原因</div>
+      <div style="margin-top:6px;"><span class="badge-tag">負連帶損害賠償責任</span></div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--line-strong);">
+      <div class="card-title" style="font-size:15px;">法定代理人連帶責任 <span class="law-tag">§187</span></div>
+      <div style="font-size:13px;">要件：無/限制行為能力人有侵權行為，行為時有識別能力 → 由法定代理人負賠償責任</div>
+      <div class="note">例外：監督未疏懈；縱加以相當注意仍不免發生</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--line-strong);">
+      <div class="card-title" style="font-size:15px;">僱主連帶責任 <span class="law-tag">§188</span></div>
+      <div style="font-size:13px;">要件：受僱人因執行職務、僱主有預見可能性 → 僱主連帶負賠償責任</div>
+      <div class="note">僱主賠償後對受僱人有求償權；例外：選任監督已盡相當注意仍無法避免</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">非財產上損害（精神慰撫金）<span class="law-tag">§195</span><span class="examhit">113申論</span></div>
+      <div class="highlight-box danger">要件：不法侵權行為／人格法益受侵害／情節重大 → 被害人得請求損害賠償</div>
+      <div class="note">113申論結合經紀業務情境：<strong>仲介成交房屋事後發現漏水瑕疵</strong>，買受人請求修補費＋精神慰撫金（§192、§195、§197），是本堂與經紀人本業關聯度最高的考點之一，務必熟悉</div>
+      <table style="margin-top:8px;">
+        <thead><tr><th>條文</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td><span class="law-tag">§192</span></td><td>侵害生命權之財產賠償</td></tr>
+          <tr><td><span class="law-tag">§193</span></td><td>侵害身體健康之財產賠償</td></tr>
+          <tr><td><span class="law-tag">§194</span></td><td>侵害生命權之被害家屬非財產賠償（保障父母、配偶、子女之身份法益）</td></tr>
+          <tr><td><span class="law-tag">§196</span></td><td>毀損他人之物之損害賠償</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="highlight-box danger" style="font-size:15px;padding:11px 15px;">
+        <strong style="font-size:16px;display:block;margin-bottom:5px;">⚠️ 侵權行為損害賠償之時效 §197 特別注意</strong>
+        I　自知有損害及賠償義務人時起 <strong>2 年</strong>／自侵權行為時起 <strong>10 年</strong><br>
+        II　時效完成後，賠償義務人仍應依<strong>不當得利</strong>規定返還所受利益
+      </div>
+      <div class="card" style="margin-top:9px;">
+        <div class="card-title" style="font-size:15px;">損害賠償之方式與範圍</div>
+        <table>
+          <tbody>
+            <tr><td>原則</td><td><span class="law-tag">§213</span> 回復原狀</td></tr>
+            <tr><td>例外</td><td><span class="law-tag">§214</span> 逾期不回復，得請求金錢賠償／<span class="law-tag">§215</span> 不能回復或重大困難，以金錢賠償</td></tr>
+            <tr><td>範圍</td><td><span class="law-tag">§216</span> 所受損害＋所失利益</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、綜合實例題 IRAC 解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>綜合實例題解析（一路貫穿本堂七大主題）</h2>
+  </div>
+
+  <div class="story-box">
+    <strong>題目背景：</strong>甲與乙簽訂 A 車買賣契約，約定甲將 A 車出售給乙，乙應給付新台幣 50 萬元價金，惟雙方未約定價金給付方式。契約簽訂後，甲出國，同時將 A 車交給保養廠作定檢。回國後，甲誤以為已交付 A 車給乙（忘記車還在保養廠），因此寄信請求乙給付 50 萬元價金。
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜乙是否一定要交付 50 萬元？乙有無任何權利可以主張？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">契約成立</div><div>甲乙對買賣標的物及價金等「必要之點」已達成合意，價金給付方式（非必要之點）雖未約定，依 §153 推定契約仍有效成立</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>乙得行使<strong>同時履行抗辯權</strong>，要求甲先交付 A 車，否則拒絕給付價金</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">嗣後，乙交付了 50 萬元價金，甲也將 A 車交付給乙。但實際上 A 車係丙所有，甲根本不是所有人。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜丙得否請求乙將 A 車返還（乙完全不知情）？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">無權處分</div><div>甲處分丙所有之車屬於「無權處分」§118，效力未定</div></div>
+      <div class="irac-row"><div class="irac-label">善意取得</div><div>乙是「善意第三人」，依 §801、§948 可主張動產善意取得，取得 A 車所有權</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>丙<strong>無法</strong>請求乙返還</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">若甲係以丙的代理人自居，且因甲為丙的秘書、持有丙的印章，丙也曾告知大家有事可找甲處理，則丙的權利義務是否有所不同？</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q3｜構成表見代理？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">表見代理</div><div>甲持有丙的印章，且丙曾對外表示可找甲處理事務，構成表見代理中的「表示授權」（外觀＋授權意思）</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>丙須負<strong>授權人責任</strong>，契約對丙發生效力，丙不能拒絕</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">承上題，若甲實際上只是丙的小員工，手上沒有丙的任何印章，只是偶爾幫丙把車開去保養廠，情況是否有所不同？</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q4｜不具授權外觀時？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">結論</div><div>甲不具備表見代理的授權外觀要件，不成立表見代理，回歸<strong>無權代理</strong>，效力未定，須經丙承認才對丙發生效力</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">丙得知甲將其愛車出售給乙後深受打擊，欲從大樓一躍而下，來探望丙的丁見狀衝上前將丙拉下陽台，丙因此受力過猛休克，丁對丙施以急救並送醫、付清醫藥費，成功救活丙。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q5｜丁得對丙主張何種權利？若丁為醫生，情況有無不同？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">適法無因管理</div><div>丁救丙構成適法無因管理（未受委任、無義務、為他人管理事務，且利於本人、不違反本人明示或可得推知之意思）</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>丁支付的醫藥費屬於「必要費用」，可依 §172、§176 向丙請求補償；若丁為醫生，急救行為屬於<strong>專業領域範疇</strong>，依學說實務見解可另外請求「報酬」</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">丙回家後發現實際醫藥費只要 200 元，但丁卻跟丙要了 2000 元。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q6｜丙得向丁主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">不當得利</div><div>丁超收的 1800 元屬於「無法律上原因、受有利益、致他人受損害」</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>丙可依 §179 請求丁返還，且因丁明知超收，屬<strong>惡意受領人</strong>，須加計利息返還</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">丙情緒失控前往丁家討錢，途中越想越氣，找到丁後直接拿球棒砸向丁，丁受有嚴重腦部損傷及創傷後壓力症候群。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q7｜丁得對丙主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">侵權行為</div><div>丙毆打丁造成腦傷及 PTSD，符合 §184 I 前段侵權行為要件（加害行為、侵害權利、損害結果、因果關係、意識能力、故意或過失、不法性）</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>丁可請求損害賠償；PTSD 部分屬精神上損害，可另依 <strong>§195</strong> 請求非財產上損害賠償（精神慰撫金）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">丁接受治療後一度好轉，惟後來因主治醫師開刀時不慎遺留針頭在腦部，導致丁身亡。</div>
+
+  <div class="irac-card">
+    <div class="irac-header">Q8｜丁的配偶、小孩得主張何等權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">家屬權利</div><div>丁因醫療疏失死亡，其配偶與子女依 <strong>§194</strong> 得請求身份法益受侵害之非財產上損害賠償（精神慰撫金）</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：建議拿一張空白紙畫心智圖，寫出今天學到的「契約」「代理權」「無因管理」「不當得利」「侵權行為」五大主題的要件，若能完整默寫代表理解已達一定程度。
+</div>
+
+</body>
+</html>
