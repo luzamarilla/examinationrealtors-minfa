@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L6｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  /* ── 條文速查 ── */
+  .law-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .law-item { background: white; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.07); border-top: 4px solid var(--ink); }
+  .law-item .num { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 5px; }
+  .law-item .desc { font-size: 13px; color: #374151; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+
+  /* ── 給付義務 ⇄ 請求權對應圖 ── */
+  .rel-diagram { background: #f8fafc; border-radius: 10px; padding: 12px 16px; }
+  .rel-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .rel-tag { background: var(--ink); color: white; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+  .rel-arrow { color: var(--sub); font-size: 18px; font-weight: 700; }
+  .rel-mid-label { text-align: center; font-size: 13px; color: var(--ink); font-weight: 700; }
+  .rel-mid-label .law-tag { margin-top: 2px; }
+  .rel-claim { margin: 5px 0 3px 30px; border-left: 4px solid var(--accent); background: var(--accent-bg); padding: 4px 10px; border-radius: 0 6px 6px 0; font-size: 12.5px; color: var(--ink); }
+  .rel-claim strong { color: var(--accent); }
+
+  /* ── 當事人關係圖（租賃三方） ── */
+  .party-flow { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; background: #f8fafc; border-radius: 10px; padding: 14px 16px; }
+  .party-node { background: var(--ink); color: white; padding: 8px 18px; border-radius: 8px; font-weight: 900; font-size: 15px; }
+  .party-arrow-label { display: flex; flex-direction: column; align-items: center; font-size: 12.5px; color: var(--sub); gap: 2px; }
+  .party-arrow-label .arrow { font-size: 20px; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L6｜債編各論・租賃契約</h1>
+    <div class="subtitle">租賃契約總論 → 出租人義務 → 承租人義務 → 買賣不破租賃 → 轉租 → 土地優先承買權 → 租賃契約之終了</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§421、§425～§444</strong>核心條文</div>
+    <div class="badge"><strong>L6</strong>債編各論・有名契約</div>
+    <div class="badge"><strong>⭐⭐⭐</strong>轉租・優先承買最高頻</div>
+  </div>
+</div>
+
+<div class="highlight-box" style="margin-bottom:15px;">
+  <strong>📌 素材來源提醒：</strong>本堂逐字稿（16,840 字元）完整涵蓋「租賃契約」，上課講義 11 張＋筆記講義 2 張皆已到位，內容互相對應無落差。筆記講義（L6-2）同頁另有「委任 §528」欄位，但本堂逐字稿完全未提及委任，屬於後續堂次範圍，已不收錄進本堂筆記，留待該堂次課程涵蓋時再整理。考古題已完成 105–114 年逐年深查（陳國全國補習班解答版，詳見 <span class="law-tag" style="background:var(--sub);">民法L6L7_考古題深查.md</span>），共約 17 筆命中（含 111 年、112 年兩題 25 分整題申論），已於下方各節插入 <code>.examhit</code> 標籤。
+</div>
+
+<!-- ═══ 一、租賃契約總論 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>租賃契約總論 <span class="law-tag">§421</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">稱租賃者，謂當事人約定，<strong>一方以物租與他方使用收益</strong>，<strong>他方支付租金</strong>之契約——兩個要件缺一不可</div>
+    <div class="highlight-box">性質：<strong>有償</strong>、<strong>不要式</strong>、<strong>不要物</strong>之契約</div>
+    <div class="grid-2" style="margin-top:8px;">
+      <div>
+        <div class="card-title" style="font-size:14px;">成立要件</div>
+        <table>
+          <tbody>
+            <tr><td>① 有一物出租給他方使用收益</td></tr>
+            <tr><td>② 他方須支付租金（對價給付）</td></tr>
+          </tbody>
+        </table>
+        <div class="note">若只是把物交給對方使用收益、對方不須給付對價，就不是租賃契約，而是後續堂次會提到的「借貸契約」。</div>
+      </div>
+      <div class="highlight-box warning" style="margin:0;">租賃是<strong>雙務契約</strong> → 有<strong>同時履行抗辯權</strong>之適用（例如雙方約定第一期租金的給付須以租賃物交付為前提，或租金給付與租賃物交付約在同一天，這時就可能發生同時履行抗辯權，答題時要留意）</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、出租人義務 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>出租人義務</h2>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">交付及保持義務 <span class="law-tag">§423</span><span class="examhit">113測驗7</span></div>
+      <div style="font-size:14px;">出租人須於約定時間，將<strong>合於所約定使用收益狀態</strong>之租賃物交付承租人，並於<strong>租賃關係存續中</strong>保持該狀態</div>
+      <div class="note">113年測驗：甲將丙所有A屋出租於乙，丙對乙起訴請求返還A屋致乙不能為約定使用，測考承租人得終止租約（出租人未能確保租賃物合於用益狀態）</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">修繕義務 <span class="law-tag">§429</span><span class="examhit">112測驗9(A)</span></div>
+      <div style="font-size:14px;">租賃物之修繕，除契約另有約定或另有習慣外，由<strong>出租人</strong>負擔</div>
+      <div class="highlight-box" style="margin-top:6px;">屬<strong>必要修繕行為</strong>時，承租人不得拒絕——因為此時出租人所為的修繕，本質上是在履行「保持義務」，法律要求他一定要做，承租人不能說不要</div>
+      <div class="note">112年測驗：租賃物有修繕必要時，承租人不可直接自行修繕後再請求出租人給付費用，須先定期催告，錯誤選項測考修繕程序</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">瑕疵擔保義務 <span class="law-tag">§347準用</span><span class="law-tag">§436</span><span class="examhit">108測驗9(D)</span></div>
+      <div style="font-size:14px;">租賃契約是<strong>雙務有償契約</strong>，準用買賣契約的<strong>權利瑕疵擔保</strong>與<strong>物之瑕疵擔保</strong>規定（買賣契約 §349~365，見 L5）</div>
+      <div class="note">108年測驗：出租人負修繕義務，承租人原則不得自行修繕後逕向出租人請求償還費用（測考修繕請求程序）</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、承租人義務 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>承租人義務</h2>
+  </div>
+  <div class="card">
+    <div class="card-title" style="font-size:16px;">支付租金義務（主給付義務）<span class="law-tag">§439</span><span class="law-tag">§440</span></div>
+    <div style="font-size:14px;">支付時間 <span class="law-tag">§439</span>：雙方可自行約定（月初給或月底給皆可）</div>
+    <div class="highlight-box danger" style="margin-top:6px;">租金給付<strong>遲延</strong> <span class="law-tag">§440</span>：達一定條件時出租人得終止契約——條件依租賃物性質分三種，判斷基準是<strong>累積欠繳金額</strong>而非時間長短</div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:30%;">租賃物類型</th><th>得終止契約之條件</th></tr></thead>
+      <tbody>
+        <tr><td><strong>非房屋</strong></td><td>催告後，承租人仍未於相當期限內支付租金</td></tr>
+        <tr><td><strong>房屋</strong></td><td>欠租<strong>達兩個月</strong>（保護經濟地位相對弱勢的承租人；累積欠繳金額達 2 個月租金額度即算，不是拖欠 2 個月時間）</td></tr>
+        <tr><td><strong>建築房屋之基地</strong></td><td>欠租<strong>達兩年</strong>（避免基地上房屋的所有權與居住狀態因輕易終止契約而陷入不穩定）</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">若為<strong>城市房屋</strong>（土地法適用範圍），土地法 §100 第 3 款另有特別規定：押租金（上限 2 個月）先抵償欠租後，須<strong>再欠 2 個月以上</strong>才能收回房屋，實質上可拖欠到約 <strong>4 個月</strong>——特別法優於普通法，詳見土地法 L5 筆記</div>
+  </div>
+  <div class="grid-2" style="margin-top:8px;align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">保管義務（非主給付義務）</div>
+      <div style="font-size:14px;">承租人於租賃關係存續期間，須盡<strong>善良管理人之注意義務</strong>（抽象輕過失）保管租賃物，違反效果為<strong>損害賠償</strong></div>
+      <div class="highlight-box" style="margin-top:6px;"><strong>同居人</strong>或<strong>承租人允許為使用收益之第三人</strong>：因故意或過失致租賃物毀損滅失，承租人須為其行為<strong>負損害賠償責任</strong>（因為這些人是承租人允許進來使用的）</div>
+      <div class="note">出租人對承租人：依租賃契約規定請求。<br>出租人對同居人／第三人：條文未排除出租人直接依 <span class="law-tag">§184</span> 侵權行為規定請求，兩條路都可以走。（同樣的雙軌請求邏輯，後面轉租一節的次承租人也會再出現一次）</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">失火責任 <span class="law-tag">§434</span><span class="stars">★</span><span class="examhit">105測驗20(A)・112測驗9(C)</span></div>
+      <div class="highlight-box danger">承租人<strong>僅就重大過失負責</strong>——比善良管理人注意義務更低的門檻，是為了保護承租人（重大過失＝連普通人的注意義務都沒盡到）</div>
+      <div style="font-size:14px;">若失火是由<strong>同居人</strong>或<strong>承租人允許使用之第三人</strong>所致：
+        <ol style="margin:4px 0 0 20px;padding:0;">
+          <li>判斷基準：看「該第三人」本身是否有重大過失，不是看承租人本人</li>
+          <li>該第三人僅輕過失（無重大過失）→ 承租人<strong>不負</strong>失火損害賠償責任</li>
+          <li>出租人仍可依 <span class="law-tag">§184</span> 直接對該第三人請求 → 兩條路互不影響</li>
+        </ol>
+      </div>
+      <div class="note">老師特別提醒：這是租賃契約中考試常出現的特殊情況，答題時務必區分「承租人本人失火」與「同居人／允許使用之第三人失火」兩種情境分別適用的注意義務標準。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、買賣不破租賃 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>買賣不破租賃 <span class="law-tag">§425</span><span class="stars">★★</span><span class="examhit">106測驗36(B)・109測驗8(A)</span></h2>
+  </div>
+  <div class="highlight-box danger">出租人於租賃物交付後，承租人占有中，<strong>縱將其所有權讓與第三人</strong>，其租賃契約對於<strong>受讓人仍繼續存在</strong></div>
+  <div class="example-box" style="margin-top:8px;">
+    <div class="example-label">考古題實例｜111年申論一（25分）</div>
+    <div style="font-size:13.5px;">甲託乙代管房屋，乙私自出租給不知情丙。甲返國主張丙無權占有並請求返還及相當於租金之利益。<strong>解析：</strong>乙非「讓與人」，僅代管而擅自出租，丙不受 §425 保護（本題非讓與情形，§425 不適用），甲可援引 §767 物上請求權＋§179 不當得利返還相當租金利益（消滅時效5年）</div>
+  </div>
+  <div class="example-box" style="margin-top:8px;">
+    <div class="example-label">考古題實例｜112年申論一（25分，靈骨塔類推適用）</div>
+    <div style="font-size:13.5px;">甲向A公司買受靈骨塔位永久使用權，A公司靈骨塔大樓遭強制執行由B公司拍定。實務有否定說（債權相對性，不得對抗B公司）與肯定說（類推適用§425買賣不破租賃）兩見解，通說採<strong>否定說</strong>結論，屬§425延伸應用的重要命題</div>
+  </div>
+  <div class="grid-2" style="margin-top:8px;align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">構成要件（三者缺一不可）</div>
+      <table>
+        <tbody>
+          <tr><td>① 租賃關係存在</td><td style="font-size:12.5px;">出租人與承租人間租賃契約有效成立</td></tr>
+          <tr><td>② 租賃物交付<strong>且承租人占有中</strong></td><td style="font-size:12.5px;">關鍵要件——若承租人已無占有，不構成本原則</td></tr>
+          <tr><td>③ 出租人將所有權讓與第三人</td><td style="font-size:12.5px;">僅限<strong>繼受取得</strong>（如買賣），排除<strong>原始取得</strong>（如政府徵收）</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning" style="margin-top:6px;">例外：<strong>未經公證</strong>之不動產租賃契約，其期限<strong>逾五年或未定期限者</strong>，不適用買賣不破租賃原則（避免過度限制不動產交易市場的流動性）</div>
+      <div style="font-size:14px;margin-top:6px;">法律效果：<strong>法定契約承擔</strong>——原租賃契約關係轉由買受人承擔</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">特殊態樣：租地建屋 <span class="law-tag">§426-1</span></div>
+      <div style="font-size:14px;">租用基地建築房屋，<strong>承租人房屋所有權移轉時</strong>，其基地租賃契約，對於房屋受讓人繼續存在</div>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">逐字稿案例</div>
+        <div style="font-size:13.5px;">甲（出租人）將土地出租給乙（承租人），乙在此基地上新建 A 屋。某天乙將 A 屋賣給丙。<br><strong>解析：</strong>若仍讓乙繼續當基地租賃契約的承租人，不合理也與事實不符（乙已非房屋所有人、也未繼續占用）→ 基地租賃契約改由<strong>甲、丙間繼續</strong>存在。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、法定租賃關係（推定租賃） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>法定租賃關係（推定租賃）<span class="law-tag">§425-1</span><span class="stars">★</span><span class="examhit">108測驗21(A)・109測驗12(A)・113測驗9(A)</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">土地與其上房屋<strong>原同屬一人所有</strong>，而僅將土地或僅將房屋所有權讓與他人，或將土地及房屋同時或先後讓與相異之人時，土地受讓人或房屋受讓人間，<strong>推定</strong>於房屋得使用期限內有租賃關係，其期限<strong>不受 §449 I 規定之限制</strong></div>
+    <div style="font-size:14px;">白話：土地與房屋原本是同一人，後來因交易或其他法律行為變成不同人時，法律推定雙方之間存在租賃關係，讓房屋所有人不會因此失去合法使用土地的權源</div>
+    <div class="highlight-box warning" style="margin-top:6px;">既然是「<strong>推定</strong>」，就表示他方可以<strong>舉反證推翻</strong>——不是絕對成立的租賃關係</div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="example-label">考古題實例｜113年測驗9(A)</div>
+      <div style="font-size:13.5px;">甲在自有 A 地興建 B 屋後，將 B 屋出售並移轉登記於乙。<strong>解析：</strong>房屋使用期限內，推定<strong>甲（土地所有人）與乙（房屋受讓人）</strong>間有租賃關係，直接命中 §425-1 核心條文，為本題正確答案</div>
+    </div>
+    <table style="margin-top:10px;">
+      <thead><tr><th style="width:20%;"></th><th>§425-1 推定租賃</th><th>§876 法定地上權</th></tr></thead>
+      <tbody>
+        <tr><td><strong>觸發原因</strong></td><td>自願讓與（買賣、贈與等）</td><td>抵押物被拍賣（強制執行）</td></tr>
+        <tr><td><strong>法律效果</strong></td><td>推定有租賃關係</td><td>視為有地上權設定</td></tr>
+        <tr><td><strong>能否反駁</strong></td><td>能，可舉反證推翻</td><td>不能，強制成立</td></tr>
+        <tr><td><strong>權利性質</strong></td><td>債權</td><td>物權（用益物權，效力更強）</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:6px;">⚠️ <strong>113 年同一份考卷測9、測12 分別考這兩題</strong>，明顯是故意誘答——看題目有沒有「拍賣／強制執行／查封」字眼：<strong>有 → §876 地上權</strong>；<strong>單純買賣讓與 → §425-1 推定租賃</strong></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、轉租 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>轉租 <span class="law-tag">§443</span><span class="stars">★★★</span><span class="examhit">106測驗36(A)(D)・108測驗9(C)・113測驗8(D)・114測驗12(B)</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">原則與例外</div>
+      <div class="highlight-box danger"><strong>原則：禁止</strong>——未經出租人同意，不得轉租</div>
+      <div class="highlight-box">例外：租賃物為<strong>房屋</strong>，除有反對之約定外，承租人得<strong>一部轉租</strong>（常見於分租套房、找人一起分擔整層公寓租金的情形）</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">法律效果</div>
+      <div style="font-size:14px;">違反禁止轉租規定 → 出租人<strong>得終止契約</strong>（有選擇權，可終止也可不終止）</div>
+      <div class="highlight-box warning" style="margin-top:6px;">出租人<strong>不終止</strong>時（或屬合法轉租）：出租人與承租人間租賃關係<strong>繼續存在</strong>；承租人須為<strong>次承租人之行為負責</strong></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:8px;">
+    <div class="card-title" style="font-size:15px;">三方關係圖</div>
+    <div class="party-flow">
+      <div class="party-node">出租人</div>
+      <div class="party-arrow-label"><span class="arrow">⇄</span>原租賃契約（繼續存在）</div>
+      <div class="party-node">承租人</div>
+      <div class="party-arrow-label"><span class="arrow">⇄</span>轉租租賃契約</div>
+      <div class="party-node">次承租人</div>
+    </div>
+    <div class="highlight-box danger" style="margin-top:8px;">出租人與次承租人之間<strong>沒有任何租賃契約關係</strong>——因次承租人故意或過失致租賃物受損時：出租人應<strong>先依租賃契約向承租人請求</strong>（承租人須為次承租人行為負責）；同時出租人也可直接依 <span class="law-tag">§184</span> 對次承租人請求侵權行為損害賠償，兩條請求權併存</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、土地優先承買權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>土地優先承買權 <span class="law-tag">§426-2</span><span class="stars">★★★</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">內容</div>
+      <table>
+        <tbody>
+          <tr><td>出租人<strong>出賣基地</strong>時</td><td>承租人有依<strong>同樣條件</strong>優先承買之權</td></tr>
+          <tr><td>承租人<strong>出賣房屋</strong>時</td><td>基地所有人有依<strong>同樣條件</strong>優先承買之權</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning" style="margin-top:6px;">立法意旨：民法體系上盡可能使<strong>土地與房屋所有人歸於同一人</strong>，減少土地房屋所有人不同所造成的權利複雜關係</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">通知與違反效果</div>
+      <div style="font-size:14px;">通知<strong>應以書面為之</strong></div>
+      <div class="highlight-box danger" style="margin-top:6px;">違反效果：<strong>所有權移轉不得對抗優先承買權人</strong>——未書面通知就逕行移轉所有權，不能拿來對抗優先承買權人</div>
+      <div class="note"><span class="examhit">108測驗9(B)</span>「出租人出賣租賃之房屋時，承租人有依同樣條件優先承買之權利」列為<strong>錯誤敘述</strong>——用以區辨房屋租賃無優先承買權，本條僅限土地／基地</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:8px;">
+    <div class="card-title" style="font-size:15px;">補充｜民§426-2 vs 土地法§104｜規定同一件事，但效力不同，土地法優先適用</div>
+    <table style="margin-top:6px;">
+      <thead><tr><th style="width:22%;"></th><th>民法 §426-2</th><th>土地法 §104</th></tr></thead>
+      <tbody>
+        <tr><td><strong>效力層級</strong></td><td>債權效力</td><td><strong>物權效力</strong>（效力較強）</td></tr>
+        <tr><td><strong>未通知擅自賣給第三人</strong></td><td>契約有效，只是<strong>不得對抗</strong>優先承買權人</td><td>契約<strong>無效</strong></td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:13px;margin-top:6px;">兩條規定管的是同一件事——房屋出賣時基地所有人優先承買、基地出賣時承租人優先承買。土地法是特別法、效力更強，實務優先適用；民法版本效力較弱，退居補充地位。</div>
+    <div class="note">耕地版的優先購買權另見<strong>土地法§107</strong>：耕地出賣或出典時，承租人有依同樣條件優先承買／承典之權，同屬物權效力，但適用對象是耕地，不是基地／房屋，不要跟上面這組搞混</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、租賃契約之終了 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>租賃契約之終了</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">時間點</div>
+      <table>
+        <tbody>
+          <tr><td><strong>定有期限</strong></td><td>期限屆滿時消滅<span class="examhit">106測驗36(C)</span></td></tr>
+          <tr><td><strong>未定期限</strong></td><td>各當事人得隨時終止契約</td></tr>
+        </tbody>
+      </table>
+      <div class="note">106年測驗：定有期限之租賃契約，當事人約定得提前終止者，於終止契約前應先期通知</div>
+      <div class="highlight-box warning" style="margin-top:6px;">例外（默示更新 <span class="law-tag">§451</span><span class="examhit">114測驗12(D)</span>）：租賃期限屆滿，承租人仍為租賃物之使用收益，出租人<strong>不即表示反對</strong>之意思 → <strong>視為以不定期限繼續</strong>契約</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">法律效果</div>
+      <div style="font-size:14px;">租賃關係終止後，承租人應<strong>返還租賃物</strong>；租賃物有<strong>生產力</strong>者，應保持其生產狀態返還</div>
+      <div class="highlight-box" style="margin-top:6px;">出租人因此取得<strong>租賃物返還請求權</strong></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲將名下 A 屋出租給乙，約定租期為 2 年，每月租金 15,000 元，須於每個月月初匯款繳納。乙承租入住後，發現租屋處的浴室漏水很嚴重。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜乙得主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲（出租人）負交付保持義務、修繕義務、物之瑕疵擔保義務；浴室漏水屬租賃物瑕疵</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>乙得請求甲<strong>修繕</strong>；若已請求甲修繕而甲不理，乙得<strong>自行修繕</strong>（或委外處理），並得請求甲<strong>償還修繕費用</strong>（例如從下期租金扣除），或請求<strong>損害賠償</strong></div></div>
+    </div>
+  </div>
+
+  <div class="story-box">墜入愛河的乙，時常帶著心愛的丙回租屋處享受兩人獨處的歡樂時光，某天丙不小心將香氛蠟燭弄倒，導致 A 屋起火燃燒。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜甲得否請求乙負損害賠償？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>丙是乙的<strong>同居人</strong>或乙<strong>允許使用收益之第三人</strong>；失火責任下，承租人僅就「該第三人」是否有<strong>重大過失</strong>負責</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>題目僅顯示丙「不小心」（輕過失），看不出重大過失 → 甲<strong>不得</strong>對乙請求失火損害賠償；但甲得依 <span class="law-tag">§184</span> <strong>直接對丙</strong>請求損害賠償</div></div>
+      <div class="irac-row"><div class="irac-label">答題提醒</div><div>要把「條文要件」跟「情境事實」結合論述——先寫條文內容，再點出丙的身分（同居人／允許使用之第三人），再連結因果關係，不能只是分別複製條文跟情境</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">A 屋起火燃燒後，乙不想繼續住在 A 屋，但又不想白白損失押金，因此將 A 屋轉租給第三人丁，未料丁因過失使 A 屋天花板坍塌。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q3｜甲得對乙、丁各自主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲乙間租賃契約繼續存在；乙丁間為轉租關係；甲丁間<strong>無任何契約關係</strong>；丁的過失並非失火責任（一般過失，非重大過失門檻）</div></div>
+      <div class="irac-row"><div class="irac-label">甲→乙</div><div>依租賃契約，乙須為<strong>次承租人丁之行為</strong>負損害賠償責任（乙對甲負的是<strong>抽象輕過失</strong>之保管責任，不是重大過失標準）</div></div>
+      <div class="irac-row"><div class="irac-label">甲→丁</div><div>甲丁間無租賃契約可用，只能依 <span class="law-tag">§184</span> 侵權行為規定請求損害賠償</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">眼見 A 屋命運多舛，甲決定將 A 屋出售予第三人戊，擺脫厄運。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q4｜此時甲與乙間租賃契約效力為何？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>租賃關係存在＋A 屋已交付乙占有中＋甲將所有權移轉給戊（繼受取得）→ 構成 <span class="law-tag">§425</span> 買賣不破租賃三要件</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>原甲乙間租賃契約<strong>轉由戊承擔</strong>，租賃契約自此存在於<strong>戊、乙之間</strong></div></div>
+    </div>
+  </div>
+
+  <div class="story-box">倘若甲係向庚承租 B 地而興建 A 屋，甲卻在未告知庚的情形下，即將 A 屋出售給戊。</div>
+  <div class="irac-card">
+    <div class="irac-header">Q5｜庚得對甲主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>租地建屋、出賣房屋時，基地所有人庚依 <span class="law-tag">§426-2</span> 有<strong>優先承買權</strong>；甲應先以<strong>書面通知</strong>庚，但甲並未通知</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>法律效果為甲戊間<strong>所有權移轉不得對抗</strong>優先承買權人庚</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、條文速查 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>條文速查</h2>
+  </div>
+  <div class="law-grid">
+    <div class="law-item">
+      <div class="num">§421</div>
+      <div class="desc">租賃契約定義：一方以物租與他方使用收益、他方支付租金</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§423</div>
+      <div class="desc">出租人交付及保持義務</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§429</div>
+      <div class="desc">出租人修繕義務，必要修繕承租人不得拒絕</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§347準用／§436</div>
+      <div class="desc">租賃準用買賣契約瑕疵擔保規定</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§439、§440</div>
+      <div class="desc">支付租金時間；遲延終止條件（非房屋／房屋2個月／基地2年）</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§425</div>
+      <div class="desc">買賣不破租賃原則；例外未公證逾5年或未定期限不適用</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§425-1</div>
+      <div class="desc">法定租賃關係（推定租賃），可舉反證推翻</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§426-1</div>
+      <div class="desc">租地建屋，房屋所有權移轉時基地租賃契約隨同移轉</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§426-2</div>
+      <div class="desc">土地優先承買權；通知應以書面，違反不得對抗</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§443、§444</div>
+      <div class="desc">轉租原則禁止、房屋例外允許一部轉租；轉租之法律效果</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§184</div>
+      <div class="desc">侵權行為——出租人對次承租人／第三人的另一條請求路徑</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§449 I</div>
+      <div class="desc">租賃最長期限限制（§425-1 推定租賃不受此限制）</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：租賃契約的考點集中在「三個例外保護承租人」與「兩個保護土地房屋合一」的邏輯——房屋／基地欠租門檻拉高（2個月／2年）、失火責任降低到重大過失，都是在保護經濟地位相對弱勢的承租人；買賣不破租賃、法定租賃關係、土地優先承買權，則都是在追求土地與房屋所有人趨於一致、減少法律關係複雜化。答題時先問自己：這一題保護的是誰？邏輯抓對了，條文適用就不容易錯。
+</div>
+
+</body>
+</html>
