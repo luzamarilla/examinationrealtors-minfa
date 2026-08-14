@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L5｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  /* ── 條文速查 ── */
+  .law-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .law-item { background: white; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.07); border-top: 4px solid var(--ink); }
+  .law-item .num { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 5px; }
+  .law-item .desc { font-size: 13px; color: #374151; }
+
+  /* ── 結構樹 ── */
+  .tree { background: white; border-radius: 12px; padding: 12px 16px; box-shadow: 0 2px 8px rgba(0,0,0,.07); font-size: 14px; }
+  .tree ul { list-style: none; padding-left: 24px; margin-top: 4px; }
+  .tree > ul { padding-left: 0; }
+  .tree li { padding: 2px 0; }
+  .tree li::before { content: '├── '; color: #9ca3af; }
+  .tree li:last-child::before { content: '└── '; color: #9ca3af; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+
+  /* ── 給付義務 ⇄ 請求權對應圖 ── */
+  .rel-diagram { background: #f8fafc; border-radius: 10px; padding: 12px 16px; }
+  .rel-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .rel-tag { background: var(--ink); color: white; padding: 6px 14px; border-radius: 8px; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+  .rel-arrow { color: var(--sub); font-size: 18px; font-weight: 700; }
+  .rel-mid-label { text-align: center; font-size: 13px; color: var(--ink); font-weight: 700; }
+  .rel-mid-label .law-tag { margin-top: 2px; }
+  .rel-claim { margin: 5px 0 3px 30px; border-left: 4px solid var(--accent); background: var(--accent-bg); padding: 4px 10px; border-radius: 0 6px 6px 0; font-size: 12.5px; color: var(--ink); }
+  .rel-claim strong { color: var(--accent); }
+
+  /* ── 買賣定義：出賣人／買受人各自欄位（新版4） ── */
+  .party-col { background: #f8fafc; border-radius: 10px; padding: 12px 14px; }
+  .party-name { text-align: center; font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 8px; }
+  .party-subhead { text-align: center; font-size: 12.5px; font-weight: 900; color: white; background: var(--ink); border-radius: 6px; padding: 3px 0; letter-spacing: 2px; margin-bottom: 6px; }
+  .party-subhead.claim { margin-top: 10px; }
+  .party-item { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: 13.5px; margin-bottom: 6px; font-weight: 700; }
+  .party-item .law-tag { margin-right: 6px; }
+  .party-mid-v2 { text-align: center; align-self: center; }
+  .party-mid-v2 .flow-label { font-size: 14px; font-weight: 900; color: var(--ink); }
+  .party-mid-v2 .flow-arrow { font-size: 22px; color: var(--sub); font-weight: 700; margin: 2px 0; }
+  .party-mid-v2 .flow-note { font-size: 11px; color: var(--sub); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L5｜債編各論・買賣契約</h1>
+    <div class="subtitle">買賣契約總論 → 雙方契約義務 → 權利瑕疵擔保 → 物之瑕疵擔保 → 價金交付與危險移轉</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§345、§348～§373</strong>核心條文</div>
+    <div class="badge"><strong>L5</strong>債編各論・有名契約</div>
+    <div class="badge"><strong>⭐⭐⭐</strong>瑕疵擔保最高頻</div>
+  </div>
+</div>
+
+<div class="highlight-box" style="margin-bottom:15px;">
+  <strong>📌 素材來源提醒：</strong>本堂逐字稿（2026-07-16 下載）完整涵蓋「買賣契約」，權利瑕疵擔保、物之瑕疵擔保、價金交付與危險移轉皆有詳細說明＋IRAC 案例。重點整理講義（筆記講義 L5-1）同頁另有「贈與 §406」欄位，但本堂逐字稿完全未提及贈與，屬於之後堂次（L7）範圍，這裡先不收錄。「特種買賣」與「種類之債／特定之債」重點講義有列條號，但老師這堂課沒有展開說明，本筆記僅列出條號供之後補充，不臆測內容。
+</div>
+
+<!-- ═══ 一、買賣契約總論與雙方義務 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>買賣契約總論與雙方義務</h2>
+  </div>
+  <div class="card">
+    <div class="card-title" style="font-size:16px;">買賣定義 <span class="law-tag">§345 I</span><span class="examhit">106測8／113測1：買賣為諾成契約，一物二賣債權效力不受影響</span></div>
+    <div class="highlight-box danger">稱買賣者，謂當事人約定<strong>一方移轉財產權於他方</strong>，<strong>他方支付價金</strong>之契約——兩個要件缺一不可，分別是雙方各自的主給付義務</div>
+    <div class="highlight-box">性質：<strong>有償</strong>、<strong>不要式</strong>、<strong>不要物</strong>之契約</div>
+
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-top:10px;">
+      <div class="party-col">
+        <div class="party-name">出賣人</div>
+        <div class="party-subhead">義　務</div>
+        <div class="party-item"><span class="law-tag">§345</span><span class="law-tag">§348</span>移轉標的物・所有權</div>
+        <div class="party-item"><span class="law-tag">§349~351</span>①權利瑕疵擔保</div>
+        <div class="party-item"><span class="law-tag">§354~365</span>②物之瑕疵擔保</div>
+        <div class="party-subhead claim">權　利</div>
+        <div class="rel-claim" style="margin:0;"><span class="law-tag">§367</span><strong>給付價金請求權</strong></div>
+      </div>
+      <div class="party-mid-v2">
+        <div class="flow-label">物</div>
+        <div class="flow-arrow">⇄</div>
+        <div class="flow-label">錢</div>
+        <div class="flow-note">雙務契約</div>
+      </div>
+      <div class="party-col">
+        <div class="party-name">買受人</div>
+        <div class="party-subhead">義　務</div>
+        <div class="party-item"><span class="law-tag">§367</span>給付價金</div>
+        <div class="party-item">③受領買賣標的物<div style="font-size:11.5px;color:var(--sub);font-weight:400;margin-top:2px;">受領遲延則需負擔出賣人因保管所生之費用</div></div>
+        <div class="party-subhead claim">權　利</div>
+        <div class="rel-claim" style="margin:0;"><strong>交付標的物請求權</strong>、<strong>移轉「所有權」請求權</strong></div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:8px;">白話：左欄是出賣人自己要做的事＋自己能主張的權利；右欄是買受人自己要做的事＋自己能主張的權利。①②是出賣人的從給付義務，③是買受人的附隨義務。</div>
+    <div class="highlight-box warning" style="margin-top:8px;">所有權移轉：不動產以<strong>登記</strong>為必要 <span class="law-tag">§758</span>／動產以<strong>交付</strong>為必要 <span class="law-tag">§761</span>。交付≠所有權移轉（不動產）——A 屋已交屋≠已過戶，兩者是不同的請求權</div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="example-label">考古題案例：轉賣代位請求登記<span class="examhit">107申論25分</span></div>
+      <div style="font-size:13.5px;">甲賣乙一筆尚未交付登記之土地，乙將土地轉賣給丙，之後乙卻置之不理，不去向甲請求移轉登記。<br><strong>解析：</strong>丙可以依<strong>§242 代位權</strong>（詳見 L4 債之保全），代位乙去對甲行使移轉登記請求權（甲對乙負有 §348 移轉所有權之義務），拿到登記後，丙再基於自己與乙之間的買賣契約，請求乙將所有權移轉給自己——這題示範了出賣人移轉義務跟其他制度（代位權）如何串連運用。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、權利瑕疵擔保 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>權利瑕疵擔保 <span class="law-tag">§349~351</span><span class="examhit">112測6：買賣標的權利已消滅，契約仍有效可主張權利瑕疵擔保</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">定義與免責條款</div>
+      <div class="highlight-box danger">出賣人應擔保<strong>第三人</strong>就買賣之標的物，對於買受人<strong>不得主張任何權利</strong></div>
+      <div class="highlight-box">免責條款：買受人於契約成立時，<strong>已知有</strong>權利之瑕疵者，出賣人不負擔保之責。但契約另有訂定者，不在此限</div>
+      <div class="card-title" style="font-size:14px;margin-top:6px;">違反之法律效果</div>
+      <div style="font-size:14px;">買受人得依關於<strong>債務不履行</strong>之規定，行使其權利</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">白話理解</div>
+      <div style="font-size:14px;">花錢買東西，會希望所有權是完整的。如果買了之後有第三人跳出來主張「這是我的」或要拍賣它（例如賣方事先設定了抵押權、質權），買受人的權利就受損，這就是<strong>權利瑕疵</strong>。</div>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">逐字稿案例：抵押權拍賣</div>
+        <div style="font-size:13.5px;">甲將 A 屋賣給乙並交屋後，乙才發現甲之前已將 A 屋向銀行設定抵押權，甲一直未清償債務，銀行遂向法院聲請強制執行、拍賣 A 屋。<br><strong>解析：</strong>銀行是題目中的「第三人」，銀行就 A 屋向買受人乙主張抵押權 → 出賣人甲的權利瑕疵擔保<strong>沒有擔保成功</strong>，違反 §349 → 乙得依<strong>債務不履行</strong>之規定對甲行使其權利。</div>
+      </div>
+      <div class="example-box" style="margin-top:8px;">
+        <div class="example-label">考古題案例：債權已消滅仍可主張<span class="examhit">112測6</span></div>
+        <div style="font-size:13.5px;">甲向乙購買乙對丙之債權，但其實丙早在買賣成立前就已經清償該筆債權（債權已經不存在了）。<br><strong>解析：</strong>買賣「權利」而非「物」時，就算標的權利買賣前已消滅，契約本身仍然<strong>有效</strong>（不是自始給付不能而無效）——甲只是拿不到一個「還存在」的債權，這正是權利瑕疵擔保要處理的情況，甲得向乙主張權利瑕疵擔保責任。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、物之瑕疵擔保 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>物之瑕疵擔保 <span class="law-tag">§354~365</span><span class="stars">★★★</span><span class="examhit">L5 最高頻考點・近10年6個年度命中</span></h2>
+  </div>
+  <div class="highlight-box danger">定義：於<strong>危險移轉時</strong>，出賣人須擔保標的物無減少價值之瑕疵，且具有<strong>通常之效用</strong>（一般人買到這個東西，會認為它應該具備的品質與功能）</div>
+  <div class="note">白話：危險移轉（＝交付）<strong>前</strong>壞的，算物之瑕疵擔保，出賣人要負責；危險移轉（＝交付）<strong>後</strong>壞的，算買受人自己的風險，不能回頭找出賣人（見下方第四節「危險移轉」）</div>
+
+  <div class="card" style="margin-top:8px;">
+    <div class="card-title" style="font-size:14px;">近10年考古題命中一覽</div>
+    <table>
+      <tbody>
+        <tr><td style="white-space:nowrap;"><span class="examhit">105測17</span></td><td style="font-size:13px;">特定物瑕疵擔保之法定效果<strong>不含</strong>「另行交付他物」（換貨只有種類之債才有）</td></tr>
+        <tr><td style="white-space:nowrap;"><span class="examhit">106測11</span></td><td style="font-size:13px;">A屋權狀95坪卻誤報100坪，涉§359減價／§360損賠及詐欺撤銷競合辨析</td></tr>
+        <tr><td style="white-space:nowrap;"><span class="examhit">106申論25分</span></td><td style="font-size:13px;">海砂屋案，物之瑕疵擔保（§359/360）與不完全給付（§227，見L4）責任競合</td></tr>
+        <tr><td style="white-space:nowrap;"><span class="examhit">110測15</span></td><td style="font-size:13px;">數物中一物有瑕疵僅得就該物解約，但與他物分離顯受損害者得解除全部；「僅指定種類」之物有瑕疵得請求另行交付無瑕疵之物</td></tr>
+        <tr><td style="white-space:nowrap;"><span class="examhit">111測20</span></td><td style="font-size:13px;">特定物瑕疵擔保買受人得解約／減價／損賠，<strong>不含</strong>另行交付</td></tr>
+        <tr><td style="white-space:nowrap;"><span class="examhit">113申論25分</span></td><td style="font-size:13px;">漏水糾紛，詳見下方特別註記</td></tr>
+        <tr><td style="white-space:nowrap;"><span class="examhit">114測11</span></td><td style="font-size:13px;">S犬買賣案：訂約前已死亡屬自始給付不能／帶跳蚤傳染貓咪涉加害給付／乙得主張同時履行抗辯</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:8px;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">前提條件：買受人的檢查與通知義務</div>
+      <div style="font-size:14px;">買受人應按物之性質，依通常程序<strong>從速檢查</strong>其所受領之物。如發見有應由出賣人負擔保責任之瑕疵時，應即通知出賣人</div>
+      <table style="margin-top:8px;">
+        <tbody>
+          <tr><td>依通常之檢查<strong>不能發現</strong>瑕疵</td><td>法律效果：<span class="badge-tag">視為承認</span></td></tr>
+          <tr><td>瑕疵<strong>不能即知</strong>，日後發現應立即通知，怠於通知</td><td>法律效果：<span class="badge-tag">視為承認</span></td></tr>
+        </tbody>
+      </table>
+      <div class="note">白話：<strong>視為承認</strong>＝買受人被當作已經接受這個物品沒有瑕疵，會喪失解除契約、減少價金、損害賠償這些瑕疵擔保請求權</div>
+      <div class="highlight-box danger" style="margin-top:8px;">除外規定 <span class="law-tag">§357</span>：出賣人<strong>故意</strong>不告知瑕疵於買受人 → 上述兩種「視為承認」效果<strong>都不適用</strong>（出賣人惡意隱瞞，不能反過來用買受人沒及時發現／通知來卸責）</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">違反瑕疵擔保責任之法律效果</div>
+      <div class="highlight-box">買受人得<strong>解除契約</strong>或<strong>請求減少價金</strong>（但顯失公平者，不得解約——因解除是形成權，會使契約溯及自始失效，回復原狀成本過高時法律不許輕易解約）</div>
+      <div class="highlight-box warning">另有：<strong>損害賠償</strong> <span class="law-tag">§360</span>／種類之債<strong>另行交付</strong>無瑕疵之物 <span class="law-tag">§364</span></div>
+      <div class="note">白話：出賣人<strong>惡意</strong>隱瞞瑕疵或<strong>保證的品質沒兌現</strong>，買受人可以加碼求償（§360）；如果買的是<strong>種類之債</strong>（例如「一台冰箱」而非「這台特定的冰箱」），可以要求換貨（§364）——但<strong>特定物</strong>（就是指定買這個、獨一無二）沒有換貨這個選項，只能走解約／減價／賠償</div>
+      <div class="card-title" style="font-size:14px;margin-top:6px;">除斥期間 <span class="law-tag">§356,365</span></div>
+      <div style="font-size:14px;">通知後<strong>六個月間不行使</strong>，或自物之交付時起<strong>經過五年</strong>，解除權與請求權均消滅</div>
+      <div class="highlight-box danger" style="margin-top:6px;">例外：六個月期間之規定，於出賣人<strong>故意不告知瑕疵</strong>者，<strong>不適用之</strong>（買受人隨時可主張，不受六個月限制）</div>
+    </div>
+  </div>
+
+  <div class="example-box" style="margin-top:8px;">
+    <div class="example-label">逐字稿案例：塑膠瓶混水泥危屋</div>
+    <div style="font-size:13.5px;">A 屋交付予乙後，乙當下已迅速檢查，確定無屋損。某次地震震裂牆壁後，乙才發現牆壁竟是用塑膠瓶、廢棄物混合水泥建成，並經建築師公會鑑定確定房子根本不安全、隨時可能倒塌。<br><strong>解析：</strong>房子具有<strong>減少標的物價值之瑕疵</strong>，同時<strong>欠缺標的物通常之效用</strong>（房子的通常效用應是安全堅固可住人）→ 出賣人甲違反物之瑕疵擔保責任 → 乙得主張解除契約或減少價金。<strong>是否顯失公平？</strong>不會——房子完全不安全、幾乎無法住人，甚至可能危害買受人生命安全，縱使乙主張解除契約，也不會有顯失公平的情形（答題時可進一步帶到「但書」規定，讓閱卷老師知道你懂顯失公平例外的存在）。</div>
+  </div>
+
+  <div class="example-box" style="margin-top:8px;">
+    <div class="example-label">考古題案例：漏水糾紛（跨堂註記）<span class="examhit">113申論25分</span></div>
+    <div style="font-size:13.5px;">甲向乙購買 A 屋，乙保證屋況無裂痕漏水且已修復完成，事後甲才發現廚房排水管年久失修，導致全屋積水滲漏到樓下。甲得請求修繕費 30 萬元、精神慰撫金 2 萬元。</div>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 這題橫跨兩堂，答題／複習時不要重複列計：<strong>修繕費</strong>部分同時援引<strong>不完全給付§227（L4）</strong>與<strong>物之瑕疵擔保§359/360（本堂）</strong>兩條請求權基礎；<strong>精神慰撫金</strong>則是另外依§227-1準用§195人格權侵害規定，<strong>純屬L4範疇</strong>，跟本堂物之瑕疵擔保無關。</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、價金交付與危險移轉 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>價金交付與危險移轉</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;grid-template-columns:0.82fr 1.18fr;">
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">價金與標的物之交付</div>
+      <div class="highlight-box danger">價金與標的物之交付<strong>應同時為之</strong> → 適用<strong>同時履行抗辯權</strong></div>
+      <div style="font-size:14px;">若出賣人要求買受人給付價金，但自己尚未交付標的物，買受人得主張「你要先把東西交給我，我才把錢給你」，同時履行。條文推定交付與付款同一天，但雙方可另行約定時間點（契約自由原則）。</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:16px;">危險移轉 <span class="law-tag">§373</span><span class="examhit">次高頻・105測18／106測31／109測3</span></div>
+      <div class="highlight-box">核心問題：標的物毀損滅失的風險，由何方承擔？</div>
+      <table style="margin-top:6px;">
+        <tbody>
+          <tr><td><strong>原則</strong></td><td>買賣標的物之利益及危險，<strong>自交付時起</strong>，均由<strong>買受人</strong>承受負擔（但契約另有訂定者，不在此限）</td></tr>
+          <tr><td><strong>例外</strong></td><td>將標的物運送到<strong>清償地以外之處所</strong>者，自標的物<strong>交付予運送人時起</strong>，危險移轉——移轉給<strong>買受人</strong>，不是運送人</td></tr>
+        </tbody>
+      </table>
+      <div class="note">白話：交付後物品損壞的風險本來就該買受人自己承擔，不能再回頭要出賣人負責（若交付當下物品本身就有瑕疵，那是回歸瑕疵擔保責任討論，不是危險移轉問題）。若賣方要另外運送到約定地點以外的地方，一旦交給運送人，運送途中的風險就已經算買受人的了，不是等貨物送達買受人才移轉。</div>
+      <div class="highlight-box warning" style="margin-top:6px;font-size:13px;"><strong>105測18</strong>／<strong>109測3</strong> 題型相似：透天厝／二手車尚未交付前發生毀損滅失（颱風全倒等），危險負擔<strong>未移轉</strong>買受人，買受人可免給付價金——固定命題模式，適合直接背；<strong>106測31</strong>則綜合辨析可歸責／不可歸責出賣人或買受人時，價金給付義務與損害賠償請求如何跟著變化。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、特種買賣／種類之債・特定之債（重點講義提及，本堂未展開） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>特種買賣／種類之債・特定之債 <span class="badge-tag">重點講義提及・本堂逐字稿未展開</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:8px;"><strong>特種買賣</strong> <span class="law-tag">§379~391</span>：重點整理講義僅列出條號範圍，老師這堂課沒有逐條說明，待補充教材或後續堂次再擴充內容。近10年考古題查證：<strong>完全查無獨立命題</strong>，是L5全堂命題率最低的範圍，複習優先度可排最後。</div>
+  <div class="card">
+    <div class="card-title" style="font-size:15px;">種類之債／特定之債<span class="examhit">107測4／114測11</span></div>
+    <table>
+      <tbody>
+        <tr><td><strong>種類之債</strong></td><td>未特定／指定標的物 → 交付中等品質即可</td></tr>
+        <tr><td rowspan="2"><strong>特定之債</strong></td><td>① 種類之債經交付</td></tr>
+        <tr><td>② 已指定特定標的物</td></tr>
+      </tbody>
+    </table>
+    <div class="note">與第三節「物之瑕疵擔保」的「另交」救濟（§364）相關——種類之債才有「另行交付無瑕疵之物」的空間，特定之債的標的物一旦確定就不能用別的物替代。</div>
+    <div class="highlight-box warning" style="margin-top:6px;font-size:13px;"><strong>107測4</strong>：種類之債如何「特定化」的兩種方式——<strong>往取之債</strong>：債務人指定給付物並通知債權人時即特定；<strong>送赴之債</strong>：債務人將物送達債權人處、使其處於得隨時受領狀態時即特定。<strong>114測11</strong>（S犬買賣案）則涉及標的物於訂約前已滅失時，特定物給付不能與契約效力的判斷。</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲與乙成立 A 屋買賣契約 <span class="law-tag">§345</span>，約定甲將 A 屋出售給乙，乙須給付新台幣 1000 萬元價金，並約定於民國 96 年 1 月 1 日交屋，雙方另約定 1000 萬元價金將以<strong>分期給付</strong>方式付款。甲將 A 屋交付給乙之後，雙方因不諳法律，漏未至地政機關為所有權變更登記，且乙亦因財務緊縮，不斷請甲寬限 1000 萬元的價金給付。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜試問甲與乙各得對對方主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">甲→乙</div><div>移轉所有權（義務）／<strong>請求給付價金</strong>（權利）</div></div>
+      <div class="irac-row"><div class="irac-label">乙→甲</div><div>給付價金（義務）／因未辦理過戶，A 屋所有權尚未移轉 → <strong>請求移轉所有權</strong>（權利）</div></div>
+      <div class="irac-row"><div class="irac-label">提醒</div><div>若甲基於信任一直不對乙行使價金請求權，一拖拖了 15 年，乙除了可以繼續拖之外，還會多一個<strong>時效抗辯權</strong>——15 年時效經過後，甲即使主張請求權，乙也能抗辯不用履行給付價金的義務，甲的權利會受到重大損害（呼應 L1+L2 消滅時效概念）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">另外，A 屋交付予乙後，乙當下已經迅速檢查，確定無屋損，然而某次地震發生震裂牆壁後，乙才發現原來這棟房子的牆壁都是用塑膠瓶、廢棄物混合水泥建成，並請來建築師公會鑑定，確定這棟房子根本不安全，隨時有可能會倒塌。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜試問乙得對甲主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>房屋具有<strong>減少標的物價值之瑕疵</strong>，且<strong>欠缺標的物通常之效用</strong> → 出賣人甲違反<strong>物之瑕疵擔保責任</strong></div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>乙得主張<strong>解除契約</strong>或<strong>請求減少價金</strong>；本案不安全到隨時可能倒塌、危及居住安全，縱使乙選擇解除契約，也<strong>不會顯失公平</strong></div></div>
+    </div>
+  </div>
+
+  <div class="story-box">不幸的事接二連三發生，在發現 A 屋的重大瑕疵後，乙隨即收到法院裁定拍賣 A 屋的通知，原來甲曾經以 A 屋向銀行設定抵押權，但甲一直未能清償債務，故銀行向法院聲請強制執行、拍賣 A 屋。</div>
+  <div class="irac-card">
+    <div class="irac-header">Q3｜試問乙得對甲主張何種權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>銀行是「第三人」，銀行就 A 屋向買受人乙主張抵押權 → 出賣人甲違反<strong>權利瑕疵擔保責任</strong>（§349，未能擔保第三人不得對標的物主張權利）</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>乙得依關於<strong>債務不履行</strong>之規定，對甲行使其權利</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、條文速查 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>條文速查</h2>
+  </div>
+  <div class="law-grid">
+    <div class="law-item">
+      <div class="num">§345</div>
+      <div class="desc">買賣定義：移轉財產權＋支付價金，有償不要式不要物</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§348</div>
+      <div class="desc">出賣人移轉所有權之義務</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§367</div>
+      <div class="desc">買受人給付價金之義務</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§349~351</div>
+      <div class="desc">權利瑕疵擔保：擔保第三人不得對標的物主張任何權利</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§354~365</div>
+      <div class="desc">物之瑕疵擔保：擔保物無減少價值之瑕疵，具通常之效用</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§356,365</div>
+      <div class="desc">物之瑕疵擔保除斥期間：通知後六個月／交付後五年</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§357</div>
+      <div class="desc">出賣人故意不告知瑕疵，排除視為承認及六個月期間限制</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§373</div>
+      <div class="desc">危險移轉：原則自交付時起由買受人負擔</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§758,761</div>
+      <div class="desc">所有權移轉：不動產以登記為必要／動產以交付為必要</div>
+    </div>
+    <div class="law-item">
+      <div class="num">§379~391</div>
+      <div class="desc">特種買賣（重點講義提及，本堂未展開）</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：買賣契約的核心是分清楚出賣人的<strong>兩個擔保責任</strong>——權利瑕疵擔保（擔保「沒有第三人」對標的物主張權利）跟物之瑕疵擔保（擔保「物本身沒有瑕疵」，具通常效用）。遇到題目先問：是誰跳出來主張問題？第三人跳出來 → 權利瑕疵；物品本身有問題 → 物之瑕疵，兩者的除斥期間跟法律效果不一樣，答題時要分開處理，不要混在一起講。
+</div>
+
+</body>
+</html>
