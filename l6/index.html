@@ -99,6 +99,11 @@
   /* ── 考古題重點標籤（四科統一陶紅色） ── */
   .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
 
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
   /* ── 例題區塊 ── */
   .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
   .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
@@ -164,10 +169,6 @@
   </div>
 </div>
 
-<div class="highlight-box" style="margin-bottom:15px;">
-  <strong>📌 素材來源提醒：</strong>本堂逐字稿（16,840 字元）完整涵蓋「租賃契約」，上課講義 11 張＋筆記講義 2 張皆已到位，內容互相對應無落差。筆記講義（L6-2）同頁另有「委任 §528」欄位，但本堂逐字稿完全未提及委任，屬於後續堂次範圍，已不收錄進本堂筆記，留待該堂次課程涵蓋時再整理。考古題已完成 105–114 年逐年深查（陳國全國補習班解答版，詳見 <span class="law-tag" style="background:var(--sub);">民法L6L7_考古題深查.md</span>），共約 17 筆命中（含 111 年、112 年兩題 25 分整題申論），已於下方各節插入 <code>.examhit</code> 標籤。
-</div>
-
 <!-- ═══ 一、租賃契約總論 ═══ -->
 <div class="section">
   <div class="section-title">
@@ -203,18 +204,18 @@
   </div>
   <div class="grid-3">
     <div class="card">
-      <div class="card-title" style="font-size:15px;">交付及保持義務 <span class="law-tag">§423</span><span class="examhit">113測驗7</span></div>
+      <div class="card-title" style="font-size:15px;">交付及保持義務 <span class="law-tag">§423</span><span class="examhit">113測驗</span></div>
       <div style="font-size:14px;">出租人須於約定時間，將<strong>合於所約定使用收益狀態</strong>之租賃物交付承租人，並於<strong>租賃關係存續中</strong>保持該狀態</div>
       <div class="note">113年測驗：甲將丙所有A屋出租於乙，丙對乙起訴請求返還A屋致乙不能為約定使用，測考承租人得終止租約（出租人未能確保租賃物合於用益狀態）</div>
     </div>
     <div class="card">
-      <div class="card-title" style="font-size:15px;">修繕義務 <span class="law-tag">§429</span><span class="examhit">112測驗9(A)</span></div>
+      <div class="card-title" style="font-size:15px;">修繕義務 <span class="law-tag">§429</span><span class="examhit">112測驗</span></div>
       <div style="font-size:14px;">租賃物之修繕，除契約另有約定或另有習慣外，由<strong>出租人</strong>負擔</div>
       <div class="highlight-box" style="margin-top:6px;">屬<strong>必要修繕行為</strong>時，承租人不得拒絕——因為此時出租人所為的修繕，本質上是在履行「保持義務」，法律要求他一定要做，承租人不能說不要</div>
       <div class="note">112年測驗：租賃物有修繕必要時，承租人不可直接自行修繕後再請求出租人給付費用，須先定期催告，錯誤選項測考修繕程序</div>
     </div>
     <div class="card">
-      <div class="card-title" style="font-size:15px;">瑕疵擔保義務 <span class="law-tag">§347準用</span><span class="law-tag">§436</span><span class="examhit">108測驗9(D)</span></div>
+      <div class="card-title" style="font-size:15px;">瑕疵擔保義務 <span class="law-tag">§347準用</span><span class="law-tag">§436</span><span class="examhit">108測驗</span></div>
       <div style="font-size:14px;">租賃契約是<strong>雙務有償契約</strong>，準用買賣契約的<strong>權利瑕疵擔保</strong>與<strong>物之瑕疵擔保</strong>規定（買賣契約 §349~365，見 L5）</div>
       <div class="note">108年測驗：出租人負修繕義務，承租人原則不得自行修繕後逕向出租人請求償還費用（測考修繕請求程序）</div>
     </div>
@@ -251,7 +252,7 @@
       <div class="note">出租人對承租人：依租賃契約規定請求。<br>出租人對同居人／第三人：條文未排除出租人直接依 <span class="law-tag">§184</span> 侵權行為規定請求，兩條路都可以走。（同樣的雙軌請求邏輯，後面轉租一節的次承租人也會再出現一次）</div>
     </div>
     <div class="card">
-      <div class="card-title" style="font-size:15px;">失火責任 <span class="law-tag">§434</span><span class="stars">★</span><span class="examhit">105測驗20(A)・112測驗9(C)</span></div>
+      <div class="card-title" style="font-size:15px;">失火責任 <span class="law-tag">§434</span><span class="stars">★</span><span class="examhit">105測驗・112測驗</span></div>
       <div class="highlight-box danger">承租人<strong>僅就重大過失負責</strong>——比善良管理人注意義務更低的門檻，是為了保護承租人（重大過失＝連普通人的注意義務都沒盡到）</div>
       <div style="font-size:14px;">若失火是由<strong>同居人</strong>或<strong>承租人允許使用之第三人</strong>所致：
         <ol style="margin:4px 0 0 20px;padding:0;">
@@ -271,7 +272,7 @@
 <div class="section">
   <div class="section-title">
     <div class="section-num">4</div>
-    <h2>買賣不破租賃 <span class="law-tag">§425</span><span class="stars">★★</span><span class="examhit">106測驗36(B)・109測驗8(A)</span></h2>
+    <h2>買賣不破租賃 <span class="law-tag">§425</span><span class="stars">★★</span><span class="examhit">106測驗・109測驗</span></h2>
   </div>
   <div class="highlight-box danger">出租人於租賃物交付後，承租人占有中，<strong>縱將其所有權讓與第三人</strong>，其租賃契約對於<strong>受讓人仍繼續存在</strong></div>
   <div class="example-box" style="margin-top:8px;">
@@ -312,7 +313,7 @@
 <div class="section">
   <div class="section-title">
     <div class="section-num">5</div>
-    <h2>法定租賃關係（推定租賃）<span class="law-tag">§425-1</span><span class="stars">★</span><span class="examhit">108測驗21(A)・109測驗12(A)・113測驗9(A)</span></h2>
+    <h2>法定租賃關係（推定租賃）<span class="law-tag">§425-1</span><span class="stars">★</span><span class="examhit">108測驗・109測驗・113測驗</span></h2>
   </div>
   <div class="card">
     <div class="highlight-box danger">土地與其上房屋<strong>原同屬一人所有</strong>，而僅將土地或僅將房屋所有權讓與他人，或將土地及房屋同時或先後讓與相異之人時，土地受讓人或房屋受讓人間，<strong>推定</strong>於房屋得使用期限內有租賃關係，其期限<strong>不受 §449 I 規定之限制</strong></div>
@@ -341,7 +342,7 @@
 <div class="section">
   <div class="section-title">
     <div class="section-num">6</div>
-    <h2>轉租 <span class="law-tag">§443</span><span class="stars">★★★</span><span class="examhit">106測驗36(A)(D)・108測驗9(C)・113測驗8(D)・114測驗12(B)</span></h2>
+    <h2>轉租 <span class="law-tag">§443</span><span class="stars">★★★</span><span class="examhit">106測驗・108測驗・113測驗・114測驗</span></h2>
   </div>
   <div class="grid-2" style="align-items:start;">
     <div class="card">
@@ -391,7 +392,7 @@
       <div class="card-title" style="font-size:15px;">通知與違反效果</div>
       <div style="font-size:14px;">通知<strong>應以書面為之</strong></div>
       <div class="highlight-box danger" style="margin-top:6px;">違反效果：<strong>所有權移轉不得對抗優先承買權人</strong>——未書面通知就逕行移轉所有權，不能拿來對抗優先承買權人</div>
-      <div class="note"><span class="examhit">108測驗9(B)</span>「出租人出賣租賃之房屋時，承租人有依同樣條件優先承買之權利」列為<strong>錯誤敘述</strong>——用以區辨房屋租賃無優先承買權，本條僅限土地／基地</div>
+      <div class="note"><span class="examhit">108測驗</span>「出租人出賣租賃之房屋時，承租人有依同樣條件優先承買之權利」列為<strong>錯誤敘述</strong>——用以區辨房屋租賃無優先承買權，本條僅限土地／基地</div>
     </div>
   </div>
   <div class="card" style="margin-top:8px;">
@@ -421,12 +422,12 @@
       <div class="card-title" style="font-size:15px;">時間點</div>
       <table>
         <tbody>
-          <tr><td><strong>定有期限</strong></td><td>期限屆滿時消滅<span class="examhit">106測驗36(C)</span></td></tr>
+          <tr><td><strong>定有期限</strong></td><td>期限屆滿時消滅<span class="examhit">106測驗</span></td></tr>
           <tr><td><strong>未定期限</strong></td><td>各當事人得隨時終止契約</td></tr>
         </tbody>
       </table>
       <div class="note">106年測驗：定有期限之租賃契約，當事人約定得提前終止者，於終止契約前應先期通知</div>
-      <div class="highlight-box warning" style="margin-top:6px;">例外（默示更新 <span class="law-tag">§451</span><span class="examhit">114測驗12(D)</span>）：租賃期限屆滿，承租人仍為租賃物之使用收益，出租人<strong>不即表示反對</strong>之意思 → <strong>視為以不定期限繼續</strong>契約</div>
+      <div class="highlight-box warning" style="margin-top:6px;">例外（默示更新 <span class="law-tag">§451</span><span class="examhit">114測驗</span>）：租賃期限屆滿，承租人仍為租賃物之使用收益，出租人<strong>不即表示反對</strong>之意思 → <strong>視為以不定期限繼續</strong>契約</div>
     </div>
     <div class="card">
       <div class="card-title" style="font-size:15px;">法律效果</div>
@@ -551,6 +552,33 @@
       <div class="desc">租賃最長期限限制（§425-1 推定租賃不受此限制）</div>
     </div>
   </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十一、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">11</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對，見<code>民法L6L7_考古題深查.md</code>。快速掃描用——依本堂已標記的高頻考點列出對應章節與命中年度；完整題幹見上方各節內文的 <code>.examhit</code> 標籤。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>轉租（§443，一部／全部轉租之效果）</td><td>七、轉租</td><td><span class="badge top">✓ 最高頻（4年：106/108/113/114）</span></td></tr>
+      <tr><td>買賣不破租賃§425</td><td>四、買賣不破租賃</td><td><span class="badge top">✓ 高頻（3年：106/109/111，111申論一25分完整命題）</span></td></tr>
+      <tr><td>法定（推定）租賃關係§425-1</td><td>五、法定租賃關係</td><td><span class="badge mid">中頻（3年：108/109/113）</span></td></tr>
+      <tr><td>出租人修繕義務／瑕疵擔保（準用§347+§436、§429）</td><td>二、出租人義務</td><td><span class="badge mid">中頻（2年：108/112）</span></td></tr>
+      <tr><td>承租人失火責任（僅重大過失§434）</td><td>三、承租人義務</td><td><span class="badge mid">中頻（2年：105/112）</span></td></tr>
+      <tr><td>租賃契約之終了（先期通知、默示更新§451）</td><td>八、租賃契約之終了</td><td><span class="badge mid">中頻（2年：106/114）</span></td></tr>
+      <tr><td>買賣不破租賃類推適用（靈骨塔案，§425延伸應用）</td><td>四、買賣不破租賃</td><td><span class="badge">一般命中（1年：112申論一25分完整命題）</span></td></tr>
+      <tr><td>出租人保障使用收益義務</td><td>二、出租人義務</td><td><span class="badge">一般命中（1年：113）</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box hi2" style="margin-top:10px;">⚠️ 轉租§443與買賣不破租賃§425是L6的兩大必拿分核心，其中買賣不破租賃還衍生出2次25分整題申論（111年代管房屋私自出租案、112年靈骨塔類推適用案），是本堂命題手法最靈活的主題；租賃總論§421、租金三級遲延門檻§439-440、租地建屋§426-1、土地優先承買權§426-2本體，十年內皆查無獨立命題。</div>
 </div>
 
 <hr>
