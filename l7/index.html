@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L7｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  /* ── 條文速查 ── */
+  .law-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .law-item { background: white; border-radius: 10px; padding: 8px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.07); border-top: 4px solid var(--ink); }
+  .law-item .num { font-size: 18px; font-weight: 900; color: var(--ink); margin-bottom: 5px; }
+  .law-item .desc { font-size: 13px; color: #374151; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L7｜債編各論・贈與契約、借貸契約</h1>
+    <div class="subtitle">贈與契約總論 → 贈與之撤銷 → 贈與拒絕權 → 債務不履行與瑕疵擔保 → 使用借貸 → 消費借貸 → 兩者比較總覽 → 綜合實例題</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§406～420</strong>贈與核心條文</div>
+    <div class="badge"><strong>§464～481</strong>借貸核心條文</div>
+    <div class="badge"><strong>L7</strong>債編各論・有名契約</div>
+  </div>
+</div>
+
+<div class="highlight-box" style="margin-bottom:15px;">
+  <strong>📌 素材來源提醒：</strong>本堂逐字稿（10,616 字元，2026-07-30 完成）完整涵蓋「贈與契約」與「借貸契約（使用借貸、消費借貸）」，上課講義 6 張（贈與定義與撤銷、拒絕權與瑕疵擔保、借貸契約定義、實例題兩則、總結架構圖）內容互相對應無落差。重點整理講義（與 L5 買賣共用同一頁）只涵蓋贈與部分的法條號（§406、§408、§409～411、§412、§416～420），借貸契約因無對應的重點講義，逐字稿與上課講義本身也都沒有唸出條號，<span class="law-tag" style="background:var(--sub);">§464～473（使用借貸）、§474～481（消費借貸）</span>是另外上網查證全國法規資料庫確認、非憑印象杜撰，避免誤植條號。考古題已完成 105–114 年逐年深查（陳國全國補習班解答版，詳見 <span class="law-tag" style="background:var(--sub);">民法L6L7_考古題深查.md</span>），共約 10 筆命中，已於下方各節插入 <code>.examhit</code> 標籤。
+</div>
+
+<!-- ═══ 一、贈與契約總論 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>贈與契約總論 <span class="law-tag">§406</span><span class="examhit">105測驗・107測驗</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">稱贈與者，謂當事人約定，<strong>一方以自己之財產無償給與他方</strong>，<strong>他方允受</strong>之契約</div>
+    <div class="highlight-box">性質：<strong>有名</strong>、<strong>債權</strong>、<strong>單務</strong>（效力上只有贈與人負給付義務）、<strong>無償</strong>、<strong>不要式</strong>、<strong>不要物</strong>之契約</div>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 雖然贈與在<strong>效力</strong>上是單務契約，但贈與「<strong>契約</strong>」的<strong>成立</strong>仍須雙方合意——條文特別寫明「他方<strong>允受</strong>」，代表受贈人也要有<strong>答應接受</strong>的意思表示，贈與契約才會成立，不是贈與人單方把東西送出去就算數</div>
+    <div class="note">契約成立後的效力：受贈人取得<strong>請求交付物之權利</strong>；若涉及物權，則可請求<strong>移轉所有權</strong>。</div>
+    <div class="note">105年測驗：契約成立後不得任意撤銷（錯）、須作成書面（錯）、無須受贈人同意（錯）、原則不負瑕疵擔保責任（對）——命中§406基礎性質辨析。107年測驗：非單獨行為、非以交付為生效要件皆錯，「贈與得附有負擔」為正確答案，命中附負擔贈與概念</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、贈與之撤銷 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>贈與之撤銷 <span class="stars">★★★</span></h2>
+  </div>
+  <table>
+    <thead><tr><th style="width:14%;">分類</th><th style="width:10%;">情狀</th><th style="width:46%;">內容</th><th>特別要件／備註</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>任意撤銷</strong> <span class="law-tag">§408</span><span class="examhit">106測驗</span></td>
+        <td>情狀一</td>
+        <td>贈與物<strong>權利未移轉前</strong>，得<strong>部分撤銷</strong>（贈與物可拆分等份時，未贈與的部分可以撤銷）</td>
+        <td>例外：<strong>已公證</strong>之贈與、<strong>履行道德上義務</strong>之贈與，不適用（不能撤銷）</td>
+      </tr>
+      <tr>
+        <td><strong>法定撤銷</strong> <span class="law-tag">§412 I</span><span class="examhit">111測驗</span></td>
+        <td>情狀二</td>
+        <td>贈與<strong>附有負擔</strong>，贈與人<strong>已為給付</strong>而受贈人<strong>不履行其負擔</strong>者</td>
+        <td>贈與人得<strong>請求受贈人履行負擔</strong>，或<strong>撤銷贈與</strong>，二擇一</td>
+      </tr>
+      <tr>
+        <td><strong>法定撤銷</strong> <span class="law-tag">§416</span></td>
+        <td>情狀三</td>
+        <td>受贈人對贈與人（或其配偶、直系血親、三親等內旁系血親、二親等內姻親），有<strong>故意侵害行為</strong></td>
+        <td class="stars">要件：主觀<strong>故意</strong> ＋ 依<strong>刑法有處罰之明文者</strong>，兩者缺一不可（僅過失不符合）</td>
+      </tr>
+      <tr>
+        <td><strong>法定撤銷</strong> <span class="law-tag">§416</span><span class="examhit">113測驗</span></td>
+        <td>情狀四</td>
+        <td>受贈人對贈與人有<strong>扶養義務而不履行</strong>者</td>
+        <td>常見情境：父母允諾將房子贈與子女，子女卻不履行對父母的扶養義務</td>
+      </tr>
+      <tr>
+        <td><strong>法定撤銷</strong> <span class="law-tag">§417</span><span class="examhit">111測驗</span></td>
+        <td>情狀五</td>
+        <td>受贈人因<strong>故意不法行為</strong>，致贈與人<strong>死亡</strong>或<strong>妨礙其為贈與之撤銷</strong>者</td>
+        <td class="stars">要件：主觀<strong>故意</strong> ＋ <strong>不法性</strong>（有阻卻違法事由則不算不法）</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="highlight-box danger" style="margin-top:8px;">情狀五是唯一的例外規定：情狀一～四都只能由<strong>贈與人本人</strong>行使撤銷權；只有情狀五（受贈人故意不法行為致贈與人死亡或妨礙撤銷），才改由<strong>贈與人之繼承人</strong>行使撤銷權。</div>
+  <div class="highlight-box" style="margin-top:6px;"><strong>撤銷方式 §419</strong>：應向受贈人以<strong>意思表示</strong>為之；撤銷後贈與人得依<strong>不當得利</strong>規定請求返還贈與物。</div>
+  <div class="note">111年測驗：附負擔之贈與，贈與人已為給付而受贈人不履行負擔，屬贈與人得撤銷贈與之事由，命中§412 I 情狀二。113年測驗：甲將A屋贈與20歲之子乙並完成移轉登記，乙其後不履行對甲之法定扶養義務，正確答案為「甲得撤銷贈與契約」，直接命中§416情狀四。111年測驗：受贈人因故意不法行為致贈與人死亡者，屬繼承人得主張撤銷贈與之事由，命中§417情狀五繼承人特別撤銷權</div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、贈與拒絕權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>贈與拒絕權 <span class="law-tag">§418</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">贈與人於贈與<strong>①約定後</strong>，其經濟狀況<strong>②顯</strong>有變更，如因贈與致其<strong>③生計有重大之影響</strong>，或<strong>③妨礙其扶養義務之履行</strong>者，得拒絕贈與之履行</div>
+    <div class="highlight-box warning" style="margin-top:8px;">為什麼是「<strong>拒絕</strong>」不是「撤銷」？因為這時候東西<strong>還沒送出去</strong>，雖然雙方已達成贈與約定，但尚未履行——跟前面「撤銷」已經生效或準備生效的情況不同，所以法律只給贈與人<strong>拒絕履行</strong>的權利（「得」拒絕，非強制）</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、贈與之債務不履行責任與瑕疵擔保責任 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>債務不履行責任與瑕疵擔保責任</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">債務不履行責任（給付不能）<span class="law-tag">§409</span><span class="law-tag">§410</span></div>
+      <div class="highlight-box danger">贈與人<strong>僅就故意或重大過失</strong>負給付不能之責任——比一般債務不履行標準（<span class="law-tag">§220</span> 故意／過失）更輕，是特別「減輕」的規定</div>
+      <div style="font-size:13.5px;margin-top:6px;">Why：買賣、租賃都是<strong>有償契約</strong>，相對人要付對價（價金／租金），所以出賣人、出租人責任較重；贈與是<strong>無償契約</strong>，贈與人純負義務、不受任何利益，受贈人反而純受利益、不負任何對待給付，為了衡平雙方權利義務，才讓贈與人只需就故意或重大過失負責。</div>
+      <div class="note">只針對「給付不能」負責，不完全給付、瑕疵擔保不在此範疇內（另見右方）。</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">瑕疵擔保責任 <span class="law-tag">§411</span><span class="examhit">114測驗</span></div>
+      <div class="highlight-box danger">原則上贈與人<strong>不負擔保責任</strong>；<strong>除非贈與人故意不告知瑕疵</strong>，才須負<strong>損害賠償</strong>責任</div>
+      <div class="highlight-box warning" style="margin-top:6px;">跟買賣契約（L5）最大的不同：買賣瑕疵擔保底下，買受人可以<strong>解除契約</strong>、<strong>減少價金</strong>、<strong>損害賠償</strong>三條路；贈與契約<strong>只有損害賠償這一條路</strong>，沒有解除契約的權利</div>
+      <div class="note">114年測驗：贈與標的物瑕疵造成受贈人損害，「僅於贈與人故意不告知瑕疵或保證其無瑕疵時，始得請求賠償」為正確答案，完整命中§411核心規則，並排除「經公證贈與仍得主張給付遲延損害賠償」「不動產贈與為要物契約」「無過失擔保責任」等混淆選項</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、借貸契約－使用借貸 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>借貸契約－使用借貸 <span class="law-tag">§464</span><span class="examhit">106測驗・111測驗</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">謂當事人一方以物交付他方，而約定他方於<strong>無償使用後返還其物</strong>之契約——重點是<strong>原物返還</strong>（我把 A 物借出去，最後拿回來的還是原本那個 A 物，所有權始終在貸與人身上）</div>
+    <div class="note">111年測驗：「借用人得主張買賣不破使用借貸之抗辯」列為錯誤敘述，明確區辨使用借貸<strong>不具</strong>租賃§425那種買賣不破租賃的對抗效力</div>
+    <div class="grid-2" style="margin-top:8px;align-items:start;">
+      <div>
+        <div class="card-title" style="font-size:14px;">瑕疵擔保</div>
+        <div class="highlight-box" style="margin:0;">貸與人<strong>故意不告知</strong>借用物之瑕疵，<strong>致</strong>借用人受損害者，負賠償責任——主觀故意＋因果關係（有受損害）兩者缺一不可，不是「故意不告知」就一定要賠</div>
+        <div class="note">106年測驗：甲乙間電動機車使用借貸情境，辨析單務契約、要物契約、非經同意不得轉借他人使用，「甲對乙不以故意不告知瑕疵為限即負瑕疵擔保責任」列為錯誤答案，反向確認出借人原則僅就故意不告知瑕疵負責</div>
+      </div>
+      <div>
+        <div class="card-title" style="font-size:14px;">借用人之義務 <span class="stars">善良管理人注意義務</span></div>
+        <div style="font-size:13.5px;">因為東西最後仍要<strong>原物返還</strong>，所以對借用人要求的注意義務門檻，比贈與契約的受贈人高（受贈人是純受利益、不負任何注意義務）</div>
+      </div>
+    </div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:30%;">借用人義務細節</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td>使用方法</td><td>依<strong>約定方法</strong>使用；無約定方法者，依<strong>借用物之性質</strong>而定之方法使用</td></tr>
+        <tr><td>第三人使用 <span class="examhit">106測驗</span></td><td><strong>非經貸與人同意</strong>，不得允許第三人使用借用物（比照租賃契約「原則禁止轉租」的概念）</td></tr>
+        <tr><td>返還時點</td><td><strong>契約期限屆滿時</strong>；未約定期限者，於<strong>依借貸目的使用完畢時</strong>；非前二者情形，貸與人得<strong>隨時請求返還</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、借貸契約－消費借貸 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>借貸契約－消費借貸 <span class="law-tag">§474</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">謂當事人一方<strong>移轉金錢或其他代替物之所有權</strong>於他方，約定他方以<strong>種類、品質、數量相同</strong>之物返還之契約</div>
+    <div class="highlight-box warning" style="margin-top:6px;">與使用借貸最大的不同：消費借貸一旦交付，即發生<strong>所有權移轉</strong>；使用借貸則<strong>不移轉所有權</strong>，所有權始終在貸與人身上。原因是消費借貸出借的物品「用了就會減少／消失」（例如金錢花掉、衛生紙用掉），不可能原物返還，只能返還同種類、同品質、同數量的替代物。</div>
+    <div class="grid-2" style="margin-top:8px;align-items:start;">
+      <div>
+        <div class="card-title" style="font-size:14px;">瑕疵擔保（兩種情形）</div>
+        <table>
+          <tbody>
+            <tr><td><strong>有報償</strong>（約定利息或其他報償）</td><td>借用物有瑕疵 → 貸與人須<strong>交付無瑕疵之物</strong></td></tr>
+            <tr><td><strong>無報償</strong></td><td>借用物有瑕疵 → 借用人得<strong>照有瑕疵原物之價值</strong>返還即可</td></tr>
+          </tbody>
+        </table>
+        <div class="note">Why：有約定利息／報償時，代表課予借用人較高的義務（例如還本金還要加計利息），為了衡平雙方權益，也讓貸與人須負較高的瑕疵擔保責任；沒有報償時，貸與人責任就相對減輕。</div>
+      </div>
+      <div>
+        <div class="card-title" style="font-size:14px;">返還義務</div>
+        <div class="highlight-box" style="margin:0;">借用人應於<strong>約定期限內</strong>返還種類、品質、數量相同之物；<strong>未定返還期限</strong>者，借用人得隨時返還，貸與人亦得定<strong>一個月以上</strong>之相當期限催告返還</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、使用借貸 vs 消費借貸 比較總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>使用借貸 vs 消費借貸 比較總覽</h2>
+  </div>
+  <table>
+    <thead><tr><th style="width:16%;">項目</th><th>使用借貸 §464<span class="examhit">106測驗・111測驗</span></th><th>消費借貸 §474</th></tr></thead>
+    <tbody>
+      <tr><td>標的物</td><td>特定物（動產／不動產皆可）</td><td>金錢或其他代替物（種類物）</td></tr>
+      <tr><td>所有權</td><td><strong>不移轉</strong>，貸與人始終保有</td><td><strong>交付即移轉</strong>給借用人</td></tr>
+      <tr><td>有償／無償</td><td>只能<strong>無償</strong></td><td>可<strong>有償</strong>（附利息）可無償</td></tr>
+      <tr><td>返還方式</td><td>返還<strong>原物</strong></td><td>返還<strong>同種類、品質、數量</strong>之物</td></tr>
+      <tr><td>瑕疵擔保</td><td>故意不告知致受損害才負責</td><td>有報償→交付無瑕疵物；無報償→照有瑕疵原物之價值返還</td></tr>
+      <tr><td>貸與人終止權</td><td>有（§472，四種情形）</td><td>無對應規定</td></tr>
+    </tbody>
+  </table>
+  <div class="note">§472、§465-1（消費借貸預約失效）105-114 年考古題深查<strong>查無獨立命中</strong>，先誠實記錄條號差異，不列入考試重點。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲與乙為多年宿敵，甲發現自己所有的 A 車引擎故障，若修繕需花高額維修費，甲又懶得報廢處理，決定將難題轉嫁給乙——告知乙想一了過往恩怨、重新開始，決定將心愛的 A 車贈與給乙，並告訴乙 A 車性能一如既往的好。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜乙事後發現 A 車有重大瑕疵，得如何主張權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲乙間贈與契約成立（甲贈與、乙允受）；甲明知 A 車引擎故障（有重大瑕疵），卻仍告知乙「性能一如既往的好」，構成<strong>故意不告知瑕疵</strong></div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>贈與人原則不負瑕疵擔保責任，但甲<strong>故意不告知瑕疵</strong>，須負<strong>損害賠償</strong>責任；乙<strong>不能主張解除契約</strong>（贈與契約的瑕疵擔保只有損害賠償這一條路，沒有解除契約的權利）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">甲另有多年好交情的好友丙。某天甲的孩子在學校要上烹飪課，需要用到醬油和不沾鍋，可是甲家裡沒有醬油，不沾鍋也剛好破了，只好詢問丙可否借一罐醬油，日後再還給丙；丙借給甲一罐陳年老醬油，又因為丙是廚具商，也好心借了一個高級不沾鍋給甲。</div>
+  <div class="irac-card">
+    <div class="irac-header">Q2｜甲應如何返還這些借用物？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲丙間屬<strong>借貸契約</strong>（無償、日後須歸還，非贈與亦非買賣），但同時涉及兩種不同的借貸類型</div></div>
+      <div class="irac-row"><div class="irac-label">醬油部分</div><div>醬油用進料理後不可能原封不動歸還，成立<strong>消費借貸</strong> → 甲應返還<strong>同種類、同數量、同品質</strong>的醬油，不用還原本那一罐</div></div>
+      <div class="irac-row"><div class="irac-label">不沾鍋部分</div><div>不沾鍋使用後不會消失，可以原封不動歸還，成立<strong>使用借貸</strong> → 甲應將<strong>原物（同一個不沾鍋）</strong>返還給丙</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、補充章節 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>補充章節：贈與關係之消滅・特種贈與 <span class="badge-tag">重點講義提及・本堂逐字稿未展開</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box">贈與關係之消滅 <span class="law-tag">§420</span><span class="examhit">111測驗</span>：贈與人之撤銷權，因<strong>受贈人死亡</strong>而消滅。重點整理講義有列出條號，但本堂逐字稿完全未提及具體內容，先記錄條號，待後續複習補齊。</div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:26%;">類型</th><th>相關條號</th></tr></thead>
+      <tbody>
+        <tr><td>附負擔之贈與</td><td><span class="law-tag">§412</span><span class="law-tag">§413</span><span class="law-tag">§414</span><span class="examhit">111測驗</span></td></tr>
+        <tr><td>定期給付之贈與</td><td><span class="law-tag">§415</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">「特種贈與」§412～415 在重點整理講義中與贈與並列同一區塊，但本堂逐字稿與上課講義皆未展開說明具體內容，比照 L5／L6 處理未展開素材的先例，僅先記錄條號範圍，不臆測內容。</div>
+    <div class="note">111年測驗：附負擔之贈與，贈與人已為給付而受贈人因過失不履行負擔，是否屬得撤銷贈與之事由列入辨析（§412-414撤銷事由整理題之一環）；「定期給付之贈與，而受贈人已死亡者」測考是否屬贈與人得撤銷之事由（答案為此非屬撤銷事由，而是依§415定期給付贈與因受贈人死亡而失效，命中§420關係消滅概念）</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對（2026-08-14）。快速掃描用——依本堂已標記的高頻考點列出對應章節與命中年度；完整題幹見上方各節內文的 <code>.examhit</code> 標籤，或 <code>民法L6L7_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>贈與之撤銷（任意撤銷§408＋法定撤銷§412 I／416／417）</td><td>②贈與之撤銷</td><td><span class="badge top">✓ 最高頻（3年：106/111/113）</span></td></tr>
+      <tr><td>贈與契約總論・性質辨析（諾成、不要式、需受贈人同意）§406</td><td>①贈與契約總論</td><td><span class="badge mid">中頻（2年：105/107）</span></td></tr>
+      <tr><td>使用借貸§464（借用人義務・轉借・對抗效力辨析）</td><td>⑤借貸契約－使用借貸、⑦兩者比較總覽</td><td><span class="badge mid">中頻（2年：106/111）</span></td></tr>
+      <tr><td>瑕疵擔保§411（贈與人原則不負責，故意不告知才賠）</td><td>④債務不履行責任與瑕疵擔保責任</td><td><span class="badge">一般命中（1年：114，精準命中核心規則）</span></td></tr>
+      <tr><td>特種贈與・關係消滅§412～415／420</td><td>⑨補充章節</td><td><span class="badge">一般命中（1年：111，延伸辨析）</span></td></tr>
+      <tr><td>贈與拒絕權§418</td><td>③贈與拒絕權</td><td><span class="badge" style="background:#94a3b8;">查無命中（10年內未見獨立命題）</span></td></tr>
+      <tr><td>消費借貸§474</td><td>⑥借貸契約－消費借貸</td><td><span class="badge" style="background:#94a3b8;">查無命中（10年內未見獨立命題）</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box hi2" style="margin-top:10px;">⚠️ 「贈與之撤銷」是 L7 最核心必考主題——106、111、113 三個年度都有命中，111 年更以整題（測驗13）橫跨§412 I、§416、§417、§420 四個條號辨析撤銷／消滅事由，是這堂拿分關鍵；相對地，贈與拒絕權§418、消費借貸§474 這兩塊查無獨立命中，優先度可以放低。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十一、近10年常考題目彙整（逐年版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">11</div>
+    <h2>近 10 年常考題目彙整（逐年版） <span class="examhit">105–114年</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📖 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐題核對（2026-08-14）。L7 共 10 年中 6 年有命中（105／106／107／111／113／114），共約 10 題次；108、109、110、112 四年查無獨立命中，完整明細見 <code>民法L6L7_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:11%;">年度</th><th>考點摘要</th><th style="width:22%;">對應法條</th></tr></thead>
+    <tbody>
+      <tr><td>105<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測19(D) 贈與契約性質辨析：契約成立後不得任意撤銷（錯）、須作成書面（錯）、無須受贈人同意（錯）、原則不負瑕疵擔保責任（對），命中§406基礎性質</td><td><span class="law-tag">§406</span></td></tr>
+      <tr><td>106<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測9(C) 甲將A屋贈與乙女，「甲移轉A屋所有權予乙前，得撤銷該贈與」為正確答案，命中§408任意撤銷（所有權移轉前得撤銷）<br>測3 甲乙間電動機車使用借貸情境：單務契約、要物契約、非經同意不得轉借他人使用，「出借人不以故意不告知瑕疵為限即負瑕疵擔保責任」列為錯誤答案，反向確認出借人原則僅就故意不告知瑕疵負責</td><td><span class="law-tag">§408</span><span class="law-tag">§464</span></td></tr>
+      <tr><td>107<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測14(D) 贈與性質辨析：非單獨行為（錯）、非以交付為生效要件（錯），原選項「贈與得附有負擔」為正確答案，命中附負擔贈與概念</td><td><span class="law-tag">§412</span></td></tr>
+      <tr><td>111<br><span class="note" style="font-style:normal;">4 題次</span></td><td>測13(A) 附負擔之贈與，贈與人已為給付而受贈人因過失不履行負擔，是否屬得撤銷贈與之事由（辨析）<br>測13(C) 受贈人因故意不法行為致贈與人死亡者，屬繼承人得主張撤銷贈與之事由，命中§417繼承人特別撤銷權<br>測13(D) 定期給付之贈與而受贈人已死亡者，測考是否屬撤銷事由（答案為非屬撤銷事由，而是依§415因受贈人死亡而失效，命中§420關係消滅概念）<br>測4(B) 「借用人得主張買賣不破使用借貸之抗辯」列為錯誤敘述，明確區辨使用借貸不具租賃§425之對抗效力</td><td><span class="law-tag">§412</span><span class="law-tag">§417</span><span class="law-tag">§415</span><span class="law-tag">§420</span><span class="law-tag">§464</span></td></tr>
+      <tr><td>113<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測11(C) 甲將A屋贈與20歲之子乙並完成移轉登記，乙其後不履行對甲之法定扶養義務，正確答案為「甲得撤銷贈與契約」，直接命中§416第1項第2款受贈人對贈與人有扶養義務而不履行之法定撤銷事由</td><td><span class="law-tag">§416</span></td></tr>
+      <tr><td>114<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測13(D) 贈與標的物瑕疵造成受贈人損害，「僅於贈與人故意不告知瑕疵或保證其無瑕疵時，始得請求賠償」為正確答案，完整命中§411贈與人原則不負瑕疵擔保責任、例外故意不告知或保證品質才負責之核心規則</td><td><span class="law-tag">§411</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:10px;">⚠️ 108、109、110、112 四年查無獨立命中——L7 條文本身只有 §406-420（贈與）＋§464-484（借貸）約 20 條，密度屬正常，不代表這些年度完全沒考贈與借貸相關概念，只是未見以此為核心的獨立命題。命中最集中的是 111 年（測驗13整題橫跨§412／415／417／420 四個條號辨析撤銷與消滅事由），是這堂考古題示範的最佳教材。</div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：贈與契約與借貸契約都是<strong>無償契約</strong>，考點邏輯都是圍繞著「無償」二字展開——因為一方純受利益、不負對待給付，法律才會讓另一方的責任門檻降低（贈與人僅故意重大過失負責、瑕疵擔保只有損害賠償沒有解約權；使用借貸貸與人也只有故意不告知才須賠）。答題時先問自己：這是有償還是無償契約？無償契約通常會讓給付方責任較輕，抓住這個邏輯，條文適用就不容易錯。借貸契約另一個核心是分辨「原物返還」（使用借貸）與「同種類品質數量返還」（消費借貸），關鍵看借出去的東西用了之後會不會消失或改變。
+</div>
+
+</body>
+</html>
