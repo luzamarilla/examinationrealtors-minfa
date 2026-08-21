@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L8｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L8｜債編各論・承攬契約、委任契約</h1>
+    <div class="subtitle">承攬契約總論 → 瑕疵擔保責任 → 遲延責任 → 定作人協力義務 → 危險負擔與受領 → 契約終止權 → 委任契約總論 → 承攬vs委任比較 → 受任人義務與權利 → 委任契約終止權 → 綜合實例題</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§490～514、§528～552</strong>核心條文</div>
+    <div class="badge"><strong>L8</strong>債編各論・勞務契約</div>
+    <div class="badge"><strong>⭐⭐⭐</strong>瑕疵擔保§495・報酬義務§547</div>
+  </div>
+</div>
+
+
+<!-- ═══ 一、承攬契約總論 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>承攬契約總論 <span class="law-tag">§490</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">稱承攬者，謂當事人約定，<strong>一方為他方完成一定之工作</strong>，<strong>他方俟工作完成，給付報酬</strong>之契約</div>
+    <div class="grid-2" style="margin-top:8px;align-items:start;">
+      <div>
+        <div class="card-title" style="font-size:14px;">兩個角色</div>
+        <div style="font-size:13.5px;">承攬人：完成<strong>工作物</strong>的一方；定作人：工作物完成後<strong>給付報酬</strong>的一方</div>
+      </div>
+      <div>
+        <div class="card-title" style="font-size:14px;">最重要的定性特徵</div>
+        <div style="font-size:13.5px;">承攬契約<strong>一定會有工作物完成</strong>並交付給定作人——這才叫承攬。如果契約走到最後<strong>沒有一個完成品要交付</strong>，很可能就不是承攬，而是委任（詳見⑧比較總覽）</div>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:6px;"><strong>承攬報酬請求權 <span class="law-tag">§491</span></strong>：① 雙方雖未明講報酬金額，但只要有「<strong>非受報酬即不完成工作</strong>」的約定，視為<strong>推定已允與報酬</strong>；② 完全未定報酬者，按<strong>價目表</strong>給付，無價目表者按<strong>習慣</strong>給付——只要是承攬契約，報酬給付義務必然存在</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、瑕疵擔保責任 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>瑕疵擔保責任 <span class="law-tag">§492～495</span><span class="examhit">106測驗</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">承攬人完成工作，應使其具備<strong>約定之品質</strong>，且<strong>無減少或滅失價值</strong>、<strong>不適於通常或約定使用</strong>之瑕疵 <span class="law-tag">§492</span></div>
+    <div class="sub-title" style="margin-top:10px;">瑕疵發生後的處理位階（一層比一層重）</div>
+    <table>
+      <thead><tr><th style="width:20%;">位階</th><th style="width:36%;">定作人得主張的權利</th><th>特別限制／備註</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>①瑕疵修補請求權</strong> <span class="law-tag">§493</span></td>
+          <td>定<strong>相當期限</strong>請求承攬人修補；逾期不修 → 得<strong>自行修補</strong>並請求必要費用</td>
+          <td>修補費用過鉅時，承攬人得<strong>拒絕修補</strong></td>
+        </tr>
+        <tr>
+          <td><strong>②解除契約／減少報酬</strong> <span class="law-tag">§494</span></td>
+          <td>逾期不修補、拒絕修補或瑕疵不能修補者，得<strong>解除契約</strong>或<strong>請求減少報酬</strong></td>
+          <td class="stars">但書：瑕疵<strong>非重要</strong>，或工作為<strong>建築物或其他土地上之工作物</strong>者，<strong>不得解除契約</strong>（只能減少報酬）</td>
+        </tr>
+        <tr>
+          <td><strong>③損害賠償</strong> <span class="law-tag">§495</span><span class="examhit">106測驗</span></td>
+          <td><strong>可歸責於承攬人</strong>之事由致生瑕疵者，除①②之權利外，<strong>另得請求損害賠償</strong></td>
+          <td class="stars">例外之例外：建築物／土地上工作物瑕疵<strong>重大到使用目的不達</strong>者，<strong>仍得解除契約</strong>（推翻②的但書限制）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:8px;">⚠️ 為什麼建築物、土地上工作物原則上<strong>不能解除契約</strong>？因為這類標的物太大、難以移動也難以拆除，若動輒讓一方解約、雙方互負回復原狀義務，就等於要把房子拆掉，成本過高。所以法律傾向讓瑕疵先走「修補」或「減少報酬」，只有<strong>瑕疵重大到使用目的完全不達</strong>時，才例外允許解除契約——課堂例題中醫院牆壁輻射防護不合格，因醫院整體仍可使用（只是該區塊不能用），屬「殺雞用牛刀」，不宜直接解除契約，優先走修補／減少報酬。</div>
+    <div class="note">106年測驗12：甲乙成立承攬契約由乙整地，乙整地有瑕疵且趁機掩埋有毒廢棄物，甲得請求修補瑕疵、依§184侵權請求回復原狀、依§495請求減損價額賠償，但<strong>不得逕以此為由解除契約</strong>——命中「瑕疵未達重大到使用目的不達，不得逕行解除」的核心辨析</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、承攬人遲延責任 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>承攬人遲延責任 <span class="law-tag">§502</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">遲延責任<strong>限於可歸責於承攬人之事由</strong>——不可歸責時（如世界局勢動盪導致原物料無法如期到港），<strong>不構成遲延責任</strong></div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:30%;">情形</th><th>定作人得主張</th></tr></thead>
+      <tbody>
+        <tr><td>一般遲延</td><td>請求<strong>減少報酬</strong>，或請求賠償因<strong>遲延所受之損害</strong></td></tr>
+        <tr><td>特定期限為契約要素</td><td>得<strong>解除契約</strong>並請求<strong>因不履行而生之損害賠償</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="note">課堂例題辨析：進口原物料因世界局勢動盪未能如期到港 → <strong>不可歸責</strong>於承攬人 → 不構成遲延責任；若同一情形是因為承攬人<strong>自己忘記訂購原物料</strong> → <strong>可歸責</strong> → 構成遲延責任，結論隨可歸責性反轉，是本堂申論題答題最常見的辨析陷阱</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、定作人之協力義務 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>定作人之協力義務 <span class="law-tag">§507</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">工作需<strong>定作人之行為始能完成</strong>（例如提供特殊材料、協助申請建照使用執照），而定作人不為其行為時——承攬人得定<strong>相當期限催告</strong>定作人為之</div>
+    <div class="flow" style="margin-top:8px;">
+      <div class="flow-item">定作人未盡協力義務</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-item">承攬人定相當期限催告</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-item">仍不履行</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-item">承攬人得解除契約＋請求損害賠償</div>
+    </div>
+    <div class="note">課堂例題：醫院興建需甲協助申請建照與使用執照，此業已於契約中明定，但甲一直忘記，導致工程遲遲無法開始 → 丙（承攬人）得定相當期限催告甲履行協力義務，甲仍不履行時，丙得解除契約並請求損害賠償</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、危險負擔與工作物受領 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>危險負擔與工作物受領 <span class="law-tag">§508</span><span class="law-tag">§510</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">危險負擔 <span class="law-tag">§508</span></div>
+      <table>
+        <tbody>
+          <tr><td>定作人<strong>受領前</strong></td><td>由<strong>承攬人</strong>負擔（此時仍是承攬人保管）</td></tr>
+          <tr><td>定作人<strong>受領遲延</strong></td><td>由<strong>定作人</strong>負擔（雖工作物仍在承攬人手上，但遲延責任在定作人）</td></tr>
+        </tbody>
+      </table>
+      <div class="note">概念與買賣契約（L5）的危險負擔邏輯相同：誰保管、誰造成遲延，誰就承擔毀損滅失的風險</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">工作物之受領 <span class="law-tag">§510</span></div>
+      <div class="highlight-box" style="margin:0;">依工作性質<strong>無須交付</strong>者，以<strong>工作完成時</strong>視為受領；<strong>需要交付</strong>者，須<strong>交付後</strong>才視為受領</div>
+      <div class="note">條文之外，實務契約常另有約定（如「一出場即算交付」），考試仍以條文兩大原則為準。動產交付的具體方式（現實交付／簡易交付等），留待物權編詳細說明</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、契約終止權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>契約終止權 <span class="law-tag">§511</span><span class="law-tag">§512</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">工作<strong>完成前</strong>，<strong>定作人</strong>得<strong>隨時終止契約</strong>，但須賠償承攬人因此所受之損害 <span class="law-tag">§511</span></div>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 終止權只在<strong>定作人</strong>身上，而且是「隨時」——但相對地，法律要求定作人若因此造成承攬人已投入的時間、人力、成本白費，就必須負損害賠償責任，用來平衡定作人這個很大的權利</div>
+    <div class="highlight-box" style="margin-top:6px;"><strong>另一種終止事由 §512</strong>：工作以<strong>承攬人個人技能</strong>為契約要素者，承攬人<strong>死亡</strong>或<strong>非因過失致不能完成</strong>時，契約當然終止；已完成部分對定作人有用者，定作人有<strong>受領並給付相當報酬</strong>之義務</div>
+    <div class="note">補充：承攬人另有<strong>法定抵押權</strong>可對定作人之不動產請求登記抵押權以擔保報酬 <span class="law-tag">§513</span>；瑕疵相關各項請求權原則上自瑕疵發見後<strong>1年</strong>不行使而消滅 <span class="law-tag">§514</span>（建築物／重大修繕延長為5年，承攬人故意不告知瑕疵者再延長，§498～501-1）</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、委任契約總論 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>委任契約總論 <span class="law-tag">§528</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">稱委任者，謂當事人約定，<strong>一方委託他方處理事務</strong>，<strong>他方允為處理</strong>之契約</div>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 用詞陷阱：民法只有「<strong>委任契約</strong>」，<strong>沒有「委託契約」</strong>這個用詞！委任契約的角色是「<strong>委任人</strong>」與「<strong>受任人</strong>」，不是「委託人」「受託人」——「委託人／受託人」是<strong>信託契約</strong>（信託法概要範疇）的用語，寫考卷時務必分清楚，寫錯角色名稱等於答案方向錯誤</div>
+    <div class="highlight-box" style="margin-top:6px;"><strong>要式性 §531</strong>：委任事務之處理若需為<strong>法律行為</strong>，且該法律行為<strong>依法應以文字為之</strong>者，這個<strong>處理權之授與</strong>也應以文字為之。換言之，委任原則上<strong>不要式</strong>（口頭委任即可），但被委任的行為本身法律要求要式時，委任本身也要跟著要式</div>
+    <div class="note">受任人之權限 <span class="law-tag">§532</span>：依委任契約之訂定；契約未定者，依委任事務之性質定之</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、承攬 vs 委任 比較總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>承攬 vs 委任 比較總覽 <span class="stars">★★★契約定性核心</span></h2>
+  </div>
+  <div class="highlight-box danger">寫申論題／實例題的<strong>第一步</strong>：一定要先「<strong>定性契約</strong>」——這是本堂課反覆強調的答題起手式，先判斷契約類型，才能決定要套用哪一套規定</div>
+  <table style="margin-top:8px;">
+    <thead><tr><th style="width:16%;">項目</th><th>承攬契約</th><th>委任契約</th></tr></thead>
+    <tbody>
+      <tr><td>角色</td><td>承攬人／定作人</td><td>受任人／委任人</td></tr>
+      <tr><td>核心特徵</td><td>一定要有<strong>工作物完成並交付</strong>（有具體成品）</td><td>只是<strong>處理事務</strong>，不一定有最終完成品交付（例如董事長、總經理的委任契約，任期結束不會交出一個「成品」）</td></tr>
+      <tr><td>報酬請求前提</td><td>工作完成／交付</td><td>依習慣或事務性質，不待約定即得請求（§547）</td></tr>
+      <tr><td>契約終止權</td><td>只有<strong>定作人</strong>可隨時終止（§511）</td><td><strong>雙方</strong>都可隨時終止（§549）</td></tr>
+      <tr><td>典型案例</td><td>建造工程、裝潢工程、設計圖繪製</td><td>監造、董事長／總經理職務、律師代理訴訟</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:8px;">實務上常出現<strong>混合契約</strong>——例如課堂例題「設計監造契約」：設計部分有工作物（設計圖）產出，屬<strong>承攬</strong>；監造部分只是巡查監督、沒有工作物，屬<strong>委任</strong>。混合契約原則上「承攬的部分用承攬規定，委任的部分用委任規定」分別處理；另有一派實務見解認為承攬委任混合契約可依 <span class="law-tag">§529</span>（勞務給付契約不屬其他契約種類者，準用委任規定）整體準用委任處理，屬於補充見解。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、受任人之注意義務 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>受任人之注意義務 <span class="law-tag">§535</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">受任人因處理委任事務有過失（含故意），或因逾越權限之行為所生之損害，對委任人應負賠償責任 <span class="law-tag">§544</span></div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:26%;">情形</th><th>注意義務程度</th><th>理由</th></tr></thead>
+      <tbody>
+        <tr><td><strong>有報酬</strong></td><td><strong>善良管理人</strong>注意義務（較高）</td><td>有拿錢做事，理當更謹慎</td></tr>
+        <tr><td><strong>無報酬</strong></td><td>與<strong>處理自己事務同一</strong>之注意義務（較低）</td><td>純粹幫忙、無償服務，要求太高標準並不公平</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、自己處理原則 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>自己處理原則 <span class="law-tag">§537</span><span class="law-tag">§538</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">原則上受任人須<strong>自己處理</strong>委任事務；但經委任人同意、另有習慣或有不得已事由者，得使第三人代為處理</div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:30%;">情形</th><th>受任人責任範圍</th></tr></thead>
+      <tbody>
+        <tr><td>未經同意即使第三人處理</td><td>就第三人之<strong>行為</strong>，與自己之行為<strong>負同一責任</strong>（第三人做的等於自己做的）</td></tr>
+        <tr><td>經委任人同意使第三人處理</td><td>僅就第三人之<strong>選任</strong>及對第三人之<strong>指示</strong>負責（責任範圍較窄）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">邏輯：擅自轉交給第三人做，就要對第三人一切行為負完全責任；有先取得同意，法律只要求「選對人、給對指示」，不必為第三人的一切行為兜底</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十一、受任人之補償請求權與報酬請求權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">11</div>
+    <h2>受任人之補償請求權與報酬請求權 <span class="law-tag">§546</span><span class="law-tag">§547</span><span class="examhit">109測驗</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">補償請求權 <span class="law-tag">§546</span></div>
+      <table>
+        <tbody>
+          <tr><td>支出<strong>必要費用</strong></td><td>委任人應償還，並付<strong>自支出時起之利息</strong></td></tr>
+          <tr><td>負擔<strong>必要債務</strong></td><td>得請求委任人<strong>代其清償</strong></td></tr>
+          <tr><td><strong>非可歸責於自己</strong>之事由受損害</td><td>得向委任人<strong>請求賠償</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note">典型情境：律師代客戶墊付裁判費，事後向委任人請求補償</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="font-size:15px;">報酬請求權 <span class="law-tag">§547</span><span class="law-tag">§548</span><span class="examhit">109測驗</span></div>
+      <div class="highlight-box" style="margin:0;">報酬<strong>縱未約定</strong>，如依<strong>習慣</strong>或依<strong>委任事務之性質</strong>應給報酬者，受任人仍得請求 <span class="law-tag">§547</span></div>
+      <div class="highlight-box warning" style="margin-top:6px;">應受報酬者，除契約另有訂定，<strong>非於委任關係終止且明確報告顛末後</strong>不得請求給付 <span class="law-tag">§548 I</span>；因<strong>非可歸責於受任人</strong>之事由於事務處理未完畢前已終止委任者，受任人得就<strong>已處理之部分</strong>請求報酬 <span class="law-tag">§548 II</span></div>
+    </div>
+  </div>
+  <div class="note">109年測驗11：辨析受任人未受報酬仍負善良管理人注意義務（誤導選項，實際上無報酬只負與處理自己事務同一之注意）、委任因非可歸責受任人事由中途終止仍得就已處理部分請求報酬（命中§548 II）、契約性質應給報酬時不待約定即得請求（命中§547）——同一題橫跨§535注意義務與§547／548報酬請求權辨析</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十二、委任契約終止權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">12</div>
+    <h2>委任契約終止權 <span class="law-tag">§549</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">當事人之<strong>任何一方</strong>，得<strong>隨時終止</strong>委任契約——與承攬契約最大的不同：承攬只有<strong>定作人</strong>能隨時終止，委任是<strong>雙方都可以</strong></div>
+    <div class="highlight-box warning" style="margin-top:6px;">但書：於<strong>不利於他方之時期</strong>終止契約者，應負<strong>損害賠償</strong>責任；但因<strong>非可歸責於該當事人</strong>之事由，致不得不終止契約者，不在此限</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十三、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">13</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲為知名企業家，有意投資設立醫療機構。甲與設計師乙簽訂<strong>設計監造契約</strong>，並與丙簽訂<strong>建造契約</strong>：乙負責設計醫院建築與內部設備裝潢，並監督丙的興建進度與品質；丙負責新建。設計藍圖過程中，甲發現乙是搶走自己前任情人的人，因此心懷怨恨，決定更換設計師與監造人。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜甲得如何合法主張權利？若甲終止契約，乙是否有任何權利可對甲主張？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲乙間契約同時含兩種成分：<strong>設計</strong>部分會產出設計圖（工作物）→ <strong>承攬契約</strong>；<strong>監造</strong>部分只是監督巡查、無工作物 → <strong>委任契約</strong>。兩者屬承攬與委任之混合契約，分別適用承攬、委任規定</div></div>
+      <div class="irac-row"><div class="irac-label">甲的主張</div><div>設計（承攬）部分：甲為定作人，得依<strong>§511</strong>隨時終止承攬契約；監造（委任）部分：雙方皆得隨時終止，甲得依<strong>§549</strong>終止委任契約</div></div>
+      <div class="irac-row"><div class="irac-label">乙的權利</div><div>承攬（設計）部分：藍圖仍在製作中，甲隨時終止已使乙受有損害（投入的時間精力），乙得依<strong>§511但書</strong>請求損害賠償；委任（監造）部分：興建尚未開始，監造事務<strong>還沒開始處理</strong>，乙無已處理部分，<strong>不得</strong>依§548 II請求報酬——結論雖是「不行」，但仍要完整寫出審查過程（這是題目設下的小陷阱，問「是否有權利」，沒有也要交代理由）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">丙於新建醫院過程中，進口原物料因世界局勢動盪未能如期到港，導致工作進度延宕，無法依約定期限完工。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜甲得否對丙主張遲延責任？若遲延係因丙忘記訂購原物料，情形是否不同？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲丙間為<strong>承攬契約</strong>（丙負責新建，完成後交付醫院建築物這個工作物）</div></div>
+      <div class="irac-row"><div class="irac-label">世界局勢動盪</div><div>非可歸責於承攬人丙 → <strong>不構成</strong>遲延責任（§502要求「可歸責於承攬人」為前提）</div></div>
+      <div class="irac-row"><div class="irac-label">丙自己忘記訂購</div><div>可歸責於丙 → <strong>構成</strong>遲延責任，甲得依§502請求減少報酬或損害賠償；若完工期限為契約要素，甲得解除契約並請求損害賠償——結論確實不同</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">醫院新建需甲協助申請建照與使用執照，此業已於契約中明定，但甲一直忘記，導致工程遲遲無法開始進行。</div>
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q3｜丙可以如何主張權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲丙間為承攬契約，甲身為定作人負有<strong>協力義務</strong>（申請建照、使用執照需甲協助）</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>甲未盡協力義務，丙得依<strong>§507</strong>定相當期限催告甲履行；甲仍不履行者，丙得<strong>解除契約</strong>並<strong>請求損害賠償</strong></div></div>
+    </div>
+  </div>
+
+  <div class="story-box">醫院新建完成後，甲依約前往驗收，發現醫療大樓中放射診斷科的牆壁並未符合契約及法規所定之防護標準，可能導致醫事放射師、病人過度暴露在高劑量輻射中。</div>
+  <div class="irac-card">
+    <div class="irac-header">Q4｜甲得如何主張權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">定性</div><div>甲丙間為承攬契約，丙就交付的工作物（醫院建築物）負<strong>瑕疵擔保責任</strong>（§492：應具備約定品質、無不適於通常或約定使用之瑕疵）</div></div>
+      <div class="irac-row"><div class="irac-label">處理位階</div><div>甲得依§493定相當期限請求修補，逾期不修得自行修補並請求必要費用（§493）</div></div>
+      <div class="irac-row"><div class="irac-label">能否解除契約</div><div>醫院屬<strong>建築物</strong>，原則上§494但書<strong>不得解除契約</strong>；除非瑕疵重大到<strong>使用目的不達</strong>（§495 II）才例外可解除。本題醫院整體仍可正常使用，只是放射診斷科該區塊不合格，尚未達「使用目的不達」的重大程度，屬「殺雞用牛刀」，<strong>不宜直接解除契約</strong>，優先主張修補或減少報酬（可歸責於丙者，另得請求損害賠償）</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十四、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">14</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對（2026-08-13，見 <code>民法L8-L12_考古題深查.md</code>）。<strong>L8 是民法五堂物權繼承篇考古題深查中命題率明顯最弱者</strong>——10 年僅 2 年各命中 1 題測驗題，且皆非申論題，其餘承攬委任重點條號近10年皆查無獨立命題，本表如實呈現這個落差，不為了湊命中率而過度延伸。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>承攬人物之瑕疵擔保（品質具備＋損害賠償）§492～495</td><td>②瑕疵擔保責任</td><td><span class="badge mid">一般命中（1年：106）</span></td></tr>
+      <tr><td>委任受任人報酬請求權・注意義務辨析 §535／547／548</td><td>⑨受任人注意義務、⑪報酬請求權</td><td><span class="badge mid">一般命中（1年：109）</span></td></tr>
+      <tr><td>承攬瑕疵擔保之解除限制（建築物／土地上工作物）§494</td><td>②瑕疵擔保責任</td><td><span class="badge" style="background:#94a3b8;">查無獨立命中</span></td></tr>
+      <tr><td>定作人協力義務 §507</td><td>④定作人之協力義務</td><td><span class="badge" style="background:#94a3b8;">查無獨立命中</span></td></tr>
+      <tr><td>承攬契約之法定終止事由 §511／512</td><td>⑥契約終止權</td><td><span class="badge" style="background:#94a3b8;">查無獨立命中</span></td></tr>
+      <tr><td>承攬報酬給付時期 §505</td><td>①承攬契約總論</td><td><span class="badge" style="background:#94a3b8;">查無獨立命中</span></td></tr>
+      <tr><td>委任之終止方式與損害賠償 §549</td><td>⑫委任契約終止權</td><td><span class="badge" style="background:#94a3b8;">查無獨立命中</span></td></tr>
+      <tr><td>委任人預付必要費用義務 §545</td><td>—（本堂未展開，補充條號）</td><td><span class="badge" style="background:#94a3b8;">查無獨立命中</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box hi2" style="margin-top:10px;">⚠️ L8 命中密度遠低於同科其他堂次（L9物權～L12繼承幾乎每年皆考），建議讀書分配上<strong>不要用「考古題必中」邏輯編排時間</strong>——先把承攬、委任基本架構（角色、瑕疵擔保位階、協力義務、終止權差異）讀熟拿基本分，有限的複習時間應優先留給後續L9善意取得、L10共有地上權、L11抵押權、L12繼承夫妻財產制這些高頻章節。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十五、近10年常考題目彙整（逐年版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">15</div>
+    <h2>近 10 年常考題目彙整（逐年版） <span class="examhit">105–114年</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📖 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐題核對（2026-08-13）。L8 共 10 年中僅 <strong>2 年</strong>有命中（106／109），其餘 8 年（105、107、108、110、111、112、113、114）查無獨立命中，完整明細見 <code>民法L8-L12_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:11%;">年度</th><th>考點摘要</th><th style="width:22%;">對應法條</th></tr></thead>
+    <tbody>
+      <tr><td>106<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測12 甲乙成立承攬契約由乙整地，乙整地有瑕疵且趁機掩埋有毒廢棄物，甲得請求修補瑕疵、依§184侵權請求回復原狀、依§495請求減損價額賠償，但<strong>不得逕以此為由解除契約</strong>（選項辨析，命中瑕疵未達重大不得逕行解除的核心限制）</td><td><span class="law-tag">§492</span><span class="law-tag">§495</span></td></tr>
+      <tr><td>109<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測11 辨析三個選項：受任人<strong>未受報酬</strong>仍負善良管理人注意義務（誤導，實際應為與處理自己事務同一之注意）、委任因<strong>非可歸責受任人</strong>事由中途終止仍得就已處理部分請求報酬（命中§548 II）、委任事務之性質應給報酬時<strong>不待約定即得請求</strong>（命中§547）</td><td><span class="law-tag">§535</span><span class="law-tag">§547</span><span class="law-tag">§548</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:10px;">⚠️ 105、107、108、110～114 共 8 個年度查無獨立命中——這是民法五堂考古題深查（L8～L12）裡命中密度最低的一堂，命中密度排序為 L12（繼承＋夫妻財產制）＞L10（共有＋地上權）≈L11（抵押權為主）＞L9（所有權概念＋物上請求權）＞L8（承攬委任，明顯最弱）。不代表這些年度完全不考承攬委任概念，只是近10年未見以此為核心的獨立命題，讀書分配上可將本堂列為基本分章節，不必投入過多時間鑽研冷門條號。</div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：承攬與委任都是<strong>勞務契約</strong>，答題第一步永遠是「<strong>先定性契約</strong>」——問自己「這個契約最後有沒有一個具體工作物要交付？」有，走承攬；沒有，只是處理事務，走委任。抓住這條分野線之後，剩下的規定幾乎都是圍繞著這個核心特徵展開的：承攬因為要交付成品，才會有瑕疵擔保、危險負擔、協力義務這些概念；委任因為只是處理事務，終止權才會放寬到雙方都能隨時行使，注意義務也才會依有無報酬而有高低之分。遇到混合契約（如設計監造），拆開來分別定性、分別適用規定，是這堂最重要的答題技巧。
+</div>
+
+</body>
+</html>
