@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L9｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+
+  /* ── 關係圖（指示交付三方關係）── */
+  .party-flow { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 10px 0; flex-wrap: wrap; }
+  .party-node { background: white; border: 2px solid var(--ink); border-radius: 10px; padding: 8px 18px; font-weight: 900; text-align: center; }
+  .party-node .role { display: block; font-size: 11px; color: var(--sub); font-weight: 700; margin-top: 2px; }
+  .party-arrow { text-align: center; font-size: 12px; color: var(--sub); }
+  .party-arrow .arr { font-size: 20px; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L9｜物權編・所有權、物上返還請求權、動產善意取得</h1>
+    <div class="subtitle">物權基本概念 → 所有權與物上返還請求權§767 → 所有權時效取得制度 → 不動產所有權三大概念 → 動產善意取得§801/948 → 綜合實例題 → 補充章節 → 考古題對應</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§767、§801、§948</strong>核心條文</div>
+    <div class="badge"><strong>L9</strong>物權編・所有權</div>
+    <div class="badge"><strong>⭐⭐⭐⭐⭐</strong>物上返還請求權§767・善意取得</div>
+  </div>
+</div>
+
+<!-- ═══ 一、物權基本概念 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>物權基本概念</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">物權法定原則 <span class="law-tag">§757</span></div>
+      <div class="highlight-box danger">物權<strong>除依法律或習慣外，不得創設</strong>——只要條文沒明確寫過、習慣上也不曾承認的權利，都不能算是物權</div>
+      <div class="note">跟債權完全不同：債權契約基於契約自由原則，就算民法找不到相同規範也承認是有效的「無名契約」；但物權沒有這回事，法條沒出現過就不被承認</div>
+      <div class="highlight-box" style="margin-top:6px;"><strong>習慣承認的物權例子：事實上處分權</strong>——違建因無法辦理第一次保存登記，本身不可能有所有權存在，但實務上承認新建人／使用權人對違建有「事實上處分權」，讓違建交易還是有規則可循</div>
+    </div>
+    <div class="card">
+      <div class="card-title">物權對世效（絕對權）</div>
+      <div class="highlight-box danger">物權是<strong>絕對權</strong>，不是相對權——一旦取得這項物權，<strong>可以對全世界任何一個人主張</strong></div>
+      <div class="note">對比債之相對性：債權（相對權）只能在雙方當事人之間彼此主張；物權（絕對權／對世效）則是取得後對任何人都能主張，這是物權與債權最根本的差異</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">物權 vs 債權 比較總表</div>
+    <table>
+      <thead><tr><th style="width:14%;"></th><th>物權</th><th>債權</th></tr></thead>
+      <tbody>
+        <tr><td><strong>定義</strong></td><td>直接支配特定物、享受其利益的權利</td><td>得請求特定人為特定給付（作為或不作為）的權利</td></tr>
+        <tr><td><strong>效力對象</strong></td><td><strong>對世權（絕對權）</strong>——對任何人皆得主張</td><td><strong>對人權（相對權）</strong>——僅能對特定債務人主張</td></tr>
+        <tr><td><strong>創設方式</strong></td><td><strong>物權法定原則</strong><span class="law-tag">§757</span>——僅依法律或習慣，不得任意創設</td><td><strong>契約自由原則</strong>——法無明文亦可成立有效的「無名契約」</td></tr>
+        <tr><td><strong>公示原則</strong></td><td>須<strong>登記</strong>（不動產）或<strong>交付</strong>（動產）才生效力</td><td>雙方意思表示合致即成立，<strong>不須公示</strong></td></tr>
+        <tr><td><strong>一物一權</strong></td><td>同一標的物上<strong>不能同時存在兩個內容相同的物權</strong></td><td>同一債務人可就同一給付，<strong>對多數債權人各別負同樣的債</strong>（不具排他性）</td></tr>
+        <tr><td><strong>優先效力</strong></td><td>成立在先的物權<strong>優先</strong>於成立在後者，且<strong>物權優先於債權</strong></td><td>數個債權原則上<strong>平等、無先後優劣</strong>之分</td></tr>
+        <tr><td><strong>追及效力</strong></td><td>標的物不論輾轉落入何人之手，物權人皆得<strong>追及</strong>行使權利</td><td>僅能向<strong>特定債務人</strong>請求，不能對第三人主張</td></tr>
+        <tr><td><strong>消滅時效</strong></td><td>原則上<strong>不因時效而消滅</strong>（所有權沒有消滅時效問題）</td><td>原則上<strong>罹於消滅時效</strong>而使請求權消滅（一般 15 年）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">簡單記法：物權「對世、法定、要公示」；債權「對人、自由、免公示」——後面①事實上處分權等例外規定，都是以這張表當對照基礎</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">不動產 vs 動產 物權得喪變更比較</div>
+    <table>
+      <thead><tr><th style="width:16%;">比較項目</th><th>不動產物權</th><th>動產物權</th></tr></thead>
+      <tbody>
+        <tr><td><strong>生效要件</strong></td><td>書面<strong>登記</strong>（採公示原則）</td><td><strong>交付</strong></td></tr>
+        <tr><td><strong>為什麼這樣規定</strong></td><td>交易金額龐大，若無登記制度，容易發生無權處分、損害交易安全</td><td>比不動產寬鬆許多，只要求交付即可</td></tr>
+        <tr><td><strong>例外</strong>（登記／交付前已取得物權）</td><td><strong>繼承、強制執行、徵收、法院判決或其他非因法律行為</strong></td><td>無此類例外規定</td></tr>
+        <tr><td><strong>例外之例外</strong></td><td>雖登記前已取得權利，但要<strong>處分</strong>該權利仍須先經登記</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="note">「得」＝取得、「喪」＝喪失、「變」＝變化、「更」＝更動——這句口訣兩邊通用</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">動產交付方式細分 <span class="law-tag">§761</span></div>
+    <table>
+      <thead><tr><th style="width:20%;">交付方式</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td><strong>直接交付</strong></td><td>最常見、最基本，直接把動產交給受讓人</td></tr>
+        <tr><td><strong>簡易交付</strong> <span class="examhit">112測10</span></td><td>受讓人<strong>已經先占有</strong>該動產，雙方讓與合意成立時<strong>直接生效</strong>，不用再實際交付一次</td></tr>
+        <tr><td><strong>佔有改定</strong></td><td>讓與人（原所有人）與受讓人訂約，讓與人<strong>繼續佔有</strong>動產，受讓人取得<strong>間接佔有</strong>（<strong>兩方</strong>當事人，讓與人暫時留用）</td></tr>
+        <tr><td><strong>指示交付</strong></td><td>動產由<strong>第三人</strong>佔有，讓與人將對第三人之<strong>返還請求權讓與</strong>受讓人，以代交付（<strong>三方</strong>當事人）</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:6px;">快速辨識：<strong>佔有改定是兩方</strong>（讓與人自己繼續占有）；<strong>指示交付是三方</strong>（東西在第三人手上）</div>
+    <div class="note">佔有改定舉例：甲把機車賣給乙，但跟乙說這個月比賽要用、先讓他騎到月底，乙答應——所有權已經移轉給乙，機車仍在甲手上（甲直接占有／乙間接占有）</div>
+  </div>
+  <div class="party-flow" style="margin-top:8px;">
+    <div class="party-node">甲<span class="role">出賣人（讓與人）</span></div>
+    <div class="party-arrow"><div class="arr">→</div>對丙之返還請求權讓與</div>
+    <div class="party-node">乙<span class="role">買受人（受讓人）</span></div>
+  </div>
+  <div class="note" style="text-align:center;">指示交付範例：甲把 A 車賣給乙，但 A 車實際上由丙占有中，甲無法直接交付 → 甲將自己對丙的返還請求權讓與給乙，乙之後直接向丙請求交還</div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、所有權與物上返還請求權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>所有權與物上返還請求權 <span class="law-tag">§767</span><span class="examhit">107申論・111申論</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">所有權：得<strong>自由使用、收益、處分</strong>所有物之權利，並<strong>排除其他人之干涉</strong>（具排他性）</div>
+    <div class="sub-title" style="margin-top:10px;">§767 I 三要件</div>
+    <table>
+      <thead><tr><th style="width:20%;">要件</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td><strong>權利人</strong></td><td>物之<strong>所有人</strong></td></tr>
+        <tr><td><strong>對象</strong></td><td><strong>無權利之人</strong>——判斷方式：對象有沒有受移轉交付、有沒有受所有權移轉登記等</td></tr>
+        <tr><td><strong>行為</strong></td><td>對象<strong>佔有或侵奪</strong>所有物</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:8px;">⚠️ 考試最常挖的陷阱<strong>不是</strong>「對象有沒有佔有或侵奪」，而是「<strong>權利人到底是不是真正的所有人</strong>」——看題目時第一步永遠先確認這一點</div>
+
+    <div class="sub-title" style="margin-top:10px;">§767 I 前段／中段／後段：三種請求權比較</div>
+    <table>
+      <thead><tr><th>返還請求權（前段）</th><th>妨害除去請求權（中段）</th><th>妨害防止請求權（後段）</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>遭<strong>無權佔有或侵奪</strong>時適用</td>
+          <td>對方沒有真的佔有，只是<strong>妨害</strong>所有權之行使（例如阻止進入、阻止使用）</td>
+          <td>對方連妨害行為都還沒真的做，只是<strong>有妨害之虞</strong>（有這個可能性存在）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">中段、後段的樣態不要求「佔有中」這個要件——因為對方根本沒有真的佔有，看題目、用條文時要特別留意這點差異</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、所有權時效取得制度 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>所有權時效取得制度</h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box warning">跟民總的「消滅時效制度」是相反的方向：消滅時效是時效經過<strong>請求權罹於消滅</strong>；所有權時效取得則是符合條件、時間一到就<strong>取得</strong>物的所有權</div>
+    <table style="margin-top:8px;">
+      <thead><tr><th style="width:16%;"></th><th style="width:18%;">非善意</th><th style="width:18%;">善意（無過失）</th><th>共同要件</th></tr></thead>
+      <tbody>
+        <tr><td><strong>動產</strong></td><td><strong>10 年</strong></td><td><strong>5 年</strong></td><td>和平、公然、繼續佔有</td></tr>
+        <tr><td><strong>不動產</strong></td><td><strong>20 年</strong></td><td><strong>10 年</strong></td><td>和平、公然、繼續佔有，且土地須為<strong>未經登記</strong>之不動產</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box danger" style="margin-top:8px;">⚠️ 不動產一旦已經登記給某人名下，就<strong>沒有時效取得制度的適用</strong>；縱使符合未登記＋佔有期間要件，不動產時效取得所取得的也只是「<strong>請求登記為所有人</strong>」的<strong>登記請求權</strong>，<strong>不是直接取得所有權</strong>——這是考試最容易忽略的細節</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、不動產所有權三大重要概念 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>不動產所有權三大重要概念</h2>
+  </div>
+  <div class="grid-3" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">① 袋地通行權</div>
+      <table>
+        <tbody>
+          <tr><td><strong>要件</strong></td><td>土地與公路<strong>無適宜之聯絡</strong>，致不能通常使用</td></tr>
+          <tr><td><strong>效果</strong></td><td>土地所有人得<strong>通行周圍地</strong>以至公路</td></tr>
+          <tr><td><strong>限制</strong></td><td>須於<strong>必要範圍內</strong>，且<strong>損害最少</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note">A 地緊鄰公路，B 地在 A 地之後完全無法對外聯絡（袋地＝B地）→ B 地所有人得通行 A 地至公路，但不能任意挑最短路徑硬闖，須選損害最小的方式</div>
+    </div>
+    <div class="card">
+      <div class="card-title">② 區分所有權</div>
+      <div class="highlight-box" style="margin:0 0 6px;">定義：<strong>數人區分一建築物，各專有其一部分</strong>（如甲乙丙丁分別擁有大樓的一至四樓）</div>
+      <table>
+        <tbody>
+          <tr><td><strong>專有部分</strong></td><td>構造上得<strong>獨立使用</strong>、可<strong>單獨作為所有權標的</strong>（有獨立門戶出入即可）</td></tr>
+          <tr><td><strong>共有部分</strong></td><td>專有部分<strong>以外</strong>之附屬物（頂樓、騎樓、花圃等）</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning" style="margin-top:6px;">⚠️ 專有部分與共有部分<strong>不可分開出售</strong>，兩者必須結合一起移轉</div>
+    </div>
+    <div class="card">
+      <div class="card-title">③ 越界建築</div>
+      <table>
+        <tbody>
+          <tr><td><strong>主觀要件</strong></td><td><strong>非故意或重大過失</strong>，建築逾越地界</td></tr>
+          <tr><td>鄰地所有人<strong>及時異議</strong></td><td>得請求<strong>移去或變更</strong>房屋</td></tr>
+          <tr><td>鄰地所有人<strong>未及時異議</strong></td><td><strong>不得</strong>請求移去或變更，但得請求<strong>支付償金</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note">B 地所有人若沒有及時提出異議，等 A 地所有人蓋完房屋、開心使用之後，就不能再請求拆房子了，只能請求金錢補償</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、動產善意取得制度 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>動產善意取得制度 <span class="law-tag">§801</span><span class="law-tag">§948</span><span class="examhit">109測驗・112測驗</span></h2>
+  </div>
+  <div class="card">
+    <div class="sub-title">要件 <span class="law-tag">§801</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>①受讓人佔有動產</strong></td><td>沒有佔有，就沒有值得保護的權利</td></tr>
+        <tr><td><strong>②受關於佔有規定之保護</strong></td><td>指下方 §948 的善意要件</td></tr>
+        <tr><td><strong>③讓與人無移轉所有權之權利</strong></td><td>正因為讓與人是無權處分人，才有善意與否的問題</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box danger" style="margin-top:8px;"><span class="law-tag">§948</span>以動產所有權或其他物權之移轉或設定為目的而<strong>善意</strong>受讓該動產之佔有者，縱其讓與人無讓與之權利，其佔有人受法律之保護。<strong>但受讓人明知或因重大過失而不知讓與人無讓與權利者，不在此限</strong></div>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 佔有改定的特殊限制：動產佔有之受讓若依<strong>§761 II（佔有改定）</strong>為之，須以受讓人受<strong>「現實交付」</strong>且交付時<strong>「善意」</strong>為限，才受善意取得保護——單純的佔有改定當下，受讓人其實還沒真正佔有這個物，權利還沒開始受保護，要等到真的受現實交付之後才算數</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲為 A 地之所有人，適逢疫情來襲，甲決定出售 A 地給乙。甲乙約定於 112 年 3 月 1 日簽訂契約並辦理土地移轉登記。詎料，正當甲乙準備移轉 A 地所有權時，第三人丙趁 A 地無人看管，擅自佔用 A 地並於其上興建 B 屋。乙原先只是想等地價上漲後轉賣賺價差，並無使用 A 地之需求，完全沒注意到 A 地已遭丙佔用。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜乙若事後發現丙擅自占用 A 地，得如何主張其權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">三要件檢視</div><div>①乙是 A 地所有權人（已辦妥移轉登記）— 具備；②丙是無權利之人 — 具備；③丙佔有中 — 具備</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>三要件皆具備，符合<strong>§767 I 前段</strong>要件，<strong>乙得對丙主張民法第 767 條第一項前段物上返還請求權，請求返還 A 地</strong></div></div>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-bottom:8px;">📝 答題技巧：標題直接下肯定結論（例如「乙得對丙主張民法第767條第一項前段物上返還請求權」），<strong>不要把題目原句抄一遍當標題、更不要用問號結尾</strong>——問號是問題不是答案。若對結論沒把握，可以先留一行空白，寫完論述後再回頭補標題</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜若乙是 10 年後、20 年後才發現，情況是否不同？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">先抓關鍵</div><div>看到「10 年」「20 年」要立刻聯想到<strong>不動產時效取得制度</strong>（善意10年／非善意20年）</div></div>
+      <div class="irac-row"><div class="irac-label">檢視要件</div><div>時效取得制度<strong>僅適用於「未經登記」之不動產</strong>；本題 A 地在 112 年 3 月 1 日甲乙簽約時已辦理移轉登記，屬<strong>已登記</strong>不動產，不符合「未登記」要件，<strong>不需要再討論丙是否善意</strong></div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>10 年後、20 年後結果<strong>都不會不同</strong>，丙仍是無權佔有人，乙仍得依§767 I前段請求返還。（假設性補充：縱使 A 地未登記，丙是趁機佔用、難謂善意，須以<strong>非善意 20 年</strong>時效計算；但縱使經過 20 年，不動產時效取得只是取得「請求登記為所有人」的權利，並非真正取得所有權，對乙而言丙仍是無權佔有人，結論依然不變）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">甲另有一台豪華跑車 C 車，因疫情影響須出售維持家計，甲遂與丁簽訂 C 車買賣契約。正當甲準備將車交給丁之前，甲的乾兒子戊突然需要用 C 車當結婚禮車，甲與戊商量，希望先將 C 車借給戊，之後再移轉給丁。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q3｜C 車所有權是否已經移轉？甲得如何移轉 C 車所有權給丁？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">現實交付</div><div>不構成——甲並沒有直接把 C 車交給丁</div></div>
+      <div class="irac-row"><div class="irac-label">佔有改定</div><div>可能構成——甲透過戊仍間接佔有 C 車（甲對戊有返還請求權），但題目沒說甲已把對戊的返還請求權讓與給丁，還不足以構成正式移轉</div></div>
+      <div class="irac-row"><div class="irac-label">結論：所有權尚未移轉</div><div>甲得選擇：①等把 C 車從戊那裡取回後，用<strong>現實交付</strong>的方式交給丁；②改採<strong>指示交付</strong>——甲、丁約定，甲將對戊的返還請求權讓與給丁（三方關係：甲＝出賣人、丁＝買受人、戊＝占有 C 車的第三人）</div></div>
+    </div>
+  </div>
+
+  <div class="story-box">承上，戊於借用 C 車過程中，因不知道甲已將 C 車出售給丁，將 C 車出售給善意的己，且已交付 C 車給己。事後丁前來詢問，才東窗事發。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q4｜情況一：甲尚未對丁指示交付──丁得否請求己返還 C 車？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">丁是否為所有人</div><div>甲從未把 C 車交付或指示交付給丁，實際上<strong>C 車所有人仍是甲，丁還不是所有人</strong>——§767 I前段第一個要件（權利人＝所有人）就不具備，<strong>丁不得對己主張物上返還請求權</strong></div></div>
+      <div class="irac-row"><div class="irac-label">補充論述</div><div>就算退一步討論，戊對 C 車所做的任何處分都是<strong>無權處分</strong>（戊本非有權利之人），依<strong>§118</strong>未經真正權利人承認前不生效力，戊交付給己的行為原則上是無權占有的基礎；但己是否受善意取得保護？己為善意受讓人、且受佔有規定保護、讓與人戊確實無移轉所有權之權利，<strong>符合§801/948善意取得要件，己仍能取得C車所有權</strong></div></div>
+    </div>
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q5｜情況二：假設甲已用指示交付方式把 C 車給了丁──結論是否不同？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">丁是否為所有人</div><div>此時丁已受讓對戊之返還請求權，<strong>丁即為 C 車所有人</strong>，甲對 C 車已無權利可主張——§767要件①具備</div></div>
+      <div class="irac-row"><div class="irac-label">己是否無權佔有</div><div>戊仍是無權處分人（戊從未取得所有權），戊交付給己的行為未經丁承認、不生效力，形式上己是無權占有</div></div>
+      <div class="irac-row"><div class="irac-label">善意取得介入</div><div>己善意受讓占有＋受佔有規定保護＋讓與人戊無權利 → 符合<strong>§801/948</strong>，<strong>己仍善意取得 C 車所有權，丁不得請求返還</strong></div></div>
+      <div class="irac-row"><div class="irac-label">答題技巧</div><div>不論丁是否受指示交付（即是否為所有人），最終結論都一樣是「己善意取得、丁不能請求返還」；但完整論述<strong>仍應先帶§767 I前段</strong>逐一檢視三要件，再補§801/948善意取得，答案結構才完整，不能因為結論相同就跳過767的討論</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card">
+    <div class="irac-header">Q6｜若將 C 車再出售給己的人是甲本人（不是戊），情況是否不同？丁得否對甲主張權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">甲賣車給己</div><div>若甲未交付／未指示交付給丁，甲本身<strong>仍是C車所有人</strong>，甲是<strong>有權處分人</strong>，直接出售給己並不構成無權處分，己不需要靠善意取得就能合法取得所有權（佔有改定不受§948保護是因為丁未受現實交付，這裡不需討論，不影響甲己間的買賣有效性）；不論甲是否仍是所有人，己都能合法或善意取得C車所有權</div></div>
+      <div class="irac-row"><div class="irac-label">丁得對甲主張什麼</div><div><strong>一物二賣、可歸責於甲之給付不能</strong>：甲丁間買賣契約已成立，甲負有移轉C車之義務；甲明知與丁有契約仍故意將車另賣給己，屬<strong>可歸責於債務人</strong>之給付不能 → 丁得依<strong>債務不履行</strong>規定請求損害賠償或解除契約</div></div>
+      <div class="irac-row"><div class="irac-label">其他可能主張</div><div>若甲已對丁完成指示交付（丁已取得所有權）而甲仍擅自出售給己，等同侵害丁之所有權，丁另可考慮依<strong>§184</strong>侵權行為請求損害賠償，或主張甲受領的價金屬<strong>不當得利</strong>請求返還</div></div>
+    </div>
+  </div>
+  <div class="note">一物二賣不僅實務常見，考題中也是常見題型，務必熟悉「先定所有權歸屬 → 判斷是否無權處分 → 檢視善意取得 → 回頭看債務不履行」這條完整的答題脈絡</div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、補充章節 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>補充章節 <span class="stars">重點講義提及，本堂課堂未展開</span></h2>
+  </div>
+  <div class="highlight-box warning" style="margin-bottom:10px;">以下內容取自「民法物權第9-11堂 重點講義」共用重點整理講義，逐字稿與上課講義皆<strong>未實際教授</strong>，故不放入主線骨架，僅供補充查閱。</div>
+
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">物權完整特性清單</div>
+      <table>
+        <tbody>
+          <tr><td style="width:26%;"><strong>追及性</strong></td><td>標的物不論輾轉落入何人之手，物權人仍得追及行使權利 <span class="law-tag">§867</span></td></tr>
+          <tr><td><strong>絕對性</strong></td><td>即上方本文提到的對世效／排他性，本堂主線已涵蓋</td></tr>
+          <tr><td><strong>優先性</strong></td><td>物權相互間、物權與債權間發生衝突時的優先受償／優先效力順序</td></tr>
+          <tr><td><strong>無因性 / 獨立性</strong></td><td><strong>物權行為 ≠ 債權行為</strong>：物權行為之效力<strong>不因</strong>其原因（債權行為）之效力而受影響</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">公示原則與公信原則</div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>公示原則</strong></td><td>不動產須<strong>登記</strong> <span class="law-tag">§758 I</span>；動產須<strong>交付</strong> <span class="law-tag">§761</span></td></tr>
+          <tr><td><strong>公信原則</strong>（保護善意第三人）</td><td>不動產：<span class="law-tag">§759-1 II</span>＋土地法<span class="law-tag">§43</span>；動產：<span class="law-tag">§801</span><span class="law-tag">§948</span>（即本堂善意取得制度）</td></tr>
+        </tbody>
+      </table>
+      <div class="note">釋字第107、164號：已登記之不動產，其物上請求權<strong>不適用</strong>消滅時效規定（呼應 L2 消滅時效與除斥期間章節，同一批考點）；釋字第771號：真正繼承人不論其應繼財產已否登記，依§767請求返還者，仍有§125時效規定之適用</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">物權優先性例題（一物二賣）</div>
+    <div class="highlight-box" style="margin:0 0 6px;">A 將甲屋賣給 B（成立債權），A 又將甲屋賣給 C 並完成移轉登記（取得物權）→ <strong>C（所有權）優先於 B（債權）</strong>，物權效力優先於債權效力</div>
+    <div class="note">B 無法向 C 主張任何物權上的權利，只能依債務不履行規定向 A 請求損害賠償<span class="law-tag">§226</span>或解除契約<span class="law-tag">§256,260</span>——邏輯跟本堂 IRAC 案例二「甲丁丙一物二賣」的答題脈絡完全一致</div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">占有 ≠ 權利 <span class="law-tag">§940</span></div>
+      <div style="font-size:13.5px;">單純的「事實上管領力」（占有）本身不是權利，占有人是否受法律保護、能否對抗真正權利人，要另外檢視有無時效取得或善意取得等制度的適用，不能只憑「我現在占有著」就直接主張這是我的</div>
+    </div>
+    <div class="card">
+      <div class="card-title">§767 I ／§767 II ／§962 三層比較</div>
+      <table>
+        <tbody>
+          <tr><td style="width:40%;"><strong>§767 I</strong></td><td>所有人的物上請求權（本堂主線）</td></tr>
+          <tr><td><strong>§767 II</strong></td><td>所有權<strong>以外</strong>之物權（如地上權、抵押權）準用§767 I</td></tr>
+          <tr><td><strong>§962</strong></td><td>占有人的物上請求權（占有本身受妨害時，占有人自己也可以主張）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">越界建築補充細節 <span class="law-tag">§796</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:34%;"><strong>異議＝保存行為</strong></td><td>鄰地所有人須<strong>及時提出</strong>，逾期不得再請求移去或變更</td></tr>
+          <tr><td><strong>損害賠償／購買土地</strong></td><td>§796 I 損害賠償、§796 II 得請求購買越界部分之土地（本堂主線僅提及請求支付償金，此處補充另一種選項）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">區分所有建物完整規定 <span class="law-tag">§799</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>應有部分比例</strong> <span class="law-tag">§799 IV</span></td><td>依專有部分坪數比例分配（規約可另訂）</td></tr>
+          <tr><td><strong>移轉從屬性</strong> <span class="law-tag">§799 V</span></td><td>專有部分不得分離而為移轉或設定負擔（呼應主線「不可分開出售」）</td></tr>
+          <tr><td><strong>費用負擔</strong> <span class="law-tag">§799-1 I</span></td><td>共有部分修繕費按應有部分比例分攤（規約可另訂）</td></tr>
+          <tr><td><strong>規約撤銷</strong> <span class="law-tag">§799-1 III</span></td><td>規約顯失公平時，3個月內得訴請法院撤銷</td></tr>
+          <tr><td><strong>規約拘束力</strong> <span class="law-tag">§799-1 IV</span></td><td>換屋主也要遵守前手同意過的規約</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">使用鄰地（相鄰關係）</div>
+    <div style="font-size:13.5px;">鄰地通行、開路權 <span class="law-tag">§773</span><span class="law-tag">§788</span>；使用鄰地相關規定 <span class="law-tag">§786</span><span class="law-tag">§791～795</span> —— 本堂主線僅涵蓋袋地通行權核心要件與效果，這幾條屬於更細節的鄰地使用態樣，考古題查無獨立命題，複習優先度可排後面</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對（2026-08-13，見 <code>民法L8-L12_考古題深查.md</code>）。<strong>L9 十年幾乎年年命中</strong>，共 8 筆命中，含 <strong>3 題 25 分申論</strong>（107物上請求權+釋字107、111物上返還+不當得利、108借名登記無權處分），命中密度在民法五堂物權繼承篇（L8～L12）中排第四高（L12＞L10≈L11＞L9＞L8）。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>物上返還請求權§767＋消滅時效／除斥期間辨析（釋字107）</td><td>②所有權與物上返還請求權</td><td><span class="badge top">高頻命中（含1題25分申論：107）</span></td></tr>
+      <tr><td>物上返還請求權§767＋不當得利（相當租金利益）</td><td>②所有權與物上返還請求權</td><td><span class="badge top">高頻命中（含1題25分申論：111）</span></td></tr>
+      <tr><td>無權處分§118與借名登記交易安全（善意取得§759-1/801/948提及）</td><td>⑤動產善意取得制度</td><td><span class="badge top">高頻命中（含1題25分申論：108）</span></td></tr>
+      <tr><td>不動產物權變動登記生效要件§758（一物二賣、未登記不得對抗）</td><td>①物權基本概念、⑥IRAC案例二</td><td><span class="badge mid">一般命中（3年：109・113）</span></td></tr>
+      <tr><td>動產善意取得§801/948（相對人惡意則不成立）</td><td>⑤動產善意取得制度</td><td><span class="badge mid">一般命中（1年：109）</span></td></tr>
+      <tr><td>動產物權交付方式（簡易交付）</td><td>①物權基本概念（交付三方式）</td><td><span class="badge mid">一般命中（1年：112）</span></td></tr>
+      <tr><td>占有人善意惡意區分＋必要費用／孳息返還義務</td><td>—（本堂未展開，屬占有編延伸考點）</td><td><span class="badge top">高頻命中（4年：105・106・112・114）</span></td></tr>
+      <tr><td>通謀虛偽意思表示＋繼承登記不適用公信力§87/759-1</td><td>⑦補充章節（公信原則）</td><td><span class="badge top">高頻命中（含1題25分申論：110）</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box" style="margin-top:10px;">⚠️ 「占有人善意惡意區分＋必要費用/孳息返還義務」屬占有編（§940以下）延伸考點，逐字稿與上課講義本堂未展開，考古題卻連年命中，複習時可留意這是本堂之外、緊接在所有權後面的常考延伸主題。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、近10年常考題目彙整（逐年版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>近 10 年常考題目彙整（逐年版） <span class="examhit">105–114年</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📖 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐題核對（2026-08-13）。L9 十年<strong>全數命中</strong>，完整明細見 <code>民法L8-L12_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:11%;">年度</th><th>考點摘要</th><th style="width:20%;">對應法條</th></tr></thead>
+    <tbody>
+      <tr><td>105<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測29 占有人善意惡意區分：善意占有人本權訴訟敗訴自判決確定日起視為惡意</td><td><span class="law-tag">§944</span><span class="law-tag">§959</span></td></tr>
+      <tr><td>106<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測28 善意占有人得就必要費用扣除孳息後請求償還</td><td><span class="law-tag">§954</span><span class="law-tag">§955</span></td></tr>
+      <tr><td>107<br><span class="note" style="font-style:normal;">1 題次・25分申論</span></td><td>甲有已登記A地及未辦保存登記B屋，遭乙無權占用15年後起訴返還，乙抗辯罹於時效；已登記A地依釋字107號不適用消滅時效，未登記B屋仍適用，乙得就B屋抗辯拒絕返還</td><td><span class="law-tag">§767</span><span class="law-tag">§125</span></td></tr>
+      <tr><td>108<br><span class="note" style="font-style:normal;">1 題次・25分申論</span></td><td>甲借丙名義買A農地並約定丙不得處分，丙違約賣給不知情丁並移轉登記；依「有權處分說」出名人登記名義下處分屬有權處分而非無權處分，題解援引§759-1/801/948說明善意取得制度作為交易安全配套</td><td><span class="law-tag">§118</span><span class="law-tag">§759-1</span><span class="law-tag">§801</span><span class="law-tag">§948</span></td></tr>
+      <tr><td>109<br><span class="note" style="font-style:normal;">3 題次</span></td><td>測9甲賣屋交付未登記予乙，又賣善意丙並完成登記，乙無法請求丙塗銷登記；測10甲拒絕交付登記，乙雖獲勝訴判決仍未取得所有權；測15善意取得中相對人「惡意」則不成立善意取得</td><td><span class="law-tag">§758</span><span class="law-tag">§801</span><span class="law-tag">§948</span></td></tr>
+      <tr><td>110<br><span class="note" style="font-style:normal;">1 題次・25分申論</span></td><td>甲乙通謀虛偽買賣A地並移轉登記以規避強制執行，乙死亡後子女丙丁辦妥繼承登記；甲得依§767請求丙丁塗銷登記，因繼承登記非「依法律行為」為之，不適用§759-1登記公信力保護</td><td><span class="law-tag">§87</span><span class="law-tag">§767</span><span class="law-tag">§759-1</span></td></tr>
+      <tr><td>111<br><span class="note" style="font-style:normal;">1 題次・25分申論</span></td><td>甲出國委託乙看管房屋，乙未經同意私自出租丙3年並收租，甲返國主張丙無權占有請求返還房屋＋3年租金36萬補償；丙雖已按時付租仍敗訴（乙丙租賃僅債之相對效力，不得對抗所有人甲）</td><td><span class="law-tag">§767</span><span class="law-tag">§179</span></td></tr>
+      <tr><td>112<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測10 受讓人已先占有動產，讓與合意成立時即生所有權移轉效力，即為「簡易交付」；測20 占有人善惡意區分辨析</td><td><span class="law-tag">§761但</span></td></tr>
+      <tr><td>113<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測13 買賣契約成立／付清價金／交付均非取得不動產所有權要件，登記完成始生效力</td><td><span class="law-tag">§758</span></td></tr>
+      <tr><td>114<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測18 惡意占有人孳息須返還、必要費用僅得依不當得利規定請求</td><td><span class="law-tag">§958</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:10px;">⚠️ 十年全中，是民法五堂物權繼承篇（L8～L12）裡命題非常穩定的一堂，尤其 <strong>107、108、110、111 連續四年都有 25 分整題申論</strong>，物上返還請求權§767、善意取得§801/948、公信原則§759-1 三者交叉命題是最核心的複習重點。</div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：本堂的核心答題順序是「<strong>先確認所有權歸屬 → 檢視§767三要件（尤其權利人是否真的是所有人）→ 若涉及無權處分再檢視§801/948善意取得 → 動產記得留意佔有改定的現實交付限制</strong>」。物權編開始講究要件的嚴謹性，跟債編相對彈性的契約自由完全不同調性，讀題時務必逐一核對條文要件，不要用債編的直覺跳著判斷。
+</div>
+
+</body>
+</html>
