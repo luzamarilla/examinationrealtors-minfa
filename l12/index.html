@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L12｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+
+  /* ── 關係圖 ── */
+  .party-flow { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 10px 0; flex-wrap: wrap; }
+  .party-node { background: white; border: 2px solid var(--ink); border-radius: 10px; padding: 8px 18px; font-weight: 900; text-align: center; }
+  .party-node .role { display: block; font-size: 11px; color: var(--sub); font-weight: 700; margin-top: 2px; }
+  .party-arrow { text-align: center; font-size: 12px; color: var(--sub); }
+  .party-arrow .arr { font-size: 20px; color: var(--ink); }
+
+  /* ── 分數直式表示 ── */
+  .frac { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; margin: 0 4px; line-height: 1.2; }
+  .frac .num { border-bottom: 2px solid currentColor; padding-bottom: 2px; text-align: center; white-space: nowrap; }
+  .frac .den { padding-top: 2px; text-align: center; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L12｜親屬編・繼承編（最終堂）</h1>
+    <div class="subtitle">婚姻成立與禁止結婚 → 婚姻無效撤銷之損害賠償 → 夫妻財產制（法定・約定）→ 離婚與財產分配 → 繼承順序・應繼分・代位繼承 → 繼承權喪失與回復請求權 → 繼承之效力・歸扣 → 拋棄繼承 → 遺囑 → 特留分 → 綜合實例題 → 考古題對應</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§972-1225</strong>核心條文</div>
+    <div class="badge"><strong>L12</strong>親屬編・繼承編</div>
+    <div class="badge"><strong>⭐⭐⭐⭐⭐</strong>剩餘財產分配・應繼分・拋棄繼承</div>
+  </div>
+</div>
+
+<!-- ═══ 一、婚姻之成立與禁止結婚事由 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>婚姻之成立與禁止結婚事由 <span class="law-tag">§972-988</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">成立要件</div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>年齡限制</strong> <span class="law-tag">§980</span></td><td>男女未滿<strong>18歲</strong>不得結婚；違反效果是<strong>當事人或法定代理人得申請法院撤銷之</strong>——撤銷前仍為有效合法婚姻，未被撤銷就繼續有效；一旦撤銷，效力<strong>溯及既往無效</strong></td></tr>
+          <tr><td><strong>要式性</strong> <span class="law-tag">§982</span></td><td>結婚應以<strong>書面為之</strong>，有<strong>二人以上證人</strong>簽名，並應向<strong>戶政機關登記</strong>；違反效果是<strong>婚姻無效</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning" style="margin-top:6px;">⚠️ 修法提醒：現行成年年齡已降為18歲，18歲即可自行結婚，過去「未成年子女結婚應經法定代理人同意」的條文已<strong>刪除</strong>，讀到舊教材／舊條文若仍有此規定，要以新法為準</div>
+    </div>
+    <div class="card">
+      <div class="card-title">禁止結婚事由（違反效果皆為<strong>無效</strong>，不是得撤銷）</div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>近親禁婚</strong> <span class="law-tag">§983</span></td><td>①直系血親及直系姻親；②<strong>旁系血親在六親等以內</strong>（因收養而成立之四親等、六親等旁系血親輩分相同者不在此限）；③<strong>旁系姻親在五親等以內、輩分不相同者</strong></td></tr>
+          <tr><td><strong>重婚禁止</strong> <span class="law-tag">§985</span></td><td>有配偶者不得重婚；一人不得同時與二人以上結婚</td></tr>
+        </tbody>
+      </table>
+      <div class="note">監護人與受監護人於監護關係存續中不得結婚，違反效果是<strong>受監護人或其最近親屬得請求法院撤銷之</strong>（得撤銷，非無效）——三種違反效果務必分清楚：無效（要式性、近親、重婚）vs 得撤銷（年齡、監護關係）</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、婚姻無效／撤銷之損害賠償 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>婚姻無效／撤銷之損害賠償 <span class="law-tag">§999</span></h2>
+  </div>
+  <div class="card">
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>財產上損害</strong> <span class="law-tag">§999 I</span></td><td>當事人之一方因結婚無效或被撤銷而<strong>受有損害</strong>者，得向他方請求賠償；<strong>但他方無過失者不在此限</strong>——須他方有故意或過失</td></tr>
+        <tr><td><strong>非財產上損害</strong> <span class="law-tag">§999 II</span></td><td>受害人亦得請求賠償相當之金額；<strong>但以受害人自己無過失者為限</strong>——比財產上損害多一道限制</td></tr>
+        <tr><td><strong>請求權性質</strong> <span class="law-tag">§999 III</span></td><td><strong>不得讓與或繼承</strong>；但已依契約承諾或已起訴者不在此限——與債權原則上可讓與相對照，這是條文明定的例外</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、夫妻財產制①：法定財產制與剩餘財產分配請求權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>夫妻財產制①：法定財產制與剩餘財產分配請求權 <span class="law-tag">§1005</span><span class="law-tag">§1017</span><span class="law-tag">§1030-1</span><span class="examhit">幾乎每年皆考</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">未以契約訂立夫妻財產制者，以<strong>法定財產制</strong>為其夫妻財產制 <span class="law-tag">§1005</span>——沒有特別約定就是走這一制，是預設值</div>
+  </div>
+  <div class="grid-2" style="margin-top:11px;align-items:start;">
+    <div class="card">
+      <div class="card-title">婚前婚後財產之區分 <span class="law-tag">§1017</span><span class="law-tag">§1018</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:32%;"><strong>各自所有</strong></td><td>夫或妻之財產分為<strong>婚前財產</strong>與<strong>婚後財產</strong>，由夫妻<strong>各自所有</strong>——不會因結婚就混用或互相取得使用權</td></tr>
+          <tr><td><strong>推定規則</strong></td><td>不能證明<strong>為婚前或婚後財產</strong>者，推定為<strong>婚後財產</strong>；不能證明<strong>為夫或妻所有</strong>者，推定為<strong>夫妻共有</strong></td></tr>
+          <tr><td><strong>孳息視為婚後財產</strong> <span class="examhit">高頻陷阱</span></td><td>婚前財產<strong>於婚姻關係存續中所生之孳息</strong>，視為<strong>婚後財產</strong>——考題固定陷阱，孳息不因本金是婚前財產就跟著算婚前</td></tr>
+          <tr><td><strong>各自管理處分</strong> <span class="law-tag">§1018</span></td><td>夫或妻<strong>各自管理、使用、收益及處分</strong>其財產；<strong>各自債務自己負擔</strong>，不會因結婚而互相代償</td></tr>
+        </tbody>
+      </table>
+      <div class="note">區分婚前婚後財產的實益：留待日後<strong>法定財產制關係消滅時</strong>（離婚或一方死亡）計算剩餘財產分配請求權時使用</div>
+    </div>
+    <div class="card">
+      <div class="card-title">婚後財產之無償／有償行為撤銷 <span class="law-tag">§1020-1</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>無償行為</strong></td><td>有害及法定財產制關係消滅後他方之剩餘財產分配請求權者，<strong>他方得聲請法院撤銷之</strong>；但為履行道德上義務所為之相當贈與不在此限</td></tr>
+          <tr><td><strong>有償行為</strong></td><td>須<strong>行為時明知</strong>有損於他方剩餘財產分配請求權，且<strong>受益人受益時亦知其情事</strong>者為限，他方始得聲請法院撤銷——比無償行為多兩道「明知」要件，因為有償行為涉及交易安全保護</td></tr>
+        </tbody>
+      </table>
+      <div class="note">與撤銷詐害債權之訴的邏輯相通：有對價關係存在的交易行為，法律不會輕易讓它被撤銷</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">剩餘財產分配請求權 <span class="law-tag">§1030-1</span><span class="law-tag">§1030-2</span><span class="law-tag">§1030-3</span><span class="examhit">時效2年/5年高頻</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>計算方式</strong></td><td>法定財產制關係消滅時，夫或妻<strong>現存之婚後財產</strong>，扣除<strong>婚姻關係存續中所負債務</strong>後（<strong>婚前所負債務不算入</strong>），如有剩餘，其<strong>差額應平均分配</strong>；但<strong>因繼承或其他無償取得之財產</strong>及<strong>慰撫金</strong>不列入計算</td></tr>
+        <tr><td><strong>債務清償之計入</strong> <span class="law-tag">§1030-2</span></td><td>以婚後財產清償婚前債務，或以婚前財產清償婚姻關係存續中所負債務者，除已補償者外，於關係消滅時應<strong>分別納入</strong>現存婚後財產或婚姻存續中負債計算——避免一方藉此規避分配</td></tr>
+        <tr><td><strong>5年內處分追加計算</strong> <span class="law-tag">§1030-3</span></td><td>夫或妻為<strong>減少</strong>他方對剩餘財產之分配，而於法定財產制關係消滅<strong>前5年內</strong>處分其婚後財產者，應<strong>將該財產追加計算</strong>，視為現存之婚後財產；履行道德上義務之相當贈與不在此限</td></tr>
+        <tr><td><strong>時效</strong> <span class="examhit">數字必背</span></td><td>請求權人<strong>知悉差額時起2年</strong>間不行使而消滅；<strong>自法定財產制關係消滅時起逾5年</strong>者亦同</td></tr>
+        <tr><td><strong>請求權性質</strong></td><td><strong>不得讓與或繼承</strong>（但已契約承諾或已起訴者不在此限）——與 §999 婚姻無效撤銷之損害賠償請求權邏輯相同</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 剩餘財產分配請求權<strong>是請求權，須自己主張才會發動</strong>——法律不會主動介入替當事人計算；若配偶未行使，該婚後財產就直接列入其遺產範圍去做繼承分配，本堂第②則實力題的戊己案例即以此為前提</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、夫妻財產制②：約定財產制（共同財產制／分別財產制） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>夫妻財產制②：約定財產制 <span class="law-tag">§1031-1044</span><span class="examhit">僅三類・無統一財產制</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">共同財產制 <span class="law-tag">§1031</span><span class="law-tag">§1033</span><span class="law-tag">§1039</span><span class="law-tag">§1040</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>定義</strong></td><td>夫妻財產及所得，<strong>除特有財產外</strong>，合併為共同財產，屬<strong>夫妻公同共有</strong>——與共有物章節、遺產分割前的公同共有是同一套規則</td></tr>
+          <tr><td><strong>管理與處分</strong></td><td>由夫妻<strong>共同管理</strong>（約定由一方管理者從其約定）；管理費用由共同財產負擔；一方對共同財產<strong>為處分應得他方同意</strong>，<strong>違反不得對抗善意第三人</strong>（非直接無效）</td></tr>
+          <tr><td><strong>一方死亡</strong></td><td>共同財產之<strong>半數歸屬死亡者之繼承人</strong>，<strong>其他半數歸屬生存之他方</strong>——與法定財產制須「行使剩餘財產分配請求權」才能先拿一筆錢不同，共同財產制是死亡當下就直接對半分</td></tr>
+          <tr><td><strong>關係消滅（離婚）</strong></td><td>夫妻各取回<strong>訂立共同財產制契約時之財產</strong>；契約存續中取得之共同財產，<strong>由夫妻各得其半數</strong>（另有約定者從其約定）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">分別財產制 <span class="law-tag">§1044</span></div>
+      <div class="highlight-box">夫妻<strong>各保有其財產之所有權</strong>，各自管理、使用、收益及處分——分得最開的一種，離婚時不需另外處理財產分配（因為本來就各自獨立），這也是為什麼離婚後財產取回規定會特別把分別財產制排除在外</div>
+    </div>
+  </div>
+  <div class="highlight-box warning" style="margin-top:11px;">⚠️ 105測32／113測20 高頻辨析：夫妻財產制<strong>現制僅法定財產制、共同財產制、分別財產制三類</strong>，並無「統一財產制」這個選項——考題常設計一個不存在的財產制名稱來測試對條文的熟悉度</div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、離婚：兩願離婚／裁判離婚與財產分配 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>離婚：兩願離婚／裁判離婚與財產分配 <span class="law-tag">§1049</span><span class="law-tag">§1052</span><span class="law-tag">§1056</span><span class="law-tag">§1058</span></h2>
+  </div>
+  <div class="card">
+    <table>
+      <tbody>
+        <tr><td style="width:20%;"><strong>兩願離婚</strong> <span class="law-tag">§1049</span></td><td>夫妻兩願離婚者，得<strong>自行離婚</strong>——雙方合意即可，不須經過法院程序，實務上較常見、耗時耗力較低</td></tr>
+        <tr><td><strong>裁判離婚</strong> <span class="law-tag">§1052</span></td><td>須具備<strong>法定事由</strong>：重婚、<strong>與配偶以外之人合意性交</strong>、不堪同居之虐待、對他方或其直系親屬之重大虐待致不堪共同生活、<strong>惡意遺棄</strong>、意圖殺害他方、不治之惡疾或重大不治之精神病、生死不明逾3年、因故意犯罪受6個月以上徒刑宣告等共10款事由，<strong>另有概括條款</strong>（其他重大事由難以維持婚姻者亦得請求，但可歸責一方者僅他方得請求）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid-2" style="margin-top:11px;align-items:start;">
+    <div class="card">
+      <div class="card-title">判決離婚之損害賠償 <span class="law-tag">§1056</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>財產上損害</strong></td><td>因判決離婚而<strong>受有損害</strong>者，得向<strong>有過失之他方</strong>請求賠償——結構與 §999 婚姻無效撤銷損害賠償完全對應</td></tr>
+          <tr><td><strong>非財產上損害</strong></td><td>受害人亦得請求賠償相當之金額；<strong>但以自己無過失者為限</strong></td></tr>
+          <tr><td><strong>請求權性質</strong></td><td><strong>不得讓與或繼承</strong>（已契約承諾或已起訴者不在此限）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">離婚後之夫妻財產制 <span class="law-tag">§1058</span></div>
+      <div style="font-size:13.5px;"><strong>除採分別財產制者外</strong>，各自取回其結婚或變更夫妻財產制時之財產；<strong>如有剩餘</strong>，各依其夫妻財產制之規定分配之——法定財產制走剩餘財產分配請求權，共同財產制走前述各得半數規則</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、繼承順序、應繼分與代位繼承 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>繼承順序、應繼分與代位繼承 <span class="law-tag">§1138-1141</span><span class="law-tag">§1144</span><span class="examhit">應繼分計算年年必考</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">法定繼承順序 <span class="law-tag">§1138</span><span class="law-tag">§1139</span><span class="law-tag">§1141</span></div>
+      <div class="flow" style="margin:6px 0;">
+        <div class="flow-item">①直系血親卑親屬</div><div class="flow-arrow">→</div>
+        <div class="flow-item">②父母</div><div class="flow-arrow">→</div>
+        <div class="flow-item">③兄弟姊妹</div><div class="flow-arrow">→</div>
+        <div class="flow-item">④祖父母</div>
+      </div>
+      <div style="font-size:13.5px;"><strong>配偶</strong>不列入上述順序，與<strong>任一順位之繼承人</strong>共同繼承，一定拿得到；同一順序有數人時，<strong>按人數平均繼承</strong>（第一順序繼承人以親等近者為先）</div>
+    </div>
+    <div class="card">
+      <div class="card-title">配偶之應繼分 <span class="law-tag">§1144</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:34%;">與<strong>第一順序</strong>共同繼承</td><td>與他繼承人<strong>平均分配</strong></td></tr>
+          <tr><td>與<strong>第二／第三順序</strong>共同繼承</td><td>配偶得遺產<span class="frac"><span class="num">1</span><span class="den">2</span></span></td></tr>
+          <tr><td>與<strong>第四順序</strong>共同繼承</td><td>配偶得遺產<span class="frac"><span class="num">2</span><span class="den">3</span></span></td></tr>
+          <tr><td><strong>無各順序繼承人</strong></td><td>配偶繼承<strong>全部遺產</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">代位繼承 <span class="law-tag">§1140</span><span class="examhit">107測25・113測25</span></div>
+    <div class="highlight-box danger"><strong>第一順序</strong>之繼承人，有於<strong>繼承開始前死亡或喪失繼承權</strong>者，由其<strong>直系血親卑親屬</strong>代位繼承其應繼分</div>
+    <div class="note">代位繼承<strong>僅限第一順序</strong>、且觸發原因僅限「<strong>繼承開始前死亡</strong>」或「<strong>喪失繼承權</strong>」兩種——若是<strong>拋棄繼承</strong>則不生代位問題（見本節第⑩節拋棄繼承），這是 113測25 的辨析核心；113測25 另涉及養子女、非婚生子女於代位繼承中之資格判斷，原則上與親生子女同受保障</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、繼承權喪失與繼承回復請求權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>繼承權喪失與繼承回復請求權 <span class="law-tag">§1145</span><span class="law-tag">§1146</span><span class="examhit">110測24・112測24</span></h2>
+  </div>
+  <div class="card">
+    <div class="card-title">法定喪失繼承權事由 <span class="law-tag">§1145</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:8%;">①</td><td><strong>故意致</strong>被繼承人或應繼承人於死，或<strong>雖未致死而受刑之宣告</strong>者——需具備「故意」主觀要件，若未致死須另有受刑宣告</td></tr>
+        <tr><td>②</td><td>以<strong>詐欺或脅迫</strong>使被繼承人為關於繼承之遺囑，或使其撤回或變更</td></tr>
+        <tr><td>③</td><td>以<strong>詐欺或脅迫妨害</strong>被繼承人為關於繼承之遺囑（或妨害其撤回、變更）</td></tr>
+        <tr><td>④</td><td><strong>偽造、變造、隱匿或湮滅</strong>被繼承人關於繼承之遺囑</td></tr>
+        <tr><td>⑤</td><td>對被繼承人有<strong>重大之虐待或侮辱</strong>情事，<strong>經被繼承人表示其不得繼承者</strong>——須被繼承人明確表示，法律不會僅因子女未盡孝道就自動剝奪繼承權</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ ②③④款經被繼承人<strong>宥恕（原諒）者，繼承權不喪失</strong>；①款（致死或受刑宣告）及⑤款依通說性質重大，原則上不因宥恕而回復——這是 110測24／112測24 反覆考的辨析重點</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">繼承回復請求權 <span class="law-tag">§1146</span><span class="examhit">釋字771號・與§767之關係</span></div>
+    <div class="highlight-box danger">繼承權被侵害者，被害人或其法定代理人得請求回復之；前項回復請求權，自<strong>知悉被侵害時起2年</strong>間不行使而消滅，<strong>自繼承開始時起逾10年</strong>者亦同</div>
+    <div class="note" style="margin-top:6px;">此為短期時效（呼應 §197 侵權行為損害賠償請求權之2年／10年結構），短於民法 §125 一般時效15年——因而衍生「§1146時效經過後，繼承人可否改依 §767 物上返還請求權（15年時效）主張權利」的爭議</div>
+    <div class="highlight-box" style="margin-top:6px;">📌 <strong>釋字第771號解釋</strong>：§1146 繼承回復請求權與 §767 物上返還請求權是<strong>兩個各自獨立、可以併存</strong>的權利。原則上應先依 §1146 概括性主張回復全部遺產；但 §1146 罹於2年／10年短期時效後，繼承人仍得依 §767 對<strong>個別標的物</strong>分別行使物上返還請求權，<strong>惟仍受 §125 十五年時效之限制</strong></div>
+    <table style="margin-top:6px;">
+      <thead><tr><th style="width:22%;"></th><th>§1146 繼承回復請求權</th><th>§767 物上返還請求權</th></tr></thead>
+      <tbody>
+        <tr><td><strong>主張方式</strong></td><td>可<strong>概括性</strong>一次主張全部遺產之回復</td><td>須<strong>逐一標的物</strong>分別提出請求（例如10筆土地須提10個請求）</td></tr>
+        <tr><td><strong>時效</strong></td><td>知悉侵害時起<strong>2年</strong>／繼承開始起<strong>10年</strong></td><td>一般時效<strong>15年</strong>（§125）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、繼承之效力：概括繼承有限責任、歸扣以外之其他效力 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>繼承之效力：概括繼承有限責任・生前特種贈與・受扶養人酌給 <span class="law-tag">§1148</span><span class="law-tag">§1148-1</span><span class="law-tag">§1149</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">概括繼承・有限責任 <span class="law-tag">§1148</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>概括繼承</strong></td><td>繼承人自繼承開始時，<strong>承受被繼承人財產上一切權利義務</strong>；但<strong>專屬於被繼承人本身者不在此限</strong>（如婚姻關係本身、身分性質之權利義務不會被繼承）</td></tr>
+          <tr><td><strong>有限責任</strong></td><td>繼承人對被繼承人之債務，<strong>以因繼承所得遺產為限</strong>負清償責任——現制<strong>沒有「父債子還」</strong>，超過所得遺產範圍不須負擔</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">生前特種贈與視為所得遺產 <span class="law-tag">§1148-1</span><span class="examhit">與§1173歸扣搭配</span></div>
+      <div style="font-size:13.5px;">繼承人在<strong>繼承開始前2年內</strong>，從被繼承人受有財產之贈與者，該財產<strong>視為其所得遺產</strong>（已移轉或滅失者依<strong>贈與時之價值</strong>計算）——目的在防止被繼承人生前將財產大量贈與特定繼承人以規避債權人或其他繼承人權益，與第⑨節 §1173 歸扣制度是<strong>兩個不同條文、不同目的</strong>：本條是為了計算「遺產範圍」（對外，保障債權人／其他繼承人一般權益），§1173 歸扣是為了計算「應繼分」（對內，繼承人間的公平分配）</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">受扶養人之遺產酌給請求權 <span class="law-tag">§1149</span></div>
+    <div style="font-size:13.5px;">被繼承人<strong>生前繼續扶養之人</strong>，應由<strong>親屬會議</strong>依其所受扶養之程度及其他關係，<strong>酌給遺產</strong>——保障雖非法定繼承人、但長期受被繼承人扶養之人；實務上親屬會議召開較少見，多為道義性質補償</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、遺產之公同共有、分割與歸扣 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>遺產之公同共有、分割與歸扣 <span class="law-tag">§1151</span><span class="law-tag">§1164</span><span class="law-tag">§1166</span><span class="law-tag">§1173</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">公同共有與分割 <span class="law-tag">§1151</span><span class="law-tag">§1164</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>分割前公同共有</strong></td><td>繼承人有數人時，<strong>在遺產分割前</strong>，各繼承人對於遺產<strong>全部為公同共有</strong>——與夫妻共同財產制底下的公同共有是同一套規則（詳見第④節），分割前不得請求分割</td></tr>
+          <tr><td><strong>分割時機與方式</strong></td><td>繼承人得<strong>隨時請求分割</strong>遺產（法律另有規定或契約另有訂定者除外）；有遺囑指定分割方法或委託他人代定者從其指定，否則依法定規則分配</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">胎兒之繼承權 <span class="law-tag">§1166</span></div>
+      <div style="font-size:13.5px;">胎兒為繼承人時，<strong>非保留其應繼分，其他繼承人不得分割遺產</strong>；胎兒關於遺產之分配，以<strong>其母為代理人</strong>——以生母作代理人是因為某些情況下父親身分尚待事後認領確認，母親身分則毋須推定</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">生前特種贈與之歸扣 <span class="law-tag">§1173</span><span class="examhit">111測1・114測24</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>歸扣事由</strong></td><td>繼承人中有在繼承開始前因<strong>①結婚、②分居、③營業</strong>三種事由，已從被繼承人受有財產贈與者，應將<strong>該贈與價額加入</strong>繼承開始時被繼承人所有財產中，作為<strong>應繼遺產</strong>——目的是繼承人間的公平，避免有人生前已先拿一筆卻不計入分配基準</td></tr>
+        <tr><td><strong>反對意思除外</strong></td><td>但被繼承人於贈與時<strong>有反對之意思表示者不在此限</strong>——若繼承人非自願、心不甘情不願接受，不用歸扣</td></tr>
+        <tr><td><strong>扣除方式</strong></td><td>該贈與價額於<strong>遺產分割時</strong>，由該繼承人之應繼分中<strong>扣除</strong>（先加回去計算總額，分配時再從該人份額扣掉已拿的部分）</td></tr>
+        <tr><td><strong>價額計算基準</strong></td><td>依<strong>贈與時之價值</strong>計算，<strong>不是</strong>遺產分割時的價值</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 111測1 常見陷阱：因<strong>重大災難生還</strong>所為之贈與<strong>不屬於歸扣範圍</strong>——歸扣事由僅限結婚、分居、營業三種法定事由，不能任意擴張解釋</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、拋棄繼承 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>拋棄繼承 <span class="law-tag">§1174-1176</span><span class="examhit">106測39・112測25・113測25</span></h2>
+  </div>
+  <div class="card">
+    <table>
+      <tbody>
+        <tr><td style="width:24%;"><strong>時限與方式</strong> <span class="law-tag">§1174</span></td><td>應於<strong>知悉其得繼承之時起3個月內</strong>，以<strong>書面向法院</strong>為之——常見陷阱選項「向戶政機關為之」「得以言詞為之」皆<strong>錯誤</strong></td></tr>
+        <tr><td><strong>通知義務</strong></td><td>拋棄後應以<strong>書面通知</strong>因其拋棄而應為繼承之人；<strong>無法通知者不在此限</strong>；<strong>未通知不影響拋棄之效力本身</strong>，僅屬另一義務</td></tr>
+        <tr><td><strong>溯及效力</strong> <span class="law-tag">§1175</span></td><td>繼承之拋棄，<strong>溯及於繼承開始時發生效力</strong>——縱使是繼承後第3個月內才拋棄，效力仍回到繼承開始那一刻，視為自始未曾繼承</td></tr>
+        <tr><td><strong>應繼分之歸屬</strong> <span class="law-tag">§1176</span></td><td>同一順序拋棄者，其應繼分歸屬於<strong>其他同為繼承之人</strong>；同一順序均拋棄且無後順序繼承人時，歸屬<strong>配偶</strong>；配偶拋棄者歸屬其他同為繼承之人；第一順序親等近者均拋棄，由<strong>次親等直系血親卑親屬</strong>繼承；<strong>因他人拋棄而取得繼承資格者</strong>，其拋棄期限自<strong>知悉其得繼承之日起重新起算3個月</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 113測25 核心辨析：拋棄繼承<strong>不生代位繼承問題</strong>——代位繼承（§1140）僅限於「繼承開始前死亡」或「喪失繼承權」兩種情形，拋棄繼承人之直系血親卑親屬<strong>不得代位</strong>拋棄者繼承</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十一、遺囑：能力、方式、生效與撤回 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">11</div>
+    <h2>遺囑：能力、方式、生效與撤回 <span class="law-tag">§1186-1222</span><span class="examhit">106測13,40・108測23・114測23</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">遺囑能力與自由處分範圍 <span class="law-tag">§1186</span><span class="law-tag">§1187</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>無行為能力人</strong></td><td><strong>不得</strong>為遺囑</td></tr>
+          <tr><td><strong>限制行為能力人</strong></td><td><strong>無須經法定代理人允許</strong>即得為遺囑；但<strong>未滿16歲者不得為遺囑</strong>——遺囑為身分行為之特別規定，不適用限制行為能力人須經允許之一般規則</td></tr>
+          <tr><td><strong>自由處分範圍</strong> <span class="law-tag">§1187</span></td><td>遺囑人於<strong>不違反特留分規定</strong>之範圍內，得以遺囑自由處分遺產</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning" style="margin-top:6px;">⚠️ 106測40 高頻陷阱：<strong>17歲</strong>未得法定代理人允許所立遺囑<strong>仍屬有效</strong>——因遺囑能力是特別規定，只要滿16歲、非無行為能力人即可</div>
+    </div>
+    <div class="card">
+      <div class="card-title">遺囑方式與生效 <span class="law-tag">§1189</span><span class="law-tag">§1199</span></div>
+      <div class="flow" style="margin:6px 0;">
+        <div class="flow-item" style="font-size:12.5px;padding:6px 10px;">自書</div>
+        <div class="flow-item" style="font-size:12.5px;padding:6px 10px;">公證</div>
+        <div class="flow-item" style="font-size:12.5px;padding:6px 10px;">密封</div>
+        <div class="flow-item" style="font-size:12.5px;padding:6px 10px;">代筆</div>
+        <div class="flow-item" style="font-size:12.5px;padding:6px 10px;">口授</div>
+      </div>
+      <div style="font-size:13.5px;">共五種法定方式，各有細部要件，考試較少細究到逐項要件；<strong>遺囑自遺囑人死亡時發生效力</strong> <span class="law-tag">§1199</span></div>
+      <div class="highlight-box warning" style="margin-top:6px;">⚠️ 108測23：<strong>口授遺囑</strong>屬臨時性方式，遺囑人<strong>能依其他方式為遺囑之時起，經過3個月失其效力</strong>——不是永久有效，是因應緊急情況的權宜方式</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">遺囑之撤回 <span class="law-tag">§1219-1222</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>任意撤回</strong> <span class="law-tag">§1219</span></td><td>遺囑人得隨時<strong>以遺囑之方式</strong>撤回遺囑之全部或一部——撤回本身也須具備法定遺囑方式</td></tr>
+        <tr><td><strong>前後遺囑牴觸</strong> <span class="law-tag">§1220</span></td><td>前後遺囑有相牴觸者，<strong>牴觸部分</strong>，前遺囑視為撤回——以最後一份為準</td></tr>
+        <tr><td><strong>遺囑後行為牴觸</strong> <span class="law-tag">§1221</span></td><td>遺囑人於為遺囑後所為之行為，與遺囑內容相牴觸者，<strong>牴觸部分</strong>視為撤回</td></tr>
+        <tr><td><strong>破毀塗銷廢棄</strong> <span class="law-tag">§1222</span></td><td>遺囑人故意<strong>破毀或塗銷</strong>遺囑，或在遺囑上<strong>記明廢棄之意思</strong>者，其遺囑視為撤回</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十二、特留分 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">12</div>
+    <h2>特留分 <span class="law-tag">§1223</span><span class="law-tag">§1225</span><span class="examhit">113測24比例總表</span></h2>
+  </div>
+  <div class="card">
+    <div class="card-title">特留分比例（現行有效條文）</div>
+    <table>
+      <thead><tr><th style="width:30%;">繼承人身分</th><th>特留分比例</th></tr></thead>
+      <tbody>
+        <tr><td><strong>直系血親卑親屬</strong></td><td>應繼分之<span class="frac"><span class="num">1</span><span class="den">2</span></span></td></tr>
+        <tr><td><strong>父母</strong></td><td>應繼分之<span class="frac"><span class="num">1</span><span class="den">2</span></span></td></tr>
+        <tr><td><strong>配偶</strong></td><td>應繼分之<span class="frac"><span class="num">1</span><span class="den">2</span></span></td></tr>
+        <tr><td><strong>兄弟姊妹</strong></td><td>應繼分之<span class="frac"><span class="num">1</span><span class="den">3</span></span></td></tr>
+        <tr><td><strong>祖父母</strong></td><td>應繼分之<span class="frac"><span class="num">1</span><span class="den">3</span></span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">關係越親近（直系血親卑親屬、父母、配偶）特留分比例越高（1/2）；關係越疏遠（兄弟姊妹、祖父母）比例越低（1/3）——與生活緊密程度成正比</div>
+    <div class="highlight-box" style="margin-top:6px;">扣減規則 <span class="law-tag">§1225</span>：應得特留分之人，若因被繼承人所為之<strong>遺贈</strong>致其應得之數不足，得按<strong>不足之數由遺贈財產扣減之</strong>；受遺贈人有數人時，按其所得遺贈價額<strong>比例扣減</strong></div>
+  </div>
+  <div class="highlight-box danger" style="margin-top:11px;">📌 <strong>重要修法提醒</strong>：§1223 已於<strong>115年8月17日修正公布</strong>，新條文<strong>刪除「兄弟姊妹」之特留分規定</strong>，修正後僅餘配偶、直系血親卑親屬、父母（各1/2）與祖父母（1/3）——但本次修正<strong>自公布六個月後才施行</strong>，目前仍未生效，現行有效條文仍是上表五類完整版本。§1138 法定繼承順序（兄弟姊妹仍為第三順位）<strong>未受影響</strong>，本次修正只動到「特留分保障」，不影響兄弟姊妹作為法定繼承人的資格本身。應考時以<strong>目前仍有效之舊條文</strong>（上表）作答，但留意修法動向，避免日後條文更新後誤用。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十三、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">13</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="sub-title">實力題① 婚姻編：近親禁婚判斷＋裁判離婚財產分配</div>
+  <div class="story-box">甲乙原為情侶，因家人反對未宴客，僅私下向戶政機關登記結婚，未約定夫妻財產制。婚後五年，甲乙發現甲之叔叔的女兒正是乙——甲、乙為<strong>旁系血親四親等</strong>。同時丙丁婚後五個月即發現價值觀差異極大，丙因此與第三人發生性關係，丁向法院訴請裁判離婚。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜甲乙之婚姻效力為何？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">親等計算</div><div>甲乙為<strong>旁系血親四親等</strong>，符合 §983 I②「旁系血親在六親等以內」之禁婚範圍（非因收養成立，不適用輩分相同之除外規定）</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>違反近親禁婚規定，效果為<strong>婚姻無效</strong>（無待撤銷，自始、當然、確定不生效力）</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜丁對丙訴請裁判離婚有無理由？丙丁財產如何分配？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">裁判事由</div><div>丙與配偶以外之人合意性交，符合 §1052 I 法定裁判離婚事由，<strong>丁之請求有理由</strong></div></div>
+      <div class="irac-row"><div class="irac-label">財產分配</div><div>丙丁未約定財產制，適用<strong>法定財產制</strong>；離婚（法定財產制關係消滅）時，婚前財產各自取回，<strong>婚後財產依剩餘財產分配請求權</strong>（§1030-1）計算分配</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card">
+    <div class="irac-header">Q3｜丙、丁得否請求損害賠償？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">丙</div><div><strong>不得</strong>請求——裁判離婚原因係丙自身之故意行為所致，丙本身即為有過失之一方</div></div>
+      <div class="irac-row"><div class="irac-label">丁・財產上</div><div>丁受有損害，丙有故意過失，<strong>丁得依 §1056 I 請求財產上損害賠償</strong></div></div>
+      <div class="irac-row"><div class="irac-label">丁・非財產上</div><div>丁自身<strong>全然無過失</strong>（自始至終未與第三人發生性關係），符合 §1056 II「受害人無過失」要件，<strong>丁亦得請求非財產上損害賠償</strong></div></div>
+    </div>
+  </div>
+
+  <div class="sub-title" style="margin-top:14px;">實力題② 繼承編：歸扣計算＋表見繼承人與§1146／§767／釋字771號</div>
+  <div class="story-box">戊己為夫妻，育有A子（結婚時受贈400萬）、B子（結婚時受贈300萬）、C女（結婚時受贈300萬）、D女（結婚時受贈300萬）。戊過世，留下遺產3,000萬；己未行使剩餘財產分配請求權。戊過世後，庚揚稱自己為戊之繼承人，並無權占有戊名下價值1,500萬元之房產。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜己與四名子女各得遺產若干？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">歸扣計算</div><div>A、B、C、D四人受贈皆因<strong>結婚</strong>事由，依 §1173 應<strong>歸扣</strong>入應繼遺產：3,000萬 + 400萬 + 300萬 + 300萬 + 300萬 = <strong>4,300萬</strong></div></div>
+      <div class="irac-row"><div class="irac-label">平均分配</div><div>繼承人共5人（己、A、B、C、D），4,300萬 ÷ 5 = <strong>每人應繼860萬</strong></div></div>
+      <div class="irac-row"><div class="irac-label">實際取得</div><div>己：<strong>860萬</strong>（未受贈，無需扣除）／A：860－400＝<strong>460萬</strong>／B：860－300＝<strong>560萬</strong>／C：860－300＝<strong>560萬</strong>／D：860－300＝<strong>560萬</strong></div></div>
+    </div>
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜戊之子女於戊死亡後11年始發現庚無權占有房產，得如何行使權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">§1146判斷</div><div>庚為<strong>表見繼承人</strong>，本應優先依 §1146 概括請求回復繼承權；但已<strong>逾繼承開始起10年</strong>之時效，§1146<strong>罹於時效、不得再行使</strong></div></div>
+      <div class="irac-row"><div class="irac-label">釋字771號</div><div>§1146 與 §767 為<strong>兩個獨立併存</strong>之請求權，§1146 罹於時效不影響 §767 之行使；惟依 §767 行使仍受 <strong>§125 十五年時效</strong>限制</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>戊之子女於第11年發現，仍在15年時效內，<strong>得依 §767 物上返還請求權</strong>請求庚返還1,500萬元房產</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card">
+    <div class="irac-header">Q3｜若戊之子女早已知悉、卻疏於行使已逾3年，結果是否相同？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">§1146判斷</div><div>知悉被侵害時起已逾<strong>2年</strong>，§1146同樣罹於時效不得行使</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>邏輯與Q2相同，只要仍在 §767／§125 <strong>15年</strong>時效範圍內，仍<strong>得依 §767</strong> 請求返還——差別僅在於觸發 §1146 罹時效的原因是「知悉後2年」而非「繼承開始後10年」</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十四、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">14</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對（2026-08-13，見 <code>民法L8-L12_考古題深查.md</code>）。<strong>L12 十年全數命中</strong>，命中密度在民法五堂物權繼承篇（L8～L12）中<strong>最高</strong>（L12＞L10≈L11＞L9＞L8），是本科考古題命中率最穩定的一堂。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>夫妻法定財產制（婚前婚後財產區分、孳息視為婚後財產、剩餘財產分配請求權時效2年/5年）</td><td>③法定財產制</td><td><span class="badge top">最高頻命中（8年9次：105・108・109・110・111・112・113・114）</span></td></tr>
+      <tr><td>應繼分計算（配偶與各順位共同繼承之比例試算）</td><td>⑥繼承順序與應繼分</td><td><span class="badge top">高頻命中（4年：109・111・113・114，年年數字試算題）</span></td></tr>
+      <tr><td>拋棄繼承§1174（3個月書面向法院、溯及效力、未通知效果）</td><td>⑩拋棄繼承</td><td><span class="badge top">高頻命中（3年：106・112・113）</span></td></tr>
+      <tr><td>遺囑（要式性、口授遺囑3個月失效、限制行為能力人立遺囑）</td><td>⑪遺囑</td><td><span class="badge top">高頻命中（3年：106・108・114）</span></td></tr>
+      <tr><td>夫妻約定財產制（僅法定・共同・分別三類，無統一財產制）</td><td>④約定財產制</td><td><span class="badge mid">一般命中（3年：105・109・113）</span></td></tr>
+      <tr><td>特留分扣減與比例總表</td><td>⑫特留分</td><td><span class="badge mid">一般命中（2年：109・113）</span></td></tr>
+      <tr><td>代位繼承§1140（限第一順序、死亡或喪失繼承權始生代位）</td><td>⑥代位繼承</td><td><span class="badge mid">一般命中（2年：107・113）</span></td></tr>
+      <tr><td>繼承權喪失與回復§1145（四款事由、宥恕效果）</td><td>⑦繼承權喪失</td><td><span class="badge mid">一般命中（2年：110・112）</span></td></tr>
+      <tr><td>生前特種贈與之歸扣§1173（結婚/分居/營業三事由）</td><td>⑨歸扣</td><td><span class="badge mid">一般命中（2年：111・114）</span></td></tr>
+      <tr><td>同時死亡推定與繼承效果§11</td><td>—（新型態案例，本堂未獨立成節）</td><td><span class="badge mid">一般命中（1年：114，近年新型態案例）</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box" style="margin-top:10px;">⚠️ 「胎兒應繼分保留分割效力§1166」（僅105測37單題觸及）、「遺產清冊陳報與限定繼承之細部程序」（111測16非獨立完整申論）近10年<strong>命中重複度低</strong>，複習優先度可排後面。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十五、近10年常考題目彙整（逐年版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">15</div>
+    <h2>近 10 年常考題目彙整（逐年版） <span class="examhit">105–114年・十年全中</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📖 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐題核對（2026-08-13）。L12 十年<strong>10年全數命中</strong>，是民法五堂物權繼承篇中唯一「零缺年」的一堂，完整明細見 <code>民法L8-L12_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:11%;">年度</th><th>考點摘要</th><th style="width:20%;">對應法條</th></tr></thead>
+    <tbody>
+      <tr><td>105<br><span class="note" style="font-style:normal;">3 題次</span></td><td>測32 現行法無「統一財產制」選項辨識；測33-35 夫妻法定財產制系列（婚前婚後財產區分、孳息視為婚後財產）；測37 胎兒應繼分保留</td><td><span class="law-tag">§1017</span><span class="law-tag">§1166</span></td></tr>
+      <tr><td>106<br><span class="note" style="font-style:normal;">3 題次</span></td><td>測13,40 遺囑相關（17歲未得法定代理人允許所立遺囑仍有效）；測39 拋棄繼承起算點與書面要件確認</td><td><span class="law-tag">§1186</span><span class="law-tag">§1174</span></td></tr>
+      <tr><td>107<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測25 代位繼承：養子女、親生子女、非婚生子女綜合情境下代位繼承人資格判斷</td><td><span class="law-tag">§1140</span></td></tr>
+      <tr><td>108<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測5 夫妻法定財產制；測23 口授遺囑自遺囑人得依其他方式為遺囑時起經過3個月失效</td><td><span class="law-tag">§1017</span><span class="law-tag">§1189</span></td></tr>
+      <tr><td>109<br><span class="note" style="font-style:normal;">6 題次</span></td><td>測20,22 夫妻法定財產制；測21 共同財產制關係消滅平均分割（2000萬各得1000萬數字試算）；測23,24 應繼分計算（子女拋棄後配偶與代位孫輩分配）；測25 特留分扣減金額試算</td><td><span class="law-tag">§1017</span><span class="law-tag">§1040</span><span class="law-tag">§1144</span><span class="law-tag">§1225</span></td></tr>
+      <tr><td>110<br><span class="note" style="font-style:normal;">5 題次</span></td><td>測19-22 夫妻法定財產制系列；測24 繼承權喪失與回復四款事由辨析</td><td><span class="law-tag">§1017</span><span class="law-tag">§1145</span></td></tr>
+      <tr><td>111<br><span class="note" style="font-style:normal;">4 題次</span></td><td>測1 生前特種贈與歸扣（重大災難生還之贈與非歸扣範圍，易混淆選項）；測15 應繼分計算；測16 遺產清冊陳報與限定繼承細部程序；測17 夫妻法定財產制</td><td><span class="law-tag">§1173</span><span class="law-tag">§1144</span></td></tr>
+      <tr><td>112<br><span class="note" style="font-style:normal;">3 題次</span></td><td>測21-22 夫妻法定財產制；測24 繼承權喪失與回復；測25 拋棄繼承未通知應繼承之人不生拋棄效力之辨析</td><td><span class="law-tag">§1017</span><span class="law-tag">§1145</span><span class="law-tag">§1174</span></td></tr>
+      <tr><td>113<br><span class="note" style="font-style:normal;">6 題次</span></td><td>測20 夫妻財產制總論（僅三類確認）；測20-22 夫妻法定財產制細節；測23 應繼分計算；測24 特留分比例總表；測25 拋棄繼承＋代位繼承交叉辨析（拋棄不生代位）</td><td><span class="law-tag">§1017</span><span class="law-tag">§1144</span><span class="law-tag">§1223</span><span class="law-tag">§1140</span></td></tr>
+      <tr><td>114<br><span class="note" style="font-style:normal;">5 題次</span></td><td>測20 夫妻法定財產制；測21,22 應繼分計算（配偶與直系血親尊親屬同為繼承比例）；測23 遺贈標的滅失準用損害賠償請求權移轉之複雜案型；測24 生前特種贈與歸扣細節；測25 同時死亡推定＋故意致死喪失繼承權交叉辨析（近年新型態案例）</td><td><span class="law-tag">§1144</span><span class="law-tag">§1173</span><span class="law-tag">§11</span><span class="law-tag">§1145</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:10px;">⚠️ 十年10年全數命中，是民法五堂中唯一無缺年的一堂——<strong>夫妻法定財產制幾乎每年必考、應繼分計算年年出現數字試算題</strong>，是本堂複習投報率最高的兩大主軸，務必熟記剩餘財產分配請求權「2年/5年」時效數字與配偶應繼分「1/2、2/3、全部」三種比例情境。</div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：本堂的核心答題順序是「<strong>先判斷是親屬編（婚姻/財產制/離婚）還是繼承編問題 → 婚姻效力先看要件是無效還是得撤銷 → 財產制先確認法定或約定、法定制看有無行使剩餘財產分配請求權 → 繼承先定順序與應繼分 → 遇到「表見繼承人」記得先走§1146、罹時效才轉§767＋釋字771號 → 遇到「贈與」記得區分§1148-1（遺產範圍）／§1173歸扣（應繼分計算）兩條不同目的的條文</strong>」。本堂是民法最後一堂、也是考古題命中密度最高的一堂，親屬編財產制數字（2年/5年時效）與繼承編應繼分比例務必反覆演練數字試算題。
+</div>
+
+</body>
+</html>
