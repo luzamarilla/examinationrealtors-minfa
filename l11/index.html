@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L11｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+
+  /* ── 關係圖 ── */
+  .party-flow { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 10px 0; flex-wrap: wrap; }
+  .party-node { background: white; border: 2px solid var(--ink); border-radius: 10px; padding: 8px 18px; font-weight: 900; text-align: center; }
+  .party-node .role { display: block; font-size: 11px; color: var(--sub); font-weight: 700; margin-top: 2px; }
+  .party-arrow { text-align: center; font-size: 12px; color: var(--sub); }
+  .party-arrow .arr { font-size: 20px; color: var(--ink); }
+
+  /* ── 分數直式表示 ── */
+  .frac { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; margin: 0 4px; line-height: 1.2; }
+  .frac .num { border-bottom: 2px solid currentColor; padding-bottom: 2px; text-align: center; white-space: nowrap; }
+  .frac .den { padding-top: 2px; text-align: center; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L11｜物權編・抵押權、質權、典權</h1>
+    <div class="subtitle">抵押權基本概念 → 效力範圍 → 次序調整 → 特性與併存 → 保全實行 → 法定地上權・併付拍賣 → 流抵契約・共同抵押・消滅 → 最高限額抵押權 → 質權 → 典權 → 綜合實例題 → 考古題對應</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§860-927</strong>核心條文</div>
+    <div class="badge"><strong>L11</strong>物權編・抵押權・質權・典權</div>
+    <div class="badge"><strong>⭐⭐⭐⭐⭐</strong>次序調整・法定地上權・最高限額抵押權</div>
+  </div>
+</div>
+
+<!-- ═══ 一、抵押權基本概念 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>抵押權基本概念</h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">定義 <span class="law-tag">§860</span>：稱普通抵押權者，謂債權人對於債務人或第三人<strong>不移轉占有</strong>而供其債權擔保之不動產，得就該不動產<strong>賣得價金優先受償</strong>之權</div>
+    <div class="note">兩個核心要件務必記住：①設定抵押權<strong>不會使不動產所有權發生移轉，占有也不移轉</strong>——債權人不會因為抵押權設定就變成不動產所有人；②抵押權人取得的權利內涵是<strong>拍賣後就價金優先受償</strong>，不是直接取得不動產本身</div>
+  </div>
+
+  <div class="grid-2" style="margin-top:11px;align-items:start;">
+    <div class="card">
+      <div class="card-title">擔保範圍 <span class="law-tag">§861</span></div>
+      <div style="font-size:13.5px;">原債權、利息、遲延利息、違約金及<strong>實行抵押權之費用</strong>（另有約定者不在此限）——實行抵押權費用是指聲請法院強制執行、拍賣時須先繳給法院的費用</div>
+      <div class="highlight-box warning" style="margin-top:6px;">⚠️ 得優先受償的<strong>利息、遲延利息、一年或不及一年定期給付之違約金</strong>，以於抵押權人<strong>聲請強制執行前 5 年內發生</strong>及於強制執行程序中發生者為限（§861 II）——不是無限期往前追溯</div>
+    </div>
+    <div class="card">
+      <div class="card-title">公示原則與特定原則</div>
+      <table>
+        <tbody>
+          <tr><td style="width:28%;"><strong>公示原則</strong></td><td>須經<strong>登記</strong>始生抵押權效力 <span class="law-tag">§758</span></td></tr>
+          <tr><td><strong>特定原則</strong></td><td>須以<strong>已登記之特定債權範圍</strong>作為抵押權擔保之範圍——登記時原債權金額須寫清楚；<strong>遲延利息除外</strong>，因設定當下無法確定會遲延多久、金額多少，登記時沒辦法一併寫入</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、抵押權效力範圍 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>抵押權效力範圍 <span class="law-tag">§862-864</span><span class="law-tag">§862-1</span></h2>
+  </div>
+  <div class="card">
+    <table>
+      <thead><tr><th style="width:30%;">項目</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td><strong>從物與從權利</strong> <span class="law-tag">§862 I</span></td><td>抵押權效力及於抵押物之從物與從權利——從物從權利本來就依附於主物，主物設定抵押後效力自然及於從物；但<strong>第三人於抵押權設定前就從物已取得之權利不受影響</strong> <span class="law-tag">§862 II</span></td></tr>
+        <tr><td><strong>建物附加部分・不具獨立性</strong></td><td>以建築物為抵押者，其<strong>附加於該建築物而不具獨立性之部分</strong>（如陽台、增建的雨遮），亦為抵押權效力所及，拍賣時一起被拍賣 <span class="law-tag">§862 III本文</span></td></tr>
+        <tr><td><strong>建物附加部分・具獨立性</strong></td><td>若附加部分<strong>可獨立使用</strong>，且係於<strong>抵押權設定後</strong>才附加者，<strong>準用 §877 併付拍賣</strong>——必要時可以聲請法院一起拍賣，但<strong>對該部分賣得價金無優先受償權</strong> <span class="law-tag">§862 III但書</span></td></tr>
+        <tr><td><strong>抵押物滅失後之殘餘物／變形之獨立動產</strong></td><td>仍為抵押權效力所及；抵押權人得<strong>請求占有</strong>該殘餘物或動產，並<strong>依質權之規定行使其權利</strong> <span class="law-tag">§862-1</span></td></tr>
+        <tr><td><strong>扣押後分離之天然孳息</strong></td><td>抵押物經<strong>扣押後</strong>，自抵押物<strong>分離而得由抵押人收取</strong>之天然孳息，仍為抵押權效力所及 <span class="law-tag">§863</span></td></tr>
+        <tr><td><strong>扣押後之法定孳息</strong>（如租金）</td><td>抵押物經扣押後，抵押人得收取之<strong>法定孳息</strong>亦為抵押權效力所及；但抵押權人<strong>非通知應清償法定孳息之義務人</strong>（如承租人），<strong>不得與之對抗</strong> <span class="law-tag">§864</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">辨析重點：§863 講的是<strong>天然孳息</strong>（例如果實、農產品），§864 講的是<strong>法定孳息</strong>（例如租金）——性質不同，§864 多了一個「須通知義務人才能對抗」的限制，是常見的辨析陷阱</div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="example-label">例題：從物效力所及・第三人在先權利不受影響</div>
+      <div style="font-size:13.5px;">甲以工廠設定抵押權給銀行乙，工廠內有一台機器（從物）。抵押權效力當然及於這台機器，拍賣工廠時一併拍賣。但若機器其實是甲向丙<strong>分期付款、保留所有權</strong>買的，且抵押權設定時錢還沒付清，丙在抵押權設定前就取得的所有權保留權利<strong>不受抵押權影響</strong>，乙不能連這台機器一起拍賣走。</div>
+    </div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="example-label">例題：查封後租金須通知承租人</div>
+      <div style="font-size:13.5px;">甲以房屋設定抵押權給銀行乙，並將房屋出租給丙收租金。乙聲請查封房屋後，甲得收取之租金亦為抵押權效力所及；但乙須先<strong>通知丙</strong>查封一事才能對丙主張——丙不知情前照付租金給甲仍屬有效清償，乙不能要求丙再付一次。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、抵押權次序與其三種調整方式 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>抵押權次序與其三種調整方式 <span class="law-tag">§865</span><span class="law-tag">§870-1</span><span class="examhit">107測6</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">次序原則 <span class="law-tag">§865</span>：不動產所有人因擔保數債權，就同一不動產設定數抵押權者，<strong>其次序依登記之先後定之</strong>——與債權平等原則不同，物權有優先性，先登記者優先受償</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">三種調整方式 <span class="law-tag">§870-1</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:20%;"><strong>次序權讓與</strong></td><td>為<strong>特定抵押權人</strong>之利益而<strong>讓與</strong>其抵押權次序——讓與人與受讓人<strong>仍保有原次序及抵押權</strong>，但<strong>兩人依原次序得受償之金額總額，由受讓人優先受償</strong></td></tr>
+        <tr><td><strong>相對拋棄</strong></td><td>為<strong>特定後次序抵押權人</strong>之利益而<strong>拋棄</strong>其抵押權次序——拋棄權人與受拋棄利益之抵押權人<strong>成為同一次序</strong>，兩人得受償之金額<strong>合併計算後依（原債權）比例受償</strong></td></tr>
+        <tr><td><strong>絕對拋棄</strong></td><td>為<strong>全體後次序抵押權人</strong>之利益而<strong>拋棄</strong>其抵押權次序——拋棄權人<strong>成為最後次序</strong>之抵押權人；絕對拋棄後<strong>新設定</strong>之抵押權，仍後於拋棄權人之次序</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 次序之讓與或拋棄，<strong>非經登記不生效力</strong>，且應於登記前<strong>通知債務人、抵押人及共同抵押人</strong>（§870-1 III、IV）——與抵押權<strong>本身</strong>不得與債權分離而讓與（從屬性，見第四節）是兩件不同的事：這裡調整的只是「次序」，不是把整個抵押權移轉給別人</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">數字例題：乙（次序1・200萬）／丙（次序2・500萬）／丁（次序3・600萬），A 地拍賣得 1000 萬 <span class="examhit">107測6</span></div>
+    <table>
+      <thead><tr><th style="width:22%;">情境</th><th style="width:38%;">操作方式</th><th style="width:13%;">乙</th><th style="width:13%;">丙</th><th style="width:14%;">丁</th></tr></thead>
+      <tbody>
+        <tr><td><strong>原始分配</strong>（無調整）</td><td>依登記先後：乙→丙→丁</td><td>200</td><td>500</td><td>300（不足）</td></tr>
+        <tr><td><strong>①次序權讓與</strong></td><td>乙為丁之利益讓與次序——乙丁仍各自保有原次序，但兩人依原次序合計可受償總額（200+300=500）<strong>由丁優先取得</strong></td><td>0</td><td>500（不變）</td><td>500</td></tr>
+        <tr><td><strong>②相對拋棄</strong></td><td>乙為丁之利益拋棄次序——乙丁變成同一次序，丙躍升第一位優先受償 500；剩餘 500 萬由乙丁依原債權比例（200:600=1:3）分配</td><td>125</td><td>500（躍居第一）</td><td>375</td></tr>
+        <tr><td><strong>③絕對拋棄</strong></td><td>乙為全體後次序（丙、丁）之利益拋棄次序——次序變成丙→丁→乙，乙淪為最後順位</td><td>0</td><td>500（第一）</td><td>500（第二，600萬債權僅剩500可分）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">三種調整方式的判斷關鍵：看拋棄／讓與的對象是「<strong>特定一人</strong>」還是「<strong>全體後次序</strong>」——次序權讓與與相對拋棄都只影響<strong>特定</strong>後次序抵押權人，不影響其他人（丙的受償金額在①②中都不受影響，仍是 500）；只有絕對拋棄才會讓拋棄人真正落到<strong>最後一名</strong>，影響到全體後次序權人的排序</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、抵押權特性與其他物權併存 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>抵押權特性與其他物權併存 <span class="law-tag">§866-870</span></h2>
+  </div>
+  <div class="card">
+    <table>
+      <tbody>
+        <tr><td style="width:20%;"><strong>追及性</strong> <span class="law-tag">§867</span></td><td>抵押人設定抵押權後，仍<strong>得將不動產讓與他人</strong>；抵押權<strong>不因此受影響</strong>——抵押權會隨著不動產一起移轉，不論所有權移轉到誰手上，抵押權都追著這個不動產走</td></tr>
+        <tr><td><strong>不可分性</strong> <span class="law-tag">§868</span></td><td>抵押之不動產如經<strong>分割</strong>，或讓與其一部，或擔保一債權之數不動產而以其一讓與他人者，<strong>其抵押權不因此而受影響</strong></td></tr>
+        <tr><td><strong>從屬性</strong> <span class="law-tag">§870</span></td><td>抵押權<strong>不得由債權分離</strong>而為讓與，或為其他債權之擔保——債權人要把債權讓與第三人時，<strong>擔保該債權的抵押權必須一併移轉</strong>，否則受讓債權的第三人會求償無門</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">抵押權與其他物權併存 <span class="law-tag">§866</span><span class="examhit">111測18・114申論25分</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>原則：可以併存</strong></td><td>設定抵押權後，於同一不動產上，<strong>得設定地上權或其他以使用收益為目的之物權，或成立租賃關係</strong>；<strong>抵押權不因此受影響</strong></td></tr>
+        <tr><td><strong>例外：法院得除去</strong></td><td>若上述權利之存在，導致抵押權人<strong>實行抵押權受有困難</strong>（拍賣時沒人想買），<strong>法院得除去該權利或終止該租賃關係後拍賣之</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="note">先設定的抵押權效力優先於嗣後設定的地上權／租賃——114 年申論題整合考點：甲以 A 地先設定抵押權予乙，後設定地上權予丙，再讓與所有權予丁；乙抵押權效力優先於丙地上權，且基於追及效力，乙、丙之權利均及於受讓人丁；乙實行抵押權受影響時，法院得依 §866 除去丙之地上權後重新拍賣</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、抵押權之保全與實行 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>抵押權之保全與實行 <span class="law-tag">§871-873</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">保全</div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>足使價值減少</strong> <span class="law-tag">§871</span></td><td>抵押人之行為足使抵押物價值減少者，抵押權人得<strong>請求停止其行為</strong>；如有急迫情事，得<strong>自為必要之保全處分</strong>（費用由抵押人負擔，且受償次序優先於各抵押權所擔保之債權）</td></tr>
+          <tr><td><strong>可歸責已減少</strong> <span class="law-tag">§872</span></td><td>價值因<strong>可歸責於抵押人之事由</strong>已減少時，抵押權人得<strong>定相當期限請求回復原狀或提出與減少價額相當之擔保</strong>；逾期未履行，得定相當期限請求<strong>債務人</strong>提出擔保，屆期仍不提出，抵押權人得<strong>請求清償其債權</strong>（抵押人若本身就是債務人，可以直接跳過中間步驟請求清償）</td></tr>
+          <tr><td><strong>不可歸責已減少</strong></td><td>價值因<strong>不可歸責於抵押人之事由</strong>減少者，抵押權人<strong>僅於抵押人因此所受利益之限度內</strong>，請求提出擔保</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">實行</div>
+      <div class="highlight-box danger">抵押權人於<strong>債權已屆清償期，而未受清償者</strong>，得聲請法院<strong>拍賣抵押物</strong>，就其賣得價金而受清償 <span class="law-tag">§873</span></div>
+      <div class="note">這兩個要件缺一不可：①清償期已屆至；②確實未受清償。「行使抵押權」在考試語境裡幾乎等於「強制拍賣、強制執行」，看到這個詞就要直接聯想到聲請法院拍賣</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、法定地上權與併付拍賣 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>法定地上權與併付拍賣 <span class="law-tag">§876</span><span class="law-tag">§877</span><span class="law-tag">§877-1</span></h2>
+  </div>
+  <div class="card">
+    <div class="card-title">法定地上權 <span class="law-tag">§876</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>僅以土地或僅以建物抵押</strong></td><td>土地及其上建築物<strong>同屬一人所有</strong>，而僅以土地或僅以建築物為抵押者，於<strong>抵押物拍賣時，視為已有地上權之設定</strong>；地租、期間及範圍由當事人協議，不能協議者得聲請法院判決之 <span class="law-tag">§876 I</span></td></tr>
+        <tr><td><strong>土地建物同時抵押但拍定人各異</strong></td><td>設定抵押權時土地與建物同屬一人所有，而以土地及建築物為抵押者，如經拍賣，其<strong>拍定人各異</strong>時，<strong>亦視為已有地上權之設定</strong> <span class="law-tag">§876 II</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">與 L10 §838-1（因<strong>強制執行拍賣</strong>而生之法定地上權）不同：§876 觸發原因是<strong>抵押權實行</strong>而拍賣；判斷題目時先看有沒有先設定抵押權，有的話走 §876，沒有的話走 §838-1，詳細比較表見 L10 筆記</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">併付拍賣</div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>土地設定抵押後營造建築物</strong> <span class="law-tag">§877</span></td><td>土地所有人於<strong>設定抵押權後</strong>，在抵押之土地上<strong>營造建築物</strong>者，抵押權人於必要時，得於強制執行程序中聲請法院將建築物與土地<strong>併付拍賣</strong>。但<strong>對於建築物之價金，無優先受清償之權</strong>（本來設定抵押的範圍就只有土地）</td></tr>
+        <tr><td><strong>建物抵押其存立必要之權利</strong> <span class="law-tag">§877-1</span></td><td>以建築物設定抵押權者，於法院拍賣抵押物時，其<strong>抵押物存在所必要之權利</strong>（例如該建物所需之地上權或土地租賃權），<strong>應併付拍賣</strong>；但抵押權人對於<strong>該權利賣得之價金，仍無優先受清償之權</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="note">兩條都是「必要時可以一起拍賣，但對多出來那部分沒有優先受償權」的邏輯——時間點判斷是關鍵：§877 限定在<strong>設定抵押權之後</strong>才營造建築物；若設定抵押權<strong>之前</strong>就已經有建築物存在，則不適用本條，應改判斷 §876 法定地上權</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、流抵契約、共同抵押與抵押權之消滅 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>流抵契約、共同抵押與抵押權之消滅 <span class="law-tag">§873-1</span><span class="law-tag">§875</span><span class="law-tag">§880</span></h2>
+  </div>
+  <div class="card">
+    <div class="card-title">流抵契約（流押契約） <span class="law-tag">§873-1</span><span class="examhit">113測17</span></div>
+    <div style="font-size:13.5px;">約定於<strong>債權已屆清償期而未為清償時，抵押物之所有權移屬於抵押權人者</strong>，<strong>非經登記，不得對抗第三人</strong>（2007年修法後改採<strong>登記對抗主義</strong>，不是絕對無效，也不是登記生效主義）</div>
+    <table style="margin-top:6px;">
+      <tbody>
+        <tr><td style="width:26%;"><strong>抵押權人義務</strong></td><td>請求抵押人移轉抵押物所有權時，<strong>抵押物價值超過擔保債權部分應返還抵押人</strong>；不足清償者，<strong>仍得向債務人請求清償差額</strong></td></tr>
+        <tr><td><strong>抵押人的最後機會</strong></td><td>抵押人於抵押權人請求移轉所有權<strong>前</strong>，仍<strong>得清償擔保之債權</strong>，使該抵押權消滅</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 113 測 17 常見陷阱：流抵約定<strong>不是</strong>絕對無效，而是「非經登記，不得對抗第三人」——這是近年修法重點，務必記住是「登記對抗」不是「登記生效」</div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="example-label">例題：流抵約定「甲乙之間永遠算數」</div>
+      <div style="font-size:13.5px;">甲以 A 屋（值500萬）向乙借300萬，並約定到期未還就把 A 屋過戶給乙。到期未還，乙請求過戶——因房子值500萬＞欠款300萬，乙須退還200萬差額給甲（若房子跌價不夠清償，乙則可再向甲要差額）；乙請求過戶<strong>前</strong>，甲隨時仍可還清300萬讓約定失效。若這約定<strong>沒登記</strong>，甲事後把 A 屋賣給不知情的丙，乙<strong>不能</strong>拿這約定去對抗丙、跟丙要房子，但約定在甲乙之間<strong>依然有效</strong>，乙仍可依約定向甲主張。</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">共同抵押（為同一債權在數不動產設定抵押） <span class="law-tag">§875</span><span class="law-tag">§875-2</span></div>
+    <div class="highlight-box">為同一債權之擔保，於<strong>數不動產上</strong>設定抵押權，而<strong>未限定各個不動產所負擔之金額</strong>者，抵押權人得就<strong>各個不動產賣得之價金</strong>，受債權全部或一部之清償 <span class="law-tag">§875</span></div>
+    <table style="margin-top:6px;">
+      <thead><tr><th style="width:26%;">內部分擔方式 <span class="law-tag">§875-2</span></th><th>計算方式</th></tr></thead>
+      <tbody>
+        <tr><td><strong>未限定負擔金額</strong></td><td>依<strong>各不動產價值比例</strong>分擔——例：務 A 欠 B 1000萬，甲地拍得800萬、乙屋拍得400萬（共1200萬），甲地分擔 <span class="frac"><span class="num">800</span><span class="den">1200</span></span>×1000 ≈ 666萬，乙屋分擔 <span class="frac"><span class="num">400</span><span class="den">1200</span></span>×1000 ≈ 333萬</td></tr>
+        <tr><td><strong>已限定負擔金額</strong></td><td>依<strong>各不動產限定之負擔金額比例</strong>分擔——例：甲地限500萬、乙屋限400萬、丙屋限200萬（限額若逾拍賣所得，以拍賣所得為準）</td></tr>
+        <tr><td><strong>部分限定</strong></td><td>已限定部分依限定金額，<strong>未限定部分</strong>依價值比例分擔；限定負擔金額<strong>超過</strong>該物實際價值時，以該物之價值為限</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">抵押權之消滅</div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>抵押物拍賣</strong></td><td>抵押權人實行抵押權者，該不動產上之抵押權<strong>因抵押物之拍賣而消滅</strong> <span class="law-tag">§873 II</span></td></tr>
+        <tr><td><strong>時效完成後5年不行使</strong> <span class="law-tag">§880</span><span class="examhit">105申論25分・110測18・113測16</span></td><td>擔保之債權罹於<strong>消滅時效</strong>後，抵押權人<strong>於時效完成後5年內不實行抵押權</strong>，抵押權<strong>消滅</strong>——若無此限制，債務人罹於時效本可拒絕給付，抵押權人卻可無限期行使抵押權，等於讓債務人的時效抗辯利益落空</td></tr>
+        <tr><td><strong>抵押物滅失</strong> <span class="law-tag">§881</span><span class="examhit">113測18</span></td><td>抵押權原則上因抵押物滅失而消滅；但<strong>抵押人因滅失得受賠償或其他利益者</strong>（如保險理賠、徵收補償），<strong>抵押權不消滅</strong>——抵押權人對該賠償或其他請求權有<strong>權利質權</strong>，次序與原抵押權相同（<strong>物上代位性</strong>）；毀損（未達滅失）準用同一規定</td></tr>
+      </tbody>
+    </table>
+    <div class="note">105 年申論經典案例：甲乙 85 年借款未約定清償期並設定普通抵押權，甲於 104 年死亡，繼承人丙 105 年始發現此抵押權，主張債權消滅時效（15年）及抵押權時效（5年）均已完成，訴請塗銷抵押權——有理由</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、最高限額抵押權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>最高限額抵押權 <span class="law-tag">§881-1起</span><span class="examhit">108申論25分・106測23・107測22・108測4</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">定義 <span class="law-tag">§881-1</span>：債務人或第三人提供其不動產為擔保，就<strong>債權人對債務人一定範圍內之不特定債權</strong>，在<strong>最高限額內</strong>設定之抵押權——擔保之債權以由<strong>一定法律關係所生之債權或基於票據所生之權利</strong>為限</div>
+    <div class="note">白話理解：普通抵押權擔保的是<strong>單一、特定</strong>的債權，連利息幾%都要登記清楚；最高限額抵押權則是先約定一個總額上限（例如 2000 萬），只要在這個範圍內、且屬於約定的法律關係所生的每一筆債權（例如多次融資），通通都在擔保範圍內，不需要每次融資都重新設定一次抵押權</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">最高限額抵押權 vs 普通抵押權 比較總表</div>
+    <table>
+      <thead><tr><th style="width:20%;"></th><th>普通抵押權</th><th>最高限額抵押權</th></tr></thead>
+      <tbody>
+        <tr><td><strong>擔保債權</strong></td><td>特定、單一債權</td><td>一定範圍內之<strong>不特定</strong>債權（在最高限額內）</td></tr>
+        <tr><td><strong>隨債權移轉</strong></td><td>抵押權<strong>不得</strong>與債權分離而讓與（從屬性）</td><td><strong>原債權確定前</strong>，讓與債權時，<strong>最高限額抵押權不隨同移轉</strong></td></tr>
+        <tr><td><strong>讓與抵押權本身</strong></td><td>須連同債權一併讓與</td><td>原債權確定前，經<strong>抵押人同意</strong>，得將<strong>全部或分割其一部</strong>讓與他人</td></tr>
+        <tr><td><strong>共有</strong></td><td>—</td><td>原債權確定前，經抵押人同意，<strong>得使他人成為共有人</strong>，各共有人按其債權額比例分配受償價值</td></tr>
+        <tr><td><strong>實行方式</strong></td><td>清償期屆至未受清償，<strong>即可</strong>聲請法院拍賣</td><td>原債權<strong>確定後</strong>，須先<strong>結算實際發生之債權額</strong>，並<strong>請求變更登記為普通抵押權</strong>，之後才能依普通抵押權規定聲請拍賣</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 108 年申論核心：甲設定最高限額 1200 萬擔保 1000 萬借款，擔保範圍限於<strong>已確定原債權＋利息、遲延利息、違約金（合計不逾最高限額）＋實行費用</strong>；若擔保物 A 屋毀損滅失，乙（抵押權人）本於<strong>物上代位性</strong>，就甲得受領之保險理賠等賠償利益有「<strong>權利質權</strong>」，可優先受償——這點與普通抵押權的物上代位規則相通（見第七節 §881）</div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="example-label">例題：房子燒毀了，抵押權去哪了？</div>
+      <div style="font-size:13.5px;">甲的 A 屋設定抵押權給乙、也投保了火險，後來 A 屋不幸燒毀。房子雖然沒了，但甲可以向保險公司請求領一筆理賠金——這筆理賠金就是房子的「替代品」。乙原本對房子享有的優先受償權利，<strong>自動轉移</strong>到甲這筆保險理賠請求權上，這就是<strong>物上代位性</strong>；因為標的物變成「權利」而不是「不動產」，性質上才改稱「<strong>權利質權</strong>」，乙仍可優先從理賠金拿回欠款，不會因房子燒毀就落空。</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、質權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>質權：動產質權與權利質權 <span class="law-tag">§884-910</span></h2>
+  </div>
+  <div class="card">
+    <div class="card-title">速記：抵押權 vs 質權</div>
+    <table>
+      <thead><tr><th style="width:26%;"></th><th>標的物</th><th>占有是否移轉</th></tr></thead>
+      <tbody>
+        <tr><td><strong>抵押權</strong> <span class="law-tag">§860</span></td><td>不動產</td><td>不移轉（抵押人繼續使用）</td></tr>
+        <tr><td><strong>質權</strong> <span class="law-tag">§884/§900</span></td><td>動產／權利</td><td>移轉（交給質權人保管）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">動產質權 <span class="law-tag">§884</span></div>
+      <div class="highlight-box danger">謂債權人對於債務人或第三人<strong>移轉占有</strong>而供其債權擔保之動產，得就該動產賣得價金優先受償之權</div>
+      <table style="margin-top:6px;">
+        <tbody>
+          <tr><td style="width:32%;"><strong>效力發生</strong></td><td>因供擔保之動產<strong>移轉於債權人占有</strong>而生效力——與抵押權「不移轉占有」正好相反，質物<strong>會實際交到質權人手上</strong></td></tr>
+          <tr><td><strong>擔保範圍</strong></td><td>原債權、利息、遲延利息、違約金、<strong>保存質物之費用</strong>、實行質權之費用、<strong>因質物隱有瑕疵而生之損害賠償</strong></td></tr>
+          <tr><td><strong>質權人義務</strong></td><td>應以<strong>善良管理人之注意</strong>保管質物；<strong>非經出質人同意</strong>，不得使用或出租質物</td></tr>
+          <tr><td><strong>行使</strong></td><td>債權<strong>已屆清償期而未受清償者</strong>，得<strong>拍賣質物</strong>，就其賣得價金而受清償</td></tr>
+          <tr><td><strong>消滅</strong></td><td>①質物<strong>返還</strong>於出質人或交付於債務人而消滅；②質權人<strong>喪失質物占有，於2年內未請求返還</strong>者消滅 <span class="law-tag">§898</span>；③質物<strong>滅失</strong>而消滅，但質權人對出質人所得行使之賠償或其他請求權<strong>仍有質權</strong>（物上代位）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">權利質權 <span class="law-tag">§900-910</span></div>
+      <div class="highlight-box danger">謂以<strong>可讓與之債權或其他權利</strong>為標的物之質權</div>
+      <table style="margin-top:6px;">
+        <tbody>
+          <tr><td style="width:32%;"><strong>準用</strong></td><td>除本節（權利質權）另有規定外，<strong>準用動產質權之規定</strong></td></tr>
+          <tr><td><strong>設定方式</strong></td><td>除依本節規定外，並應依<strong>關於其權利讓與之規定</strong>為之——因為權利質權標的物是「權利」，不像動產可以交付，只能比照該權利本身的讓與方式來設定</td></tr>
+          <tr><td><strong>要式性</strong></td><td>以<strong>債權</strong>為標的物之質權，其<strong>設定應以書面為之</strong> <span class="law-tag">§904</span>——目的是讓第三人能明確知道權利已經出質</td></tr>
+          <tr><td><strong>禁止變更消滅</strong></td><td>為質權標的物之權利，<strong>非經質權人同意</strong>，出質人<strong>不得以法律行為使其消滅或變更</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="note">權利質權之行使另見 §905、§906、§906-1、§906-2（以金錢債權為標的者，質權人得直接向債務人請求給付、未屆清償期得請求提存等細節規定）</div>
+    </div>
+  </div>
+  <div class="highlight-box warning" style="margin-top:11px;">⚠️ 常見混淆選項（105測28・113測18）：①乙以汽車設質於甲，<strong>無利害關係之第三人代償（如僅仗義相助），債務消滅、質權隨之消滅</strong>；甲喪失占有逾 2 年未請求返還則質權消滅，但該車遭竊後在此期間內轉讓善意第三人，甲對該第三人行使<strong>回復請求權</strong>時，質權<strong>不消滅</strong>（§886/§949 交錯考點）；②甲以 A 屋設定<strong>抵押</strong>後，因第三人丙之過失致 A 屋滅失，乙（抵押權人）就甲對丙所得行使之賠償請求權有的是「<strong>權利質權</strong>」（依 §881 II），不是動產質權也不是普通抵押權——考題常故意用這三個名詞互換誤導</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、典權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>典權 <span class="law-tag">§911-927</span><span class="examhit">106測29</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">定義 <span class="law-tag">§911</span>：謂支付典價，在他人之不動產為使用、收益，於他人<strong>不回贖</strong>時，<strong>取得該不動產所有權</strong>之權——概念類似典當：支付一筆典價換取使用收益權，期限一到出典人若不回贖，所有權就歸典權人</div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">期限與轉典出租 <span class="law-tag">§912</span><span class="law-tag">§915</span><span class="law-tag">§916</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>期限上限</strong></td><td>約定期限<strong>不得逾30年</strong>，逾30年者<strong>縮短為30年</strong></td></tr>
+          <tr><td><strong>轉典・出租</strong></td><td>典權存續中，典權人<strong>得將典物轉典或出租於他人</strong>（另有約定或習慣者依其約定或習慣）</td></tr>
+          <tr><td><strong>期限限制</strong></td><td>定有期限者，轉典或租賃<strong>期限不得逾原典權之期限</strong>；<strong>未定期限者，轉典或租賃不得定有期限</strong></td></tr>
+          <tr><td><strong>典價限制</strong></td><td><strong>轉典之典價，不得超過原典價</strong></td></tr>
+          <tr><td><strong>不得分離</strong></td><td>土地與其上建築物同屬一人所有，而為同一人設定典權者，典權人就該典物<strong>不得分離</strong>而為轉典，或就其典權分離而為處分</td></tr>
+          <tr><td><strong>損害賠償</strong></td><td>典權人對於典物<strong>因轉典或出租所受之損害，負賠償責任</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">典物之處分與絕賣條款 <span class="law-tag">§913</span><span class="law-tag">§917</span><span class="law-tag">§919</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>典權讓與</strong></td><td>典權人得將典權讓與他人，或<strong>設定抵押權</strong> <span class="law-tag">§917 I</span></td></tr>
+          <tr><td><strong>絕賣條款</strong></td><td>典權約定期限<strong>不滿15年</strong>者，<strong>不得</strong>附有到期不贖即作絕賣之條款（即須<strong>滿15年以上</strong>才可以附）；附絕賣條款者，出典人於典期屆滿不以原典價回贖，<strong>典權人即取得典物所有權</strong>；絕賣條款<strong>非經登記，不得對抗第三人</strong></td></tr>
+          <tr><td><strong>優先承買（留買權）</strong></td><td>出典人將典物<strong>出賣於他人</strong>時，應以<strong>書面通知</strong>典權人；典權人<strong>10日內</strong>未以書面表示願依同樣條件留買者，<strong>視為放棄</strong>；出典人違反通知義務而移轉者，<strong>不得對抗典權人</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">典物滅失、義務與有益費用 <span class="law-tag">§920</span><span class="law-tag">§922</span><span class="law-tag">§927</span></div>
+    <table style="table-layout:fixed;">
+      <tbody>
+        <tr><td style="width:16%;"><strong>典權人之義務</strong></td><td>應<strong>依典物之性質為使用收益</strong>，並應保持其得永續利用；違反者出典人得<strong>回贖</strong></td></tr>
+        <tr><td><strong>典權人過失致滅失</strong></td><td>典權存續中，因典權人<strong>過失</strong>致典物全部或一部滅失者，於<strong>典價額限度內</strong>負其責任；因<strong>故意或重大過失</strong>致滅失者，除將典價抵償損害外，<strong>如有不足仍應賠償</strong></td></tr>
+        <tr><td><strong>不可抗力致滅失</strong></td><td>典物因<strong>不可抗力</strong>致全部或一部滅失者，就滅失之部分，<strong>典權與回贖權均歸消滅</strong>；出典人就餘存部分回贖時，得由原典價扣除滅失部分之典價（依比例計算）</td></tr>
+        <tr><td><strong>有益費用返還</strong></td><td>典權人因支付有益費用使典物價值增加，或依規定重建、修繕者，<strong>於典物回贖時</strong>，得於<strong>現存利益之限度內</strong>請求償還</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">回贖 <span class="law-tag">§923</span><span class="law-tag">§924</span><span class="law-tag">§925</span></div>
+    <table>
+      <thead><tr><th style="width:26%;"></th><th>回贖時機</th><th style="width:26%;">逾期效果</th></tr></thead>
+      <tbody>
+        <tr><td><strong>定有期限</strong> <span class="law-tag">§923</span></td><td>期限屆滿後，出典人得以<strong>原典價</strong>回贖典物</td><td>屆滿後<strong>經過2年</strong>不以原典價回贖者，<strong>典權人取得典物所有權</strong></td></tr>
+        <tr><td><strong>未定期限</strong> <span class="law-tag">§924</span></td><td>出典人得<strong>隨時</strong>以原典價回贖典物</td><td>自出典後經過<strong>30年</strong>不回贖者，<strong>典權人取得典物所有權</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="note">出典人之回贖，應於<strong>6個月前</strong>通知典權人 <span class="law-tag">§925</span>——兩種情形都是「典權人取得所有權」的結果，差別只在於定有期限者是「期限屆滿後再加2年」，未定期限者則是「出典起算滿30年」</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">土地房屋分離時之租賃關係推定 <span class="law-tag">§924-2</span></div>
+    <div style="font-size:13.5px;">土地及其土地上之建築物同屬一人所有，而<strong>僅以土地設定典權</strong>者，典權人與建築物所有人間，<strong>推定</strong>在典權或建築物存續中<strong>有租賃關係存在</strong>；僅以建築物設定典權者亦同（推定典權人與土地所有人間有租賃關係）——立法目的與 L10 的 §425-1、§876 法定地上權相同，都是為了避免建築物所有人變成無權占用他人土地</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十一、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">11</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲有一塊 A 地，先後分別設定抵押權給乙（次序1・擔保債權300萬）、丁（次序2・擔保債權600萬）、戊（次序3・擔保債權400萬）。之後甲將 A 地移轉登記給了丙，此時三筆借款的還款期限均已屆至，甲均未清償。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜甲已將 A 地移轉登記給丙，乙、丁、戊還能行使抵押權嗎？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">追及性</div><div>抵押權具有<strong>追及性</strong> <span class="law-tag">§867</span>：甲設定抵押權後，依法仍可將 A 地移轉登記給第三人丙，但<strong>不影響抵押權效力</strong>——抵押權會隨 A 地一起移轉，繼續附著在現在登記於丙名下的 A 地上</div></div>
+      <div class="irac-row"><div class="irac-label">結論</div><div>乙、丁、戊<strong>皆得</strong>依 §873 聲請法院對（現登記於丙名下的）A 地強制拍賣，依登記次序（乙→丁→戊）分別受償</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜若甲在設定抵押權之後，又在 A 地上蓋了一棟 B 屋，乙、丁、戊得如何處理？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">併付拍賣</div><div>這正是<strong>土地設定抵押權後營造建築物</strong>的情形 <span class="law-tag">§877</span>：抵押權人於必要時，得於強制執行程序中聲請法院將 B 屋與 A 地<strong>併付拍賣</strong></div></div>
+      <div class="irac-row"><div class="irac-label">限制</div><div>對於 B 屋部分賣得之價金，乙、丁、戊<strong>無優先受清償之權</strong>——本來設定抵押的範圍就只有 A 地，B 屋只是為了讓拍賣程序方便進行才一起賣</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card">
+    <div class="irac-header">Q3｜若乙將其抵押權次序，為全體後次序抵押權人（丁、戊）之利益拋棄，效力如何？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">性質判斷</div><div>乙拋棄次序的對象是<strong>全體</strong>後次序抵押權人（丁與戊都受益），符合<strong>絕對拋棄</strong>的定義 <span class="law-tag">§870-1</span></div></div>
+      <div class="irac-row"><div class="irac-label">效力</div><div>乙的<strong>次序歸於最後</strong>，受償順序變成丁（次序1）→戊（次序2）→乙（次序3）；乙原本 300 萬的債權額本身<strong>不受影響</strong>，只是受償順位往後排</div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 十二、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">12</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對（2026-08-13，見 <code>民法L8-L12_考古題深查.md</code>）。<strong>L11 十年 7 年命中</strong>（105・106・107・108・110・113・114，109・111・112 三年查無獨立命題），含 <strong>2 題 25 分申論</strong>（105抵押權雙重時效、108最高限額抵押權＋物上代位、114抵押權地上權物權效力整合，共3題申論散布3個年度），命中密度在民法五堂物權繼承篇（L8～L12）中與 L10 並列第二高（L12＞L10≈L11＞L9＞L8）。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>抵押權消滅時效§880（債權時效完成後5年不實行即消滅）</td><td>⑦流抵契約・共同抵押與消滅</td><td><span class="badge top">高頻命中（含1題25分申論：105；另110・113測驗）</span></td></tr>
+      <tr><td>最高限額抵押權§881-1起（擔保債權範圍、物上代位性）</td><td>⑧最高限額抵押權</td><td><span class="badge top">高頻命中（含1題25分申論：108；另106・107測驗）</span></td></tr>
+      <tr><td>抵押權與用益物權併存之優先效力＋物權共通效力總論</td><td>④特性與其他物權併存</td><td><span class="badge top">高頻命中（含1題25分申論：114）</span></td></tr>
+      <tr><td>流抵契約效力§873-1（登記對抗主義）</td><td>⑦流抵契約・共同抵押與消滅</td><td><span class="badge mid">一般命中（1年：113）</span></td></tr>
+      <tr><td>抵押權次序拋棄／讓與與清償分配計算</td><td>③次序與三種調整方式</td><td><span class="badge mid">一般命中（1年：107，數字試算題型）</span></td></tr>
+      <tr><td>抵押物滅失之物上代位性（權利質權）</td><td>⑦消滅、⑨質權</td><td><span class="badge mid">一般命中（1年：113）</span></td></tr>
+      <tr><td>動產質權存續要件（占有喪失、盜贓物回復請求權時效）</td><td>⑨質權</td><td><span class="badge mid">一般命中（1年：105）</span></td></tr>
+      <tr><td>典權§911-927（轉典損害賠償、絕賣條款、有益費用、回贖期限）</td><td>⑩典權</td><td><span class="badge mid">一般命中（1年：106，一題涵蓋4大考點）</span></td></tr>
+      <tr><td>抵押權物權行為登記生效要件§758</td><td>①基本概念</td><td><span class="badge mid">一般命中（1年：110）</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box" style="margin-top:10px;">⚠️ 「物上保證人之求償權（§879完整案型）」「質權之實行方式（拍賣/流質禁止§893、§908）」「典物危險負擔與重建（§921）」近10年<strong>查無獨立命題</strong>，複習優先度可排後面。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十三、近10年常考題目彙整（逐年版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">13</div>
+    <h2>近 10 年常考題目彙整（逐年版） <span class="examhit">105–114年</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📖 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐題核對（2026-08-13）。L11 十年<strong>7 年命中</strong>（109・111・112查無獨立命題），完整明細見 <code>民法L8-L12_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:11%;">年度</th><th>考點摘要</th><th style="width:20%;">對應法條</th></tr></thead>
+    <tbody>
+      <tr><td>105<br><span class="note" style="font-style:normal;">2 題次・含25分申論</span></td><td>申論：甲乙85年借款未約清償期並設定普通抵押權，甲104年死亡，繼承人丙105年始發現抵押權，主張債權時效（15年）及抵押權時效（5年）均已完成，訴請塗銷抵押權有理由；測28動產質權存續要件（第三人代償不消滅質權、喪失占有逾2年未請求返還消滅、盜贓物對善意受讓人回復請求權時效）</td><td><span class="law-tag">§880</span><span class="law-tag">§886</span></td></tr>
+      <tr><td>106<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測23 最高限額抵押權基本規定；測29 典權四大考點一次涵蓋（轉典損害賠償、期限逾15年得附絕賣條款、有益費用返還、未定期限逾30年不回贖典權人取得所有權）</td><td><span class="law-tag">§881-1</span><span class="law-tag">§913</span><span class="law-tag">§916</span></td></tr>
+      <tr><td>107<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測6 抵押物上乙（1次序200萬）丙（2次序120萬）丁（3次序50萬）三抵押權，拍賣所得300萬，乙將優先受償利益拋棄予丁，重新計算三人實際受償金額（數字試算陷阱題型）；測22 最高限額抵押權基本規定</td><td><span class="law-tag">§870-1</span><span class="law-tag">§881-1</span></td></tr>
+      <tr><td>108<br><span class="note" style="font-style:normal;">2 題次・含25分申論</span></td><td>申論：甲設定最高限額1200萬擔保1000萬借款，擔保範圍限於已確定原債權＋利息遲延利息違約金（合計不逾最高限額）＋實行費用；A屋毀損滅失時，乙本於物上代位性就甲得受領之保險理賠等賠償利益有權利質權，優先受償；測4最高限額抵押權基本規定</td><td><span class="law-tag">§881-1</span><span class="law-tag">§881</span></td></tr>
+      <tr><td>110<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測9 辨析：土地買賣契約非經登記不生效力係誤導選項，正確為「設定抵押權之物權行為」須登記始生效力；測18 抵押權消滅時效5年（呼應105申論關鍵數字）</td><td><span class="law-tag">§758</span><span class="law-tag">§880</span></td></tr>
+      <tr><td>113<br><span class="note" style="font-style:normal;">3 題次</span></td><td>測16 抵押權消滅時效5年再考；測17 流抵契約並非絕對無效，而是非經登記不得對抗第三人（2007年修法登記對抗主義）；測18 抵押物因第三人過失致滅失，抵押權人就損害賠償請求權有「權利質權」（辨析選項刻意混淆動產質權／普通抵押權）</td><td><span class="law-tag">§880</span><span class="law-tag">§873-1</span><span class="law-tag">§881</span></td></tr>
+      <tr><td>114<br><span class="note" style="font-style:normal;">1 題次・25分申論</span></td><td>申論：甲以A地先設定抵押權予乙，後設定地上權予丙，再將所有權讓與丁；乙抵押權效力優先於丙地上權（先次序優先），基於追及效力乙、丙之權利均及於受讓人丁；乙實行抵押權受影響時，法院得除去丙之地上權重新拍賣（整合物權排他、優先、追及、物上請求權四大共通效力）</td><td><span class="law-tag">§866</span><span class="law-tag">§867</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:10px;">⚠️ 十年 7 年命中，109、111、112 三年查無獨立命題，命中年度略少於 L10，但<strong>最高限額抵押權（106・107・108申論・108）與抵押權消滅時效5年（105申論・110・113）是兩大反覆命中的核心考點</strong>，務必逐一熟記數字（最高限額不逾約定上限、消滅時效完成後5年）與流程（次序調整三方式、原債權確定後須先變更登記為普通抵押權才能實行）。</div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：本堂的核心答題順序是「<strong>先判斷是抵押權、質權還是典權 → 抵押權先確認是普通還是最高限額 → 涉及不動產移轉記得追及性、涉及多筆抵押權記得先看次序 → 遇到「拋棄／讓與次序」先問對象是特定一人還是全體後次序 → 涉及土地建物同屬一人記得比對§838-1／§876／§924-2三種法定關係推定的觸發原因</strong>」。抵押權章節法條密度高，作答時務必先確認觸發要件（設定時點、拍賣原因）再套用條文，避免混淆 §876 與 L10 §838-1。
+</div>
+
+</body>
+</html>
