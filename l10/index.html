@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法 L10｜重點整理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink:#1e293b; --sub:#64748b; --line:#e2e8f0; --line-strong:#94a3b8;
+    --accent:#8B4438; --accent-bg:#f1e2dd;
+    --accent2:#9C7A34; --accent2-bg:#efe6d0;
+  }
+  body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    background: #f4f1eb;
+    color: var(--ink);
+    width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  /* ── 頁首 ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e293b, #4a4a4a);
+    color: white;
+    border-radius: 16px;
+    padding: 18px 32px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header h1 { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+  .page-header .subtitle { font-size: 15px; opacity: .85; margin-top: 5px; }
+  .page-header .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-header .badge strong { font-size: 20px; display: block; }
+
+  /* ── Section 標題 ── */
+  .section { margin-bottom: 6px; }
+  .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .section-num {
+    background: var(--ink); color: white;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .section-title h2 {
+    font-size: 21px; font-weight: 900; color: var(--ink);
+    border-bottom: 3px solid var(--ink); padding-bottom: 3px;
+  }
+
+  /* ── 卡片網格 ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* ── 通用卡片 ── */
+  .card { background: white; border-radius: 12px; padding: 11px 15px; box-shadow: 0 2px 8px rgba(0,0,0,.07); border: 1.5px solid var(--line); }
+  .card-title { font-size: 15px; font-weight: 900; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+  .card-title .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── 效力徽章（方框字，不靠顏色分類）── */
+  .badge-tag { display: inline-block; padding: 2px 11px; border: 1.5px solid var(--ink); border-radius: 5px; font-size: 12.5px; font-weight: 900; color: var(--ink); background: #fff; }
+
+  /* ── 重要度：僅陶紅／赭黃兩色 ── */
+  .stars { color: var(--accent); font-size: 14px; }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  th { background: var(--ink); color: white; padding: 6px 12px; text-align: left; font-size: 14px; font-weight: 700; }
+  td { padding: 6px 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #f1f5f9; }
+
+  /* ── 流程箭頭 ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .flow-item { background: var(--ink); color: white; padding: 7px 16px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .flow-arrow { color: var(--sub); font-size: 20px; font-weight: 700; }
+
+  /* ── 重點框：黑灰階為主，陶紅=最高等級／易混淆，赭黃=次一級提醒 ── */
+  .highlight-box { border-left: 5px solid var(--ink); background: #f8fafc; padding: 7px 13px; border-radius: 0 8px 8px 0; margin: 5px 0; font-size: 14px; }
+  .highlight-box.warning { border-left-color: var(--accent2); background: var(--accent2-bg); }
+  .highlight-box.danger { border-left-color: var(--accent); background: var(--accent-bg); }
+
+  /* ── 法條標籤 ── */
+  .law-tag { display: inline-block; background: var(--ink); color: white; padding: 2px 9px; border-radius: 5px; font-size: 12px; font-weight: 700; margin: 0 2px; }
+
+  /* ── 考古題重點標籤（四科統一陶紅色） ── */
+  .examhit { display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 800; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 9px; vertical-align: middle; }
+
+  /* ── 涵蓋度徽章（考古題對應總覽用） ── */
+  .badge { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 11px; border-radius: 20px; background: #6b7280; color: #fff; white-space: nowrap; }
+  .badge.top { background: var(--accent); }
+  .badge.mid { background: var(--accent2); }
+
+  /* ── 例題區塊 ── */
+  .example-box { background: #f8fafc; border: 2px solid var(--line); border-radius: 12px; padding: 9px 13px; margin-top: 6px; }
+  .example-label { font-size: 12px; color: var(--sub); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+
+  /* ── IRAC 卡片 ── */
+  .irac-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); border: 1.5px solid var(--line); }
+  .irac-header { padding: 7px 15px; color: white; font-weight: 900; font-size: 15px; background: var(--ink); }
+  .irac-body { background: white; padding: 9px 13px; }
+  .irac-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+  .irac-row:last-child { border-bottom: none; }
+  .irac-label { font-weight: 900; color: var(--sub); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+
+  hr { border: none; border-top: 2px dashed var(--line); margin: 5px 0; }
+  .note { font-size: 13px; color: var(--sub); font-style: italic; margin-top: 6px; }
+  .sub-title { font-size: 16px; font-weight: 900; margin-bottom: 9px; color: var(--ink); }
+
+  /* ── 故事情節區塊（綜合實例題）── */
+  .story-box {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 14px;
+    margin: 8px 0;
+    border-left: 5px solid var(--sub);
+  }
+
+  /* ── 關係圖 ── */
+  .party-flow { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 10px 0; flex-wrap: wrap; }
+  .party-node { background: white; border: 2px solid var(--ink); border-radius: 10px; padding: 8px 18px; font-weight: 900; text-align: center; }
+  .party-node .role { display: block; font-size: 11px; color: var(--sub); font-weight: 700; margin-top: 2px; }
+  .party-arrow { text-align: center; font-size: 12px; color: var(--sub); }
+  .party-arrow .arr { font-size: 20px; color: var(--ink); }
+
+  /* ── 分數直式表示 ── */
+  .frac { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; margin: 0 4px; line-height: 1.2; }
+  .frac .num { border-bottom: 2px solid currentColor; padding-bottom: 2px; text-align: center; white-space: nowrap; }
+  .frac .den { padding-top: 2px; text-align: center; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ═══ 頁首 ═══ -->
+<div class="page-header">
+  <div>
+    <div style="font-size:13px;opacity:.7;margin-bottom:5px;">114年 不動產經紀人考試｜民法</div>
+    <h1>L10｜物權編・共有、地上權</h1>
+    <div class="subtitle">共有的兩種形態 → 分別共有人的權限 → 共有物分割 → 公同共有 → 普通地上權 → 法定地上權 → 綜合實例題 → 補充章節 → 考古題對應</div>
+  </div>
+  <div style="display:flex;gap:14px;">
+    <div class="badge"><strong>§817-826、§832-841</strong>核心條文</div>
+    <div class="badge"><strong>L10</strong>物權編・共有・地上權</div>
+    <div class="badge"><strong>⭐⭐⭐⭐⭐</strong>共有物管理・分割・地上權存續</div>
+  </div>
+</div>
+
+<!-- ═══ 一、共有的兩種形態 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <h2>共有的兩種形態：分別共有 vs 公同共有</h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box">法律規定的共有分成兩種：<strong>分別共有</strong>（最常見）與<strong>公同共有</strong>（特殊形態，大部分規定準用分別共有）——讀這一堂只需把分別共有的部分讀熟，再理解兩者定義上的不同即可</div>
+    <div class="sub-title" style="margin-top:8px;">分別共有 <span class="law-tag">§817</span></div>
+    <div class="highlight-box danger">數人按其<strong>應有部分</strong>對於一物有所有權者，為共有人</div>
+    <div class="note">⚠️ 「應有部分」是<strong>抽象的比例概念</strong>，不是把土地具體切出一塊線——甲乙丙共有一塊 A 地各三分之一，並不會出現一條實際的線把土地切成三塊，分割完成前這條界線都只是虛線。這點跟<strong>區分所有權</strong>不一樣：區分所有權的專有部分（如公寓大廈每一戶）才是構造上、使用上具體切分、可單獨作為所有權標的的範圍</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">分別共有 vs 公同共有 比較總表</div>
+    <table>
+      <thead><tr><th style="width:16%;"></th><th>分別共有</th><th>公同共有</th></tr></thead>
+      <tbody>
+        <tr><td><strong>成立原因</strong></td><td>依約定或法律規定</td><td>依<strong>法律規定、習慣或法律行為</strong>而成立公同關係之數人（最常見：<strong>繼承</strong>遺產）</td></tr>
+        <tr><td><strong>應有部分</strong></td><td><strong>有</strong>——按比例對物有所有權</td><td><strong>無</strong>應有部分概念，共有人對物之權利及於全部</td></tr>
+        <tr><td><strong>處分應有部分</strong></td><td>各共有人得<strong>自由處分</strong>自己的應有部分 <span class="law-tag">§819 I</span></td><td>沒有應有部分可單獨處分</td></tr>
+        <tr><td><strong>處分共有物全部</strong></td><td>須經<strong>全體共有人同意</strong> <span class="law-tag">§819 II</span></td><td>須經<strong>全體公同共有人同意</strong>（規定相同）</td></tr>
+        <tr><td><strong>分割請求</strong></td><td>原則上<strong>得隨時請求分割</strong> <span class="law-tag">§823</span></td><td><strong>公同關係消滅前不得請求分割</strong>——例如須先請求分割遺產，公同關係才消滅</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 二、分別共有人的權限 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <h2>分別共有人的權限</h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">① 使用收益權 <span class="law-tag">§818</span></div>
+      <div style="font-size:13.5px;">各共有人按其應有部分，就共有物之<strong>全部</strong>有使用收益之權利——即使應有部分只有三分之一，使用收益的對象仍是整塊土地，不是切一塊出來自己用</div>
+    </div>
+    <div class="card">
+      <div class="card-title">② 處分權 <span class="law-tag">§819</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>應有部分</strong> <span class="law-tag">§819 I</span></td><td>各共有人得<strong>自由處分</strong>——不用經其他共有人同意</td></tr>
+          <tr><td><strong>共有物全部</strong> <span class="law-tag">§819 II</span></td><td>處分、變更、設定負擔須經<strong>全體共有人同意</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box danger" style="margin-top:6px;">⚠️ 未經全體同意就處分共有物全部（例如把整塊地移轉登記給第三人、設定地上權），依條文規定是<strong>無效</strong>，<strong>不是得撤銷</strong>——法律行為無效就沒有撤銷或不撤銷的問題（無效的行為必須是有效存在的法律行為才有被撤銷的可能）。要救濟只能提<strong>確認該處分行為無效之訴</strong>，不是撤銷訴訟 <span class="examhit">109測13・114測16</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">③ 共有物之管理 <span class="law-tag">§820</span></div>
+    <table>
+      <thead><tr><th style="width:30%;">決議門檻</th><th>內容</th></tr></thead>
+      <tbody>
+        <tr><td><strong>原則</strong></td><td>共有人<strong>人數過半數</strong>，<strong>且</strong>其應有部分合計<strong>過半數</strong>之同意</td></tr>
+        <tr><td><strong>例外</strong></td><td>應有部分合計已逾<strong>三分之二</strong>者，<strong>人數不予計算</strong>（不用管到場的人數多不多，比例夠了就可以直接做成決議）</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">前項決議如<strong>顯失公平</strong>，不同意之共有人得聲請<strong>法院裁定變更</strong>之——就算門檻已達成、決議也依規定作成，只要對少數不同意的人明顯不公平，法律仍賦予他們向法院請求變更的權利</div>
+    <div class="highlight-box" style="margin-top:6px;">共有人依決議管理，如有<strong>故意或重大過失</strong>致其他共有人<strong>受損害</strong>，應對不同意之共有人<strong>負賠償責任</strong>——請求損害賠償的前提永遠是「確實受有損害」，這是民法體系的共通原則</div>
+    <div class="highlight-box" style="margin-top:6px;"><strong>簡易修繕及其他保存行為，得由各共有人單獨為之</strong>——不用經過管理決議門檻，例如修繕破損圍牆、修剪雜草都屬於簡易修繕的範疇</div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">④ 對第三人的權利 <span class="law-tag">§821</span><span class="examhit">106申論25分</span></div>
+      <div class="highlight-box danger">各共有人對於第三人，得<strong>就共有物之全部</strong>為本於所有權之請求（例如共有物遭第三人無權佔用時，任何一位共有人都可以單獨對第三人主張）。<strong>但回復共有物之請求，須為共有人全體之利益為之</strong></div>
+      <div class="note">看到「共有」＋「物上返還請求權」同時出現，一定要同時想到 §821——結論必須是請求第三人<strong>將物返還給全體共有人</strong>，不是返還給主張的那一位共有人自己；只寫 §767 I 前段而漏掉 §821，答題架構就不完整</div>
+    </div>
+    <div class="card">
+      <div class="card-title">⑤ 費用分擔</div>
+      <div style="font-size:13.5px;">各共有人就共有物之管理、改良、修繕等所生費用，按其<strong>應有部分比例</strong>分擔——例如三分之一、三分之一、三分之一的分別共有，每人各自負擔三分之一費用；如果比例是三分之二、三分之一，就依比例分擔</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 三、共有物分割 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <h2>共有物分割 <span class="law-tag">§823-826-1</span><span class="examhit">110申論25分・114申論25分</span></h2>
+  </div>
+  <div class="grid-2" style="align-items:start;">
+    <div class="card">
+      <div class="card-title">時機與途徑</div>
+      <table>
+        <tbody>
+          <tr><td style="width:30%;"><strong>時機</strong></td><td>原則上<strong>得隨時請求分割</strong>；例外：有<strong>禁止分割之協議</strong>時依協議進行，除非協議無效或期限過長</td></tr>
+          <tr><td><strong>協議分割</strong>（原則）</td><td>各共有人達成分割協議</td></tr>
+          <tr><td><strong>裁判分割</strong>（例外）</td><td>協議不成時，得向法院請求裁判分割</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">裁判分割的兩種方法</div>
+      <table>
+        <tbody>
+          <tr><td style="width:26%;"><strong>原物分配</strong></td><td>土地直接分割給各共有人；<strong>未受分配或分得不足者，得以金錢補償</strong></td></tr>
+          <tr><td><strong>變價分配</strong></td><td>共有人數過多、原物難以分割時（例如 60 人分別共有一筆地），將共有物<strong>拍賣</strong>，以拍得價金分配給各共有人</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">分割效力 <span class="law-tag">§824-1</span><span class="examhit">110申論25分</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:26%;"><strong>取得所有權</strong> <span class="law-tag">§824-1 I</span></td><td>共有人自<strong>分割效力發生時</strong>起，取得分得部分之<strong>單獨所有權</strong></td></tr>
+        <tr><td><strong>擔保物權原則不受影響</strong> <span class="law-tag">§824-1 II</span></td><td>應有部分上原有的抵押權或質權，<strong>不因分割而受影響</strong>——原則上按應有部分比例，移存到原抵押人（設定抵押的那位共有人）分得的部分上</td></tr>
+        <tr><td><strong>但書例外</strong></td><td>抵押權人<strong>同意分割</strong>、<strong>已參加分割訴訟</strong>、或<strong>經告知訴訟而未參加</strong>時，抵押權<strong>移存於該共有人分得的部分</strong>（不再按比例分散到全部分得的土地上）</td></tr>
+        <tr><td><strong>法定抵押權保護</strong> <span class="law-tag">§824-1 IV</span> <span class="badge" style="font-size:10.5px;padding:1px 8px;">補充</span></td><td>原物分配時，若有共有人應受<strong>金錢補償</strong>（例如未受分配、或分得不足），該共有人就其補償金額，對<strong>補償義務人分得的不動產</strong>，<strong>當然取得抵押權</strong>（法定抵押權，登記時一併登記，次序優先於其他抵押權）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">白話理解：分割本來會讓抵押權「打散」到好幾塊地上，很難拍賣執行；法律讓抵押權盡量集中移存到原抵押人實際分得的那一塊地，同時也用法定抵押權保護因分割而只能拿到金錢補償、沒分到土地的共有人——這正是 110 年申論題（甲乙共有地、乙名下持分先後設定三筆最高限額抵押權給丙丁戊，嗣裁判分割）的核心考點</div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">分管協議對受讓人之效力 <span class="law-tag">§826-1</span><span class="examhit">114申論25分</span></div>
+      <table>
+        <tbody>
+          <tr><td style="width:26%;"><strong>已登記</strong></td><td>對<strong>應有部分之受讓人</strong>當然發生拘束力</td></tr>
+          <tr><td><strong>未登記</strong>（不動產）</td><td>原則<strong>不拘束</strong>受讓人；但受讓人<strong>買受前已知悉</strong>分管協議存在者，仍受拘束</td></tr>
+          <tr><td><strong>動產</strong></td><td>以受讓人<strong>知悉或可得而知</strong>該分管約定為限，才具有效力</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning" style="margin-top:6px;">⚠️ §826-1（98 年修正施行）之前成立的分管契約，適用<strong>釋字第 349 號</strong>：對<strong>善意</strong>（不知情）第三人不生拘束力；114 年申論題正是考這個新舊法適用時點的區分——分管契約成立於修法<strong>前</strong>者，看受讓人是否善意（不知情）；成立於修法<strong>後</strong>者，直接看是否已登記</div>
+    </div>
+    <div class="card">
+      <div class="card-title">共有人優先購買權</div>
+      <div class="highlight-box">共有人出賣其應有部分時，<strong>他共有人得以同一價格共同或單獨優先承購</strong>——法源是<strong>土地法 §34-1 Ⅳ</strong>，不是民法本身；若數人都出價，依規定<strong>抽籤</strong>決定</div>
+      <div class="note">立法目的：民法體系不喜歡同一物由多人共有，優先購買權讓退出的共有人優先賣給自家人，藉此減少共有人數，讓所有權盡可能歸於一人</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 四、公同共有 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <h2>公同共有 <span class="law-tag">§827-830</span><span class="examhit">106測22・107測21・109測14</span></h2>
+  </div>
+  <div class="card">
+    <table>
+      <tbody>
+        <tr><td style="width:22%;"><strong>成立</strong></td><td>依<strong>法律規定、習慣或法律行為</strong>成立公同關係的數人，基於該公同關係共同擁有某物之所有權；<strong>最常見：繼承</strong>——被繼承人死亡後，全體繼承人對遺產即成立公同共有關係</td></tr>
+        <tr><td><strong>處分／權利行使</strong></td><td>須得<strong>公同共有人全體之同意</strong>（與分別共有處分共有物全部的規定相同）</td></tr>
+        <tr><td><strong>分割</strong></td><td><strong>公同關係存續中不得請求分割</strong>——遺產案例中須先向法院請求分割遺產，公同關係才消滅，才能再進一步請求分割公同共有物</td></tr>
+        <tr><td><strong>消滅</strong></td><td>因公同關係終止（如請求分割遺產），或因公同共有物<strong>讓與</strong>而消滅</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box warning" style="margin-top:6px;">⚠️ 常考辨析：公同共有<strong>沒有應有部分概念</strong>，不能像分別共有一樣自由處分自己的份額；社團法人財產<strong>不屬於</strong>公同共有</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 五、普通地上權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <h2>普通地上權 <span class="law-tag">§832-841</span><span class="examhit">105測23・106測21・108測8・110測17・111測21・113測15・114測17</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">定義 <span class="law-tag">§832</span>：以在<strong>他人土地之上下</strong>有建築物或其他工作物為目的，而<strong>使用其土地</strong>之權利——土地所有權本身<strong>不移轉</strong>，地上權人只是取得使用土地的權利，並將這個權利<strong>登記在自己身上</strong></div>
+    <div class="grid-2" style="align-items:start;margin-top:8px;">
+      <table>
+        <thead><tr><th colspan="2">期限</th></tr></thead>
+        <tbody>
+          <tr><td style="width:30%;"><strong>有定期限</strong></td><td>依雙方約定</td></tr>
+          <tr><td><strong>未定期限</strong></td><td>存續期間逾 <strong>20 年</strong>，或地上權成立之目的已不存在時，<strong>法院得酌定存續期間，或終止地上權</strong></td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th colspan="2">讓與與其他限制</th></tr></thead>
+        <tbody>
+          <tr><td style="width:30%;"><strong>讓與登記</strong></td><td><strong>非登記不得對抗第三人</strong>——公示登記原則</td></tr>
+          <tr><td><strong>不得分離</strong></td><td>土地與其上建築物或工作物<strong>不得分離</strong>而讓與，或分離設定其他權利</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">拋棄 <span class="law-tag">§834</span><span class="law-tag">§835</span></div>
+    <table>
+      <thead><tr><th style="width:24%;"></th><th>拋棄方式</th></tr></thead>
+      <tbody>
+        <tr><td><strong>無支付地租</strong></td><td>地上權人<strong>得隨時拋棄</strong>——對土地所有人沒有損失，本來就沒收地租</td></tr>
+        <tr><td><strong>有支付地租＋有定期限</strong></td><td>須<strong>支付未到期之 3 年份地租後</strong>，才可拋棄</td></tr>
+        <tr><td><strong>有支付地租＋未定期限</strong></td><td>應於<strong>一年前通知</strong>土地所有人，<strong>或</strong>支付未到期之<strong>一年份地租</strong>，二者擇一即可拋棄</td></tr>
+      </tbody>
+    </table>
+    <div class="note">拋棄是<strong>地上權人</strong>的權利；本於誠信原則，有收地租的情況下突然拋棄會讓土地所有人損失很大，所以才有這些配套要求</div>
+  </div>
+
+  <div class="grid-2" style="align-items:start;margin-top:11px;">
+    <div class="card">
+      <div class="card-title">終止 <span class="law-tag">§836</span><span class="law-tag">§836-3</span></div>
+      <div style="font-size:13.5px;">終止是<strong>土地所有人</strong>的權利（跟拋棄相反），僅限兩種情況：</div>
+      <table style="margin-top:6px;">
+        <tbody>
+          <tr><td style="width:30%;"><strong>欠租達 2 年之總額</strong></td><td>土地所有人須先<strong>定相當期限催告</strong>支付地租，屆期仍不支付，才得終止；地上權設定抵押權者，應同時<strong>通知抵押權人</strong></td></tr>
+          <tr><td><strong>違反土地使用方法</strong></td><td><strong>不能直接終止</strong>——須先<strong>阻止</strong>，地上權人仍<strong>不聽制止繼續為之</strong>，才得終止</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">普通地上權 vs 租賃 概念比一比</div>
+      <table>
+        <tbody>
+          <tr><td style="width:26%;"><strong>性質</strong></td><td>地上權＝<strong>物權</strong>（對世效，可對任何人主張）／租賃＝<strong>債權</strong>（相對性，只能對出租人主張）</td></tr>
+          <tr><td><strong>收取的錢</strong></td><td>地上權收<strong>地租</strong>／租賃收<strong>租金</strong></td></tr>
+          <tr><td><strong>終止</strong></td><td>地上權<strong>終止權限縮</strong>（只有土地所有人、僅兩種法定事由）／租賃可按租約走或隨時終止</td></tr>
+          <tr><td><strong>拋棄</strong></td><td>地上權有拋棄概念／租賃<strong>沒有</strong>拋棄的概念</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">地上權消滅後：工作物取回、歸屬與補償 <span class="law-tag">§839</span><span class="law-tag">§840</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:24%;"><strong>取回原則</strong></td><td>地上權消滅時，地上權人<strong>得取回工作物</strong>，但應<strong>回復土地原狀</strong>（跟租賃終止返還時要回復原狀的概念類似）</td></tr>
+        <tr><td><strong>逾期歸屬</strong></td><td>地上權消滅後<strong>一個月內</strong>不取回，工作物<strong>歸屬於土地所有人</strong></td></tr>
+        <tr><td><strong>回復原狀請求權</strong></td><td>工作物<strong>有礙於土地利用</strong>時，土地所有人得請求地上權人<strong>拆除、回復原狀</strong></td></tr>
+        <tr><td><strong>優先購買權</strong></td><td>取回前應通知土地所有人，土地所有人<strong>願以時價購買</strong>者，地上權人<strong>非有正當理由不得拒絕</strong></td></tr>
+        <tr><td><strong>建築物補償</strong></td><td><strong>僅限存續期間屆滿而消滅</strong>時適用（拋棄、終止不適用）——地上權人得於期間屆滿前，<strong>定一個月以上期間</strong>，請求土地所有人<strong>按建築物時價補償</strong>；土地所有人拒絕或期滿未置理，地上權<strong>期間視為延長</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="note">建築物補償的立法理由：期限屆滿是「不得已」的自然消滅，不像拋棄、終止是一方主動行使權利的結果，地上權人可能因此喪失財產、財產權受到損害，所以才有這個補償配套</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 六、法定地上權 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <h2>法定地上權 <span class="law-tag">§838-1</span><span class="law-tag">§876</span></h2>
+  </div>
+  <div class="card">
+    <div class="highlight-box danger">法定地上權<span class="law-tag">§838-1</span>：土地與其上建築物<strong>原同屬一人所有</strong>，因<strong>強制執行拍賣</strong>，土地與建築物之<strong>拍定人各異</strong>時，<strong>視為已有地上權之設定</strong>；地租、期間及範圍由當事人協議，不能協議者得聲請法院判決之</div>
+    <div class="note">立法理由：如果沒有法定地上權制度，土地拍定人可以馬上要求建築物拍定人拆屋還地，對建築物所有人的權益影響非常大——法律直接推定雙方之間已有地上權存在，讓建築物所有人可以繼續合法使用土地</div>
+    <table style="margin-top:8px;">
+      <tbody>
+        <tr><td style="width:26%;"><strong>消滅</strong></td><td>因<strong>建築物滅失</strong>而消滅</td></tr>
+        <tr><td><strong>與普通地上權的差異</strong></td><td>普通地上權是雙方<strong>意定</strong>；法定地上權是<strong>法律推定視為已設定</strong>，不需要雙方合意</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">⚠️ 易混淆：§838-1（地上權章）vs §876（抵押權章）</div>
+    <table>
+      <thead><tr><th style="width:24%;"></th><th><span class="law-tag">§838-1</span>強制執行拍賣之法定地上權</th><th><span class="law-tag">§876</span>抵押物拍賣之法定地上權</th></tr></thead>
+      <tbody>
+        <tr><td><strong>觸發原因</strong></td><td>單純因<strong>強制執行</strong>被拍賣（例如一般債權人聲請執行），<strong>非因抵押權</strong></td><td>因<strong>設定抵押權後</strong>，經<strong>抵押權人實行抵押權</strong>拍賣</td></tr>
+        <tr><td><strong>效果</strong></td><td>視為已有地上權之設定</td><td>視為已有地上權之設定（效果相同）</td></tr>
+        <tr><td><strong>所屬章節</strong></td><td>物權編・<strong>地上權</strong>章（L10 本堂）</td><td>物權編・<strong>抵押權</strong>章（L11）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">兩者構成要件幾乎一樣（同屬一人所有＋拍賣後拍定人各異），差別只在拍賣是「單純強制執行」還是「抵押權實行」——判斷題目時先看有沒有先設定抵押權，有的話走 §876，沒有的話走 §838-1</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 七、綜合實例題解析 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <h2>綜合實例題解析</h2>
+  </div>
+
+  <div class="story-box">甲乙丙三人分別共有一塊 A 地，三人另定有分管協議，但<strong>尚未經書面登記</strong>。隨著時間經過，A 地上的雜草越長越長、圍牆也開始破損。某日丁經過 A 地，見無人打理便擅自佔有，將一部分土地作停車場出租給路人，另一部分則自行新建 B 屋居住。</div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q1｜甲得否自行修繕破損圍牆和雜草？得否向乙丙請求費用分擔？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">修繕圍牆雜草</div><div>修繕破損圍牆、修剪雜草屬於<strong>簡易修繕</strong>之範疇，依 §820 V<strong>各共有人可單獨為之</strong>，<strong>甲得自行修繕</strong>，不須經其他共有人同意</div></div>
+      <div class="irac-row"><div class="irac-label">費用分擔</div><div>依規定，共有物之費用<strong>各共有人按應有部分比例分擔</strong>，<strong>甲得請求乙丙就其應有部分比例分擔修繕及修剪費用</strong></div></div>
+    </div>
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q2｜甲乙丙得如何對丁主張權利？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">§767 I 前段三要件</div><div>①甲乙丙皆為 A 地所有人——具備；②丁並非 A 地所有人，屬無權利之人——具備；③丁佔有中——具備。三要件皆備，符合 §767 I 前段物上返還請求權要件</div></div>
+      <div class="irac-row"><div class="irac-label">結合 §821</div><div>看到共有＋物上返還請求權同時出現，必須連結 §821：甲乙丙各自都可以<strong>本於所有權</strong>對丁行使 §767 I 前段物上返還請求權，但<strong>必須請求丁將 A 地返還給甲乙丙全體共有人</strong>，不是返還給主張的那一位</div></div>
+      <div class="irac-row"><div class="irac-label">答題提醒</div><div>只寫 767 I 前段而沒有帶到 §821「須為全體共有人利益」，答案架構就不完整——共有＋物上返還請求權結合出現時，一定要記得這一點</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card" style="margin-bottom:8px;">
+    <div class="irac-header">Q3｜甲乙丙取回 A 地後，甲與乙決定將 A 地設定地上權給戊，丙得否請求法院撤銷甲乙所為的決定？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">性質判斷</div><div>設定地上權屬於<strong>共有物之處分／設定負擔</strong>行為，依 §819 II <strong>須經全體共有人同意</strong>（不是比例、是全體）——本題只有甲乙兩人決定，未經丙同意</div></div>
+      <div class="irac-row"><div class="irac-label">結論：不行</div><div>未經全體共有人同意，這個設定地上權的處分行為<strong>依規定為無效</strong>，<strong>不是得撤銷</strong>——法律行為無效就沒有撤銷不撤銷的問題。丙若要救濟，應提起<strong>確認設定地上權無效之訴</strong>，而不是撤銷甲乙決定的訴訟</div></div>
+    </div>
+  </div>
+
+  <div class="irac-card">
+    <div class="irac-header">Q4｜甲乙丙共同向銀行借款，將 A 地及新建於 A 地上的 C 屋設定抵押權；因無法清償，A 地與 C 屋均遭拍賣，己拍得 A 地、庚拍得 C 屋，己得否依 §767 請求庚拆屋還地？</div>
+    <div class="irac-body">
+      <div class="irac-row"><div class="irac-label">法定地上權要件檢視</div><div>①A 地與 C 屋原同屬甲乙丙所有（同一群人共同所有，符合「同屬一人」）；②<strong>因抵押權實行而拍賣</strong>；③土地與建築物<strong>拍定人各異</strong>（己拍得 A 地、庚拍得 C 屋）——三要件齊備，本題情境涉及<strong>抵押權拍賣</strong>，正確法源應為 <span class="law-tag">§876 II</span>（而非單純強制執行的 §838-1），<strong>視為己庚之間已有地上權之設定</strong></div></div>
+      <div class="irac-row"><div class="irac-label">§767 I 前段檢視</div><div>①己是 A 地所有人——具備；②庚是否為無權利之人？<strong>不是</strong>——庚基於前述法定地上權，有繼續使用 A 地的合法權源；③即使佔有中，要件②不具備，不符合 §767 I（不論前段、中段或後段）的行使要件</div></div>
+      <div class="irac-row"><div class="irac-label">結論：不行</div><div>庚並非無權佔有，己<strong>不得依 §767 請求庚拆屋還地</strong></div></div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 八、補充章節 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <h2>補充章節 <span class="stars">重點講義提及，本堂課堂未展開</span></h2>
+  </div>
+  <div class="highlight-box warning" style="margin-bottom:10px;">以下內容取自「民法物權第9-11堂 重點講義」共用重點整理講義，逐字稿與上課講義皆<strong>未實際教授</strong>，故不放入主線骨架，僅供補充查閱。</div>
+
+  <div class="card">
+    <div class="card-title">合併分割 <span class="law-tag">§824 V</span><span class="law-tag">§824 VI</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:30%;"><strong>共有人相同之數不動產</strong></td><td>共有人得請求<strong>合併分割</strong></td></tr>
+        <tr><td><strong>共有人部分相同之數不動產</strong></td><td>須經各不動產應有部分<strong>過半數</strong>共有人<strong>同意</strong>才能請求合併分割（但共有人僅兩人、各自對應有部分無法達成協議者除外）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">時效取得地上權 <span class="law-tag">§772準用§769/770</span><span class="examhit">109申論25分・113測15</span></div>
+    <div class="highlight-box danger">以行使<strong>地上權之意思</strong>，和平、公然、繼續占有他人未登記之土地，準用時效取得所有權之規定（非善意 20 年／善意無過失 10 年）——<strong>取得的是「請求登記為地上權人」的登記請求權</strong>，不是直接取得地上權</div>
+    <div class="note">109 年申論題陷阱：甲向建商買預售屋，基地因地主債務遭查封逾 20 年未能移轉登記，甲<strong>不得</strong>主張時效取得地上權——因為甲占有基地是以「<strong>買受人</strong>」之意思占有，<strong>不是</strong>以「行使地上權」之意思占有，主觀意思不符合要件；113 測 15 則是正面案例：以行使地上權之意思占有已登記他人土地滿 20 年，<strong>得請求登記為地上權人</strong></div>
+    <table>
+      <thead><tr><th style="width:20%;"></th><th>法定地上權 <span class="law-tag">§838-1</span><span class="law-tag">§876</span></th><th>時效取得地上權 <span class="law-tag">§772</span></th></tr></thead>
+      <tbody>
+        <tr><td><strong>發生原因</strong></td><td>土地與建物<strong>原同屬一人</strong>，因強制執行/抵押拍賣致拍定人各異</td><td>以行使地上權之意思，占有他人土地滿 20 年（善意無過失 10 年）</td></tr>
+        <tr><td><strong>主觀要件</strong></td><td>不問占有人意思，<strong>法律直接推定</strong>視為已設定</td><td>須<strong>以行使地上權之意思</strong>占有——若占有另有其他權源（如買受人期待過戶、租賃）即不符合</td></tr>
+        <tr><td><strong>是否需登記</strong></td><td><strong>視為已設定</strong>，不待登記即生效力</td><td>時效完成僅取得「<strong>請求登記</strong>為地上權人」的登記請求權，須辦理登記才生物權效力</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">土地房屋分離時的法定關係推定 <span class="examhit">113測9・113測12</span></div>
+    <table>
+      <tbody>
+        <tr><td style="width:30%;"><strong>房屋單獨讓與</strong> <span class="law-tag">§425-1</span></td><td>土地與其上房屋同屬一人，僅將房屋讓與他人（或僅讓與土地）時，<strong>推定</strong>在房屋得使用期限內，雙方<strong>有租賃關係</strong></td></tr>
+        <tr><td><strong>強制執行分別拍定</strong> <span class="law-tag">§876</span></td><td>土地與房屋同屬一人，經強制執行分別由不同人拍定，<strong>視為房屋拍定人就土地有地上權之設定</strong>（呼應本堂第六節法定地上權）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">兩者的差異：§425-1 是「用買賣等法律行為讓與房屋或土地其中一方」時的<strong>租賃關係推定</strong>；§876 / §838-1 是「拍賣後拍定人各異」時的<strong>地上權推定</strong>——都是為了解決房屋所有人無權源使用他人土地的窘境，但法律效果不同（一個是債權租賃、一個是物權地上權）</div>
+  </div>
+
+  <div class="card" style="margin-top:11px;">
+    <div class="card-title">抵押權與地上權併存時之優先效力 <span class="law-tag">§866</span><span class="examhit">111測18・114申論25分</span></div>
+    <div style="font-size:13.5px;">同一不動產上先設定抵押權、後設定地上權，<strong>抵押權效力優先</strong>於嗣後設定之地上權；若地上權之存在導致抵押權人<strong>實行抵押權有困難</strong>，<strong>法院得除去該地上權後重新拍賣</strong>——完整脈絡屬 L11 抵押權章節內容，本堂僅先建立地上權與抵押權次序衝突的基本概念</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ═══ 九、考古題對應：主題→涵蓋度總覽 ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <h2>考古題對應：主題→涵蓋度總覽</h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📋 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐年逐題核對（2026-08-13，見 <code>民法L8-L12_考古題深查.md</code>）。<strong>L10 十年 9 年命中</strong>（僅 112 年查無），含 <strong>3 題 25 分申論</strong>（106共有物管理＋物上請求權、109時效取得地上權、110裁判分割＋抵押權移轉、114分管契約＋釋字349），命中密度在民法五堂物權繼承篇（L8～L12）中與 L11 並列第二高（L12＞L10≈L11＞L9＞L8）。
+  </div>
+  <table>
+    <thead><tr><th style="width:32%;">高頻考點</th><th style="width:22%;">對應本堂筆記章節</th><th>涵蓋狀態</th></tr></thead>
+    <tbody>
+      <tr><td>共有物管理（多數決）§820＋共有人對第三人物上請求權§821</td><td>②分別共有人的權限</td><td><span class="badge top">高頻命中（含1題25分申論：106）</span></td></tr>
+      <tr><td>共有物裁判分割與抵押權按應有部分移轉§868＋§824-1＋釋字671</td><td>③共有物分割</td><td><span class="badge top">高頻命中（含1題25分申論：110）</span></td></tr>
+      <tr><td>分管契約默示成立＋對受讓人之效力（釋字349 vs §826-1）</td><td>③共有物分割</td><td><span class="badge top">高頻命中（含1題25分申論：114）</span></td></tr>
+      <tr><td>時效取得地上權§772準用§769/770</td><td>⑧補充章節</td><td><span class="badge top">高頻命中（含1題25分申論：109；另113測15）</span></td></tr>
+      <tr><td>共有物處分／管理須全體或多數決同意</td><td>②分別共有人的權限</td><td><span class="badge top">高頻命中（4年：106・107・109・114）</span></td></tr>
+      <tr><td>地上權基本規定（存續期間、讓與抵押、時效取得客體、積欠地租終止、預付地租對抗）</td><td>⑤普通地上權</td><td><span class="badge top">高頻命中（7年：105・106・108・110・111・113・114）</span></td></tr>
+      <tr><td>公同共有性質辨析</td><td>④公同共有</td><td><span class="badge mid">一般命中（3年：106・107・109）</span></td></tr>
+      <tr><td>土地房屋分離時之法定關係推定（§425-1房屋讓與推定租賃、§876強制拍賣分別拍定視為地上權）</td><td>⑧補充章節</td><td><span class="badge mid">一般命中（1年：113，共2題次）</span></td></tr>
+      <tr><td>抵押權與地上權併存時之優先效力（§866法院得除去用益物權後拍賣）</td><td>⑥法定地上權、⑧補充章節</td><td><span class="badge mid">一般命中（2年：111・114申論）</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box" style="margin-top:10px;">⚠️ 「優先購買權（基地§104／耕地§107類型）」屬土地法範疇，民法本身房屋優先承買§426-2 近10年<strong>未見獨立命題</strong>；「共有物分割方法之原物分配與變價分配完整辨析」也<strong>僅114測16選項略提及</strong>，未見獨立成題，複習優先度可排後面。</div>
+</div>
+
+<hr>
+
+<!-- ═══ 十、近10年常考題目彙整（逐年版） ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <h2>近 10 年常考題目彙整（逐年版） <span class="examhit">105–114年</span></h2>
+  </div>
+  <div class="highlight-box" style="margin-bottom:12px;">
+    📖 資料來源：全國陳國補習班「不動產經紀人解答」105～114 年逐題核對（2026-08-13）。L10 十年<strong>9 年命中</strong>（僅112年查無獨立命題），完整明細見 <code>民法L8-L12_考古題深查.md</code>。
+  </div>
+  <table>
+    <thead><tr><th style="width:11%;">年度</th><th>考點摘要</th><th style="width:20%;">對應法條</th></tr></thead>
+    <tbody>
+      <tr><td>105<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測23 地上權基本規定（存續期間、讓與抵押等）</td><td><span class="law-tag">§832起</span></td></tr>
+      <tr><td>106<br><span class="note" style="font-style:normal;">4 題次・含25分申論</span></td><td>申論：甲乙丙丁共有A屋各1/4，甲未得同意將一樓出租戊，租約對甲有效但效力不及乙丙丁；乙丙丁得依§821為全體利益向戊請求返還；測20共有人分管占有之丙擅自出賣共有物予丁涉及善意取得辨析；測21地上權基本規定；測22公同共有辨析</td><td><span class="law-tag">§820</span><span class="law-tag">§821</span></td></tr>
+      <tr><td>107<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測8 三共有人未經第四人同意逕行出賣共有地予戊並移轉登記，物權移轉行為有效（僅債權未涉無權處分）；測21 公同共有辨析</td><td><span class="law-tag">§819</span></td></tr>
+      <tr><td>108<br><span class="note" style="font-style:normal;">1 題次</span></td><td>測8 地上權基本規定</td><td><span class="law-tag">§832起</span></td></tr>
+      <tr><td>109<br><span class="note" style="font-style:normal;">3 題次・含25分申論</span></td><td>申論：甲向乙建商購買預售屋，基地因地主丙債務遭查封逾20年未能移轉登記；甲不得主張時效取得地上權，因占有係以「買受人」之意思而非「行使地上權」之意思；測13共有人整體設定抵押須全體同意，處分應有部分則否；測14公同共有辨析</td><td><span class="law-tag">§772</span><span class="law-tag">§819</span></td></tr>
+      <tr><td>110<br><span class="note" style="font-style:normal;">2 題次・含25分申論</span></td><td>申論：甲乙共有土地持分2/3、1/3，乙分三次設定最高限額抵押權予丙丁戊，嗣訴請裁判分割取得單獨所有土地，三筆抵押權依應有部分比例移轉；甲主張塗銷抵押權登記無理由（甲未依§824-1但書於分割訴訟中聲請移存並告知抵押權人）；測17未定期限地上權逾20年得聲請法院終止</td><td><span class="law-tag">§868</span><span class="law-tag">§824-1</span></td></tr>
+      <tr><td>111<br><span class="note" style="font-style:normal;">2 題次</span></td><td>測18 抵押權與地上權併存時，抵押權效力優先；測21 租用基地建屋者得請求出租人為地上權登記</td><td><span class="law-tag">§866</span></td></tr>
+      <tr><td>113<br><span class="note" style="font-style:normal;">3 題次</span></td><td>測9 甲將自建A地上B屋出售移轉登記予乙，房屋使用期限內推定甲乙有租賃關係；測12 土地與房屋同屬一人分別由丙丁拍定，視為丁就土地有地上權設定；測15 以行使地上權意思占有已登記他人土地20年，得請求登記為地上權人</td><td><span class="law-tag">§425-1</span><span class="law-tag">§876</span><span class="law-tag">§772</span></td></tr>
+      <tr><td>114<br><span class="note" style="font-style:normal;">3 題次・含25分申論</span></td><td>申論：甲於公寓屋頂平台加蓋逾20年成立默示分管契約；2年前買受四樓之乙主張拆除返還，因分管契約成立於§826-1修正施行前，適用釋字349號：對善意第三人乙無拘束力，乙得請求拆除；測16共有人得自由處分應有部分，但共有物抵押／地上權設定須全體同意；測17已登記之預付地租得對抗嗣後受讓土地之第三人</td><td><span class="law-tag">§826-1</span><span class="law-tag">§819</span></td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box warning" style="margin-top:10px;">⚠️ 十年 9 年命中，是民法五堂物權繼承篇（L8～L12）裡命題密度數一數二的一堂，尤其 <strong>106、109、110、114 連續多年都有 25 分整題申論</strong>，共有物管理／分割與地上權存續、消滅的要件務必逐一熟記，這堂的申論題型比重明顯高於測驗題。</div>
+</div>
+
+<hr>
+
+<div class="highlight-box" style="text-align:center;font-size:14px;">
+  💡 課後複習提示：本堂的核心答題順序是「<strong>先判斷是分別共有還是公同共有 → 分別共有先看是應有部分還是共有物全部（自由處分 vs 全體同意）→ 涉及第三人物上返還記得結合§821全體利益 → 地上權先確認普通還是法定 → 法定地上權留意§838-1與§876的觸發原因不同</strong>」。共有與地上權都是物權編要件相當嚴謹的章節，讀題時務必逐一核對條文構成要件。
+</div>
+
+</body>
+</html>
