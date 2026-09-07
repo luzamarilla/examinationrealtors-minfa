@@ -53,6 +53,14 @@
   }
   .lesson-title { font-size: 18px; font-weight: 900; margin-bottom: 4px; }
   .lesson-desc { font-size: 13.5px; color: var(--sub); }
+  .card-wrap { display: flex; flex-direction: column; gap: 6px; }
+  a.review-link {
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    text-decoration: none; font-size: 12.5px; font-weight: 700;
+    color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent);
+    border-radius: 8px; padding: 6px 10px;
+  }
+  a.review-link:hover { opacity: .8; }
   .footer { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 32px; }
 </style>
 </head>
@@ -64,41 +72,62 @@
 </div>
 
 <div class="lesson-list">
-  <a class="lesson-card" href="./l1l2/">
-    <div class="lesson-tag">L1 + L2</div>
-    <div class="lesson-title">法律行為・意思表示・消滅時效與除斥期間</div>
-    <div class="lesson-desc">法律行為 → 意思表示 → 瑕疵 → 撤銷 → 消滅時效 → 除斥期間 → 三大釋字</div>
-  </a>
-  <a class="lesson-card" href="./l3/">
-    <div class="lesson-tag">L3</div>
-    <div class="lesson-title">債編總則・債之發生</div>
-    <div class="lesson-desc">契約成立 → 代理制度 → 無權處分 / 時效制度 / 權利行使 → 無因管理 → 不當得利 → 侵權行為</div>
-  </a>
-  <a class="lesson-card" href="./l4/">
-    <div class="lesson-tag">L4</div>
-    <div class="lesson-title">債之效力・保全・移轉與消滅</div>
-    <div class="lesson-desc">契約解除終止 → 債務不履行三類型 → 債之保全 → 受領遲延 / 連帶之債 → 債之移轉與消滅</div>
-  </a>
-  <a class="lesson-card" href="./l5/">
-    <div class="lesson-tag">L5</div>
-    <div class="lesson-title">債編各論・買賣契約</div>
-    <div class="lesson-desc">買賣契約總論 → 雙方契約義務 → 權利瑕疵擔保 → 物之瑕疵擔保 → 價金交付與危險移轉</div>
-  </a>
-  <a class="lesson-card" href="./l6/">
-    <div class="lesson-tag">L6</div>
-    <div class="lesson-title">債編各論・租賃契約</div>
-    <div class="lesson-desc">租賃契約總論 → 出租人義務 → 承租人義務 → 買賣不破租賃 → 法定租賃關係 → 轉租 → 土地優先承買權</div>
-  </a>
-  <a class="lesson-card" href="./l7/">
-    <div class="lesson-tag">L7</div>
-    <div class="lesson-title">債編各論・贈與、借貸契約</div>
-    <div class="lesson-desc">贈與契約總論 → 贈與之撤銷 → 債務不履行與瑕疵擔保 → 使用借貸 → 消費借貸 → 補充章節</div>
-  </a>
-  <a class="lesson-card" href="./l8/">
-    <div class="lesson-tag">L8</div>
-    <div class="lesson-title">債編各論・承攬契約、委任契約</div>
-    <div class="lesson-desc">承攬契約總論 → 瑕疵擔保責任 → 遲延責任 → 定作人協力義務 → 危險負擔與終止權 → 委任契約總論 → 承攬vs委任比較 → 受任人義務與報酬請求權</div>
-  </a>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l1l2/">
+      <div class="lesson-tag">L1 + L2</div>
+      <div class="lesson-title">法律行為・意思表示・消滅時效與除斥期間</div>
+      <div class="lesson-desc">法律行為 → 意思表示 → 瑕疵 → 撤銷 → 消滅時效 → 除斥期間 → 三大釋字</div>
+    </a>
+    <a class="review-link" href="./review/l1-4/">📖 複習版｜①總則篇</a>
+  </div>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l3/">
+      <div class="lesson-tag">L3</div>
+      <div class="lesson-title">債編總則・債之發生</div>
+      <div class="lesson-desc">契約成立 → 代理制度 → 無權處分 / 時效制度 / 權利行使 → 無因管理 → 不當得利 → 侵權行為</div>
+    </a>
+    <a class="review-link" href="./review/l1-4/">📖 複習版｜①總則篇</a>
+  </div>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l4/">
+      <div class="lesson-tag">L4</div>
+      <div class="lesson-title">債之效力・保全・移轉與消滅</div>
+      <div class="lesson-desc">契約解除終止 → 債務不履行三類型 → 債之保全 → 受領遲延 / 連帶之債 → 債之移轉與消滅</div>
+    </a>
+    <a class="review-link" href="./review/l1-4/">📖 複習版｜①總則篇</a>
+  </div>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l5/">
+      <div class="lesson-tag">L5</div>
+      <div class="lesson-title">債編各論・買賣契約</div>
+      <div class="lesson-desc">買賣契約總論 → 雙方契約義務 → 權利瑕疵擔保 → 物之瑕疵擔保 → 價金交付與危險移轉</div>
+    </a>
+    <a class="review-link" href="./review/l5-8/">📖 複習版｜②債編契約篇</a>
+  </div>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l6/">
+      <div class="lesson-tag">L6</div>
+      <div class="lesson-title">債編各論・租賃契約</div>
+      <div class="lesson-desc">租賃契約總論 → 出租人義務 → 承租人義務 → 買賣不破租賃 → 法定租賃關係 → 轉租 → 土地優先承買權</div>
+    </a>
+    <a class="review-link" href="./review/l5-8/">📖 複習版｜②債編契約篇</a>
+  </div>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l7/">
+      <div class="lesson-tag">L7</div>
+      <div class="lesson-title">債編各論・贈與、借貸契約</div>
+      <div class="lesson-desc">贈與契約總論 → 贈與之撤銷 → 債務不履行與瑕疵擔保 → 使用借貸 → 消費借貸 → 補充章節</div>
+    </a>
+    <a class="review-link" href="./review/l5-8/">📖 複習版｜②債編契約篇</a>
+  </div>
+  <div class="card-wrap">
+    <a class="lesson-card" href="./l8/">
+      <div class="lesson-tag">L8</div>
+      <div class="lesson-title">債編各論・承攬契約、委任契約</div>
+      <div class="lesson-desc">承攬契約總論 → 瑕疵擔保責任 → 遲延責任 → 定作人協力義務 → 危險負擔與終止權 → 委任契約總論 → 承攬vs委任比較 → 受任人義務與報酬請求權</div>
+    </a>
+    <a class="review-link" href="./review/l5-8/">📖 複習版｜②債編契約篇</a>
+  </div>
   <a class="lesson-card" href="./l9/">
     <div class="lesson-tag">L9</div>
     <div class="lesson-title">物權編・所有權、物上返還請求權、動產善意取得</div>
